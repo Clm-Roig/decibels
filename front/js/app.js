@@ -1,1 +1,1 @@
-angular.app('Decibels',[]);
+angular.module('Decibels',[]);
