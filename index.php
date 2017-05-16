@@ -1,1 +1,3 @@
-<?php header( 'Location: views/index.html' ) ;  ?>
+<?php 
+    echo file_get_contents('views/index.html');
+
