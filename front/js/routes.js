@@ -11,9 +11,9 @@ angular.module('Decibels')
             controller: 'bandsController',
             controllerAs: 'bands'
         })
-        .when('/latestNews', {
-            templateUrl : 'front/js/news/latestNews.html',
-            controller: 'latestNewsController'
+        .when('/news', {
+            templateUrl : 'front/js/news/news.html',
+            controller: 'newsController'
         })
         .when('#', {
             redirectTo : '/'
