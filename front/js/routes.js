@@ -3,10 +3,17 @@ angular.module('Decibels')
     function($routeProvider){
         $routeProvider
         .when('/', {
-            templateUrl : 'views/home.html'
+            templateUrl : 'front/js/home/home.html',
+            controller: 'homeController'
         })
         .when('/bands', {
-            templateUrl : 'views/bands.html'
+            templateUrl : 'front/js/bands/bands.html',
+            controller: 'bandsController',
+            controllerAs: 'bands'
+        })
+        .when('/latestNews', {
+            templateUrl : 'front/js/news/latestNews.html',
+            controller: 'latestNewsController'
         })
         .when('#', {
             redirectTo : '/'

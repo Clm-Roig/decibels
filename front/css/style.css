@@ -2,17 +2,6 @@
 
 /* ==== BY CONTAINER ==== */
 
-nav, .navbar-header{
-	height: 150px;
-}
-
-nav ul.navbar-nav li a {
-	line-height: 150px;
-	padding: 0;
-	text-align: center;
-	width: 150px;
-}
-
 footer {
 	background-color: #aaa;
 }
