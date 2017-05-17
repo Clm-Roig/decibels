@@ -14,14 +14,20 @@ ini_set('display_errors', 1);
         $request = $_UPDATE;
     }
 
-    // format : ?controller=aController&method=aMethod
+    // format : ?controller=aController&method=aMethod&id=3
     $controllerName = $request['controller'];
     $method = $request['method'];
     $controllerObj = getController($controllerName);
-
-    $data = $controllerObj->$method();
-    echo $data;
-
+    // S'il n'y a pas d'id, on exécute une fonction simple sans paramètre
+    if(empty($request['id'])){
+        $data = $controllerObj->$method();
+        echo $data;
+    }
+    // sinon on file l'id et le nom de la méthode au controleur
+    else {
+        $data = $controllerObj->$method($request['id']);
+        echo $data;
+    }
 
     // ======== Functions ======== //
 
@@ -38,6 +44,6 @@ ini_set('display_errors', 1);
             return $controller;
         }
         else {
-            throw new Exception("Fichier '$fichierControleur' introuvable.");
+            throw new Exception("Fichier '$fileController' introuvable.");
         }
     }

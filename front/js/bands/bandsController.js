@@ -2,12 +2,16 @@ angular.module('Decibels').controller('bandsController', ['$http', function($htt
     var self = this;
     self.title = "All the bands";
 
-    $http.get('/back/Routeur.php?controller=Band&method=getAllBands')
-    .success(function(data){
-        self.listBands = data;
+    $http({
+        method: 'GET',
+        url: '/back/Routeur.php?controller=Band&method=getAllBands'
     })
-    .error(function(error) {
-        console.log('Error getting all bands : ' + error);
+    .then(function success(response){
+        self.listBands = response.data;
+        console.log(response.data);
+    }
+    , function error(response) {
+        console.log('Error getting all bands : ' + response.data);
     });
 
 }]);

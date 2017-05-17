@@ -42,8 +42,10 @@
             </ul>
         </div>
     </nav>
-
-    <div ng-view></div>
+    
+    <div class="col-sm-12">
+        <div ng-view></div>
+    </div>
 
 
     <footer>
@@ -64,6 +66,7 @@
     <script src="front/js/routes.js"></script>
 
     <!-- Controllers -->
+    <script src="front/js/band/bandController.js"></script>
     <script src="front/js/bands/bandsController.js"></script>
     <script src="front/js/bands/latestBandsController.js"></script>
     <script src="front/js/gigs/nextGigsController.js"></script>
