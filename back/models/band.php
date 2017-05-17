@@ -1,7 +1,7 @@
 <?php
 include('config/connexionBD.php');
 
-class Band {
+class band {
 
     // ========= ATTRIBUTES ========= //
     private $bandId;            // integer

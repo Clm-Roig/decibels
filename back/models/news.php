@@ -1,7 +1,7 @@
 <?php
 include('config/connexionBD.php');
 
-class News {
+class news {
 
     // ========= ATTRIBUTES ========= //
     private $newsId;        // integer

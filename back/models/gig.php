@@ -1,7 +1,7 @@
 <?php
 include('config/connexionBD.php');
 
-class Gig {
+class gig {
 
     // ========= ATTRIBUTES ========= //
     private $gigId;         // integer

@@ -1,7 +1,7 @@
 <?php
 include('config/connexionBD.php');
 
-class Member {
+class member {
 
     // ========= ATTRIBUTES ========= //
     private $memberId;          // integer

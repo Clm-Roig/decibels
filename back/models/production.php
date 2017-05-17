@@ -1,7 +1,7 @@
 <?php
 include('config/connexionBD.php');
 
-class Production {
+class production {
 
     // ========= ATTRIBUTES ========= //
     private $productionId;          // integer

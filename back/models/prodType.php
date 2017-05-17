@@ -1,7 +1,7 @@
 <?php
 include('config/connexionBD.php');
 
-class ProdType {
+class prodType {
 
     // ========= ATTRIBUTES ========= //
     private $prodTypeId;        // integer
