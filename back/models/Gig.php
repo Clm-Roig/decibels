@@ -18,7 +18,7 @@ class Gig {
         return $maxId->fetch()[0];
     }
 
-    public function getGigs() {
+    public function getAllGigs() {
         $req = myPDO()->prepare('SELECT * FROM gigs');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");

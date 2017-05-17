@@ -18,7 +18,7 @@ class Member {
         return $maxId->fetch()[0];
     }
 
-    public function getMembers() {
+    public function getAllMembers() {
         $req = myPDO()->prepare('SELECT * FROM members');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "Member");

@@ -18,7 +18,7 @@ class Band {
         return $maxId->fetch()[0];
     }
 
-    public function getBands() {
+    public function getAllBands() {
         $req = myPDO()->prepare('SELECT * FROM bands');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "Band");
