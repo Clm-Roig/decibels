@@ -1,14 +1,18 @@
-angular.module('Decibels',['ngRoute'])
+angular.module('Decibels')
 .config(['$routeProvider',
     function($routeProvider){
         $routeProvider
-        .when("/", {
-            templateUrl : "views/index.html"
+        .when('/', {
+            templateUrl : 'views/home.html'
+        })
+        .when('/bands', {
+            templateUrl : 'views/bands.html'
+        })
+        .when('#', {
+            redirectTo : '/'
         })
         .otherwise({
-            templateUrl : "views/index.html"
+            redirectTo : '/'
         });
     }
-
-
 ]);
