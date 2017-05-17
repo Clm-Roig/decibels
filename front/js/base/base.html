@@ -27,7 +27,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body ng-controller="baseController as base">
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -35,14 +35,14 @@
                 <a class="navbar-brand" href="/">Décibels</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/bands">Bands</a></li>
-                <li><a href="/news">News</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li ng-class = "{active: base.isSelected(1)}"><a href="/" ng-click="base.setActiveTab(1)">Home</a></li>
+                <li ng-class = "{active: base.isSelected(2)}"><a href="/bands" ng-click="base.setActiveTab(2)">Bands</a></li>
+                <li ng-class = "{active: base.isSelected(3)}"><a href="/news" ng-click="base.setActiveTab(3)">News</a></li>
+                <li ng-class = "{active: base.isSelected(4)}"><a href="#" ng-click="base.setActiveTab(4)">Page 3</a></li>
             </ul>
         </div>
     </nav>
-    
+
     <div class="col-sm-12">
         <div ng-view></div>
     </div>
@@ -69,6 +69,7 @@
     <script src="front/js/band/bandController.js"></script>
     <script src="front/js/bands/bandsController.js"></script>
     <script src="front/js/bands/latestBandsController.js"></script>
+    <script src="front/js/base/baseController.js"></script>
     <script src="front/js/gigs/nextGigsController.js"></script>
     <script src="front/js/home/homeController.js"></script>
     <script src="front/js/news/latestNewsController.js"></script>
