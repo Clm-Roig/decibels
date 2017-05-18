@@ -1,6 +1,5 @@
 <?php
 require('models/band.php');
-ini_set('display_errors',1);
 class BandController {
 
     private $Band;
