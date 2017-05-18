@@ -1,11 +1,4 @@
-angular.module('Decibels',[
-    'ngRoute',
-    'currentTab'
-]).config(['$locationProvider', function($locationProvider){
-    $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
-}]);
-/*
+angular.module('currentTab',[])
 .service('currentTab',function(){
     var current;
     var service = {
@@ -19,4 +12,3 @@ angular.module('Decibels',[
     }
     return service;
 });
-*/

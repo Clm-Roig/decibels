@@ -12,6 +12,6 @@ angular.module('Decibels').controller('bandsController', ['$http', 'currentTab',
         console.log(response.data);
     }
     , function error(response) {
-        console.log('Error getting all bands : ' + response.data);
+        console.log('Error getting all bands : ' + response);
     });
 }]);
