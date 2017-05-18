@@ -1,5 +1,6 @@
-angular.module('Decibels').controller('bandsController', ['$http', function($http,) {
+angular.module('Decibels').controller('bandsController', ['$http', 'currentTab', function($http, currentTab) {
     var self = this;
+    currentTab.setCurrentTab(2);
     self.title = "All the bands";
 
     $http({

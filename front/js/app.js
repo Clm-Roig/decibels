@@ -6,6 +6,7 @@ angular.module('Decibels',[
 }])
 
 .service('currentTab',function(){
+    var current;
     var service = {
         setCurrentTab: function(value) {
             current = value;
