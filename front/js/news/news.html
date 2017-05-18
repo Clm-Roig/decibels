@@ -1,3 +1,6 @@
 <div ng-controller="newsController as news">
     <h2>{{news.title}}</h2>
+    <ul>
+        <li ng-repeat ="new in news.listNews">{{new['news_title']}} - {{new['news_text']}}</li>
+    </ul>
 </div>

@@ -12,8 +12,8 @@ class NewsController {
         }
     }
 
-    function getAllNewss() {
-        $newss = $this->News->getAllNewss();
+    function getAllNews() {
+        $newss = $this->News->getAllNews();
         return $newss;
     }
 
