@@ -11,7 +11,7 @@ class band {
     // ============================= //
 
 
-    // ==== Misc requests ==== //
+    // ==== Simple requests ==== //
 
     public function getIdMax() {
         $maxId = myPDO()->query('SELECT MAX(band_id) FROM bands');

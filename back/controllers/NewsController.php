@@ -14,10 +14,14 @@ class NewsController {
 
     function getAllNews() {
         $newss = $this->News->getAllNews();
-        return $newss;
+        return $news;
     }
 
     function getNews() {
         return $this->News->getNews($this->newsId);
+    }
+
+    function getLatestNews($limit) {
+        return $this->News->getLatestNews($limit);
     }
 }

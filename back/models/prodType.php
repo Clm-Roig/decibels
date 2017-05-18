@@ -9,7 +9,7 @@ class prodType {
     // ============================= //
 
 
-    // ==== Misc requests ==== //
+    // ==== Simple requests ==== //
 
     public function getIdMax() {
         $maxId = myPDO()->query('SELECT MAX(prod_types_id) FROM prod_types');

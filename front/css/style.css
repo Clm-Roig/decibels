@@ -1,6 +1,13 @@
 /* ==== GLOBAL ==== */
 
 /* ==== BY CONTAINER ==== */
+.navbar {
+	border: 0;
+}
+
+.navbar ul li a, .navbar-brand {
+	line-height: 50px;
+}
 
 footer {
 	background-color: #aaa;

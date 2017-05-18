@@ -13,7 +13,6 @@ angular.module('Decibels').controller('bandController',
             console.log(response.data);
         },function error(response) {
             console.log('Error getting band : ' + response.data);
-
         });
 
 }]);

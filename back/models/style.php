@@ -9,7 +9,7 @@ class style {
     // ============================= //
 
 
-    // ==== Misc requests ==== //
+    // ==== Simple requests ==== //
 
     public function getIdMax() {
         $maxId = myPDO()->query('SELECT MAX(style_id) FROM styles');

@@ -118,9 +118,18 @@ create table plays_with
 (
 	plays_with_member_id integer not null,
 	plays_with_band_id integer not null,
-	plays_with_instrument integer,
+	plays_with_instrument text,
 	constraint plays_with_plays_with_band_id_plays_with_member_id_pk
 		primary key (plays_with_band_id, plays_with_member_id)
+)
+;
+
+create table composed_by
+(
+	composed_by_band_id integer not null,
+	composed_by_production_id integer not null
+		constraint composed_by_pkey
+			primary key
 )
 ;
 

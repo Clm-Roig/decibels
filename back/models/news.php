@@ -11,7 +11,7 @@ class news {
     // ============================= //
 
 
-    // ==== Misc requests ==== //
+    // ==== Simple requests ==== //
 
     public function getIdMax() {
         $maxId = myPDO()->query('SELECT MAX(news_id) FROM news');
@@ -124,4 +124,11 @@ class news {
     }
     // ====================================== //
 
+    // ==== Complex requests ==== //
+    public function getLatestNews($limit) {
+        $req = myPDO()->prepare('SELECT * FROM news ORDER BY news_date DESC LIMIT ?');
+        $req->execute(array($limit));
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "News");
+        return json_encode($object);
+    }
 }

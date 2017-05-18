@@ -11,7 +11,7 @@ class gig {
     // ============================= //
 
 
-    // ==== Misc requests ==== //
+    // ==== Simple requests ==== //
 
     public function getIdMax() {
         $maxId = myPDO()->query('SELECT MAX(gig_id) FROM gigs');

@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 1);
-    // Type de requête
+    // Request type
     if(!empty($_GET)) {
         $request = $_GET;
     }
@@ -18,14 +18,23 @@ ini_set('display_errors', 1);
     $controllerName = $request['controller'];
     $method = $request['method'];
     $controllerObj = getController($controllerName);
-    // S'il n'y a pas d'id, on exécute une fonction simple sans paramètre
-    if(empty($request['id'])){
-        $data = $controllerObj->$method();
+
+
+    // Request with id
+    if(!empty($request['id'])){
+        $data = $controllerObj->$method($request['id']);
+        echo $data;
+
+    }
+    // Request with limit
+    else if(!empty($request['limit'])){
+
+        $data = $controllerObj->$method($request['limit']);
         echo $data;
     }
-    // sinon on file l'id et le nom de la méthode au controleur
+    // Simple function without parameter
     else {
-        $data = $controllerObj->$method($request['id']);
+        $data = $controllerObj->$method();
         echo $data;
     }
 
@@ -44,6 +53,6 @@ ini_set('display_errors', 1);
             return $controller;
         }
         else {
-            throw new Exception("Fichier '$fileController' introuvable.");
+            throw new Exception("File '$fileController' not found.");
         }
     }
