@@ -1,11 +1,9 @@
-angular.module('Decibels').controller('baseController', ['$http', function($http) {
-    this.activeTab = 1;
-
-    this.setActiveTab = function(value) {
-        this.activeTab = value;
+angular.module('Decibels').controller('baseController', ['$http','currentTab', function($http, currentTab) {
+    this.setCurrentTab = function(value) {
+        currentTab.setCurrentTab(value);
     };
-    this.isSelected = function(value) {
-        return this.activeTab === value;
+    this.isCurrentTab = function(value) {
+        return currentTab.isCurrentTab(value);
     };
 
 }]);

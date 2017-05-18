@@ -1,4 +1,4 @@
-angular.module('Decibels').controller('bandsController', ['$http', function($http) {
+angular.module('Decibels').controller('bandsController', ['$http', function($http,) {
     var self = this;
     self.title = "All the bands";
 
@@ -13,5 +13,4 @@ angular.module('Decibels').controller('bandsController', ['$http', function($htt
     , function error(response) {
         console.log('Error getting all bands : ' + response.data);
     });
-
 }]);
