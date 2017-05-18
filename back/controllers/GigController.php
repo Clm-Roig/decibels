@@ -13,11 +13,14 @@ class GigController {
     }
 
     function getAllGigs() {
-        $gigs = $this->Gig->getAllGigs();
-        return $gigs;
+        return $this->Gig->getAllGigs();
     }
 
     function getGig() {
         return $this->Gig->getGig($this->gigId);
+    }
+
+    function getNextGigs($limit) {
+        return $this->Gig->getNextGigs($limit);
     }
 }

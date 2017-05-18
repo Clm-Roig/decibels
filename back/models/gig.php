@@ -7,6 +7,7 @@ class gig {
     private $gigId;         // integer
     private $gigPrice;      // float (numeric(6,2) in DB)
     private $gigPlace;      // text
+    private $gigDate;       // date
     private $gigStyleId;    // integer
     // ============================= //
 
@@ -55,6 +56,13 @@ class gig {
         return json_encode($object);
     }
 
+    public function getGigsByDate($gigDate) {
+        $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date = :gig_date');
+        $req->execute(array(':gig_date' => $gigDate));
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        return json_encode($object);
+    }
+
     public function getGigsByStyleId($gigStyleId) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_style_id = :gig_style_id');
         $req->execute(array(':gig_style_id' => $gigStyleId));
@@ -67,14 +75,15 @@ class gig {
 
     // ==== POST / PUT / DELETE requests ==== //
 
-    public function insertGig($gigPrice, $gigPlace, $gigStyleId) {
+    public function insertGig($gigPrice, $gigPlace, $gigDate, $gigStyleId) {
         $gigId = $this->getIdMax() + 1;
-        $sql = "INSERT INTO gigs VALUES (:gig_id, :gig_price, :gig_place, :gig_style_id)";
+        $sql = "INSERT INTO gigs VALUES (:gig_id, :gig_price, :gig_place, :gig_date, :gig_style_id)";
         $req = myPdo()->prepare($sql);
         $params = [
           ':gig_id' => $gigId,
           ':gig_price' => $gigPrice,
           ':gig_place' => $gigPlace,
+          ':gig_date' => $gigDate,
           ':gig_style_id' => $gigStyleId
         ];
         try {
@@ -88,11 +97,12 @@ class gig {
         }
     }
 
-    public function updateGig($gigId, $gigPrice, $gigPlace, $gigStyleId) {
-        $sql = myPdo()->prepare("UPDATE gigs SET gig_name=:gig_name, gig_formed_in=:gig_formed_in , gig_style_id=:gig_style_id WHERE gig_id = :gig_id");
+    public function updateGig($gigId, $gigPrice, $gigPlace, $gigDate, $gigStyleId) {
+        $sql = myPdo()->prepare("UPDATE gigs SET gig_price=:gig_price, gig_place=:gig_place, gig_date=:gig_date, gig_style_id=:gig_style_id WHERE gig_id = :gig_id");
         $params = [
-          ':gig_name' => $gigName,
-          ':gig_formed_in' => $gigFormedIn,
+          ':gig_price' => $gigPrice,
+          ':gig_place' => $gigPlace,
+          ':gig_date' => $gigDate,
           ':gig_style_id' => $gigStyleId,
           ':gig_id' => $gigId
         ];
@@ -124,5 +134,13 @@ class gig {
         }
     }
     // ====================================== //
+
+    // ==== Complex requests ==== //
+    public function getNextGigs($limit) {
+        $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date >= NOW() ORDER BY gig_date DESC LIMIT ?');
+        $req->execute(array($limit));
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        return json_encode($object);
+    }
 
 }

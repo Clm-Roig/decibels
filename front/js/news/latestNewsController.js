@@ -13,6 +13,6 @@ angular.module('Decibels').controller('latestNewsController', ['$http', function
         self.listNews = response.data;
         console.log(response.data);
     },function error(response) {
-        console.log('Error getting band : ' + response.data);
+        console.log('Error getting news : ' + response.data);
     });
 }]);
