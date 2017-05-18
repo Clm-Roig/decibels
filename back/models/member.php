@@ -1,5 +1,5 @@
 <?php
-include('config/connexionBD.php');
+include('../config/connexionBD.php');
 
 class member {
 

@@ -1,7 +1,7 @@
 <?php
-include('config/connexionBD.php');
+include('../config/connexionBD.php');
 
-class tyle {
+class style {
 
     // ========= ATTRIBUTES ========= //
     private $styleId;            // integer
