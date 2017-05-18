@@ -19,7 +19,7 @@ class style {
     public function getAllStyles() {
         $req = myPDO()->prepare('SELECT * FROM styles');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Style");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
         return json_encode($object);
     }
 
@@ -35,14 +35,14 @@ class style {
     public function getStyle($styleId) {
         $req = myPDO()->prepare('SELECT * FROM styles WHERE style_id = :style_id');
         $req->execute(array(':style_id' => $styleId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Style");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
         return json_encode($object);
     }
 
     public function getStylesByName($styleName) {
         $req = myPDO()->prepare('SELECT * FROM styles WHERE style_name = :style_name');
         $req->execute(array(':style_name' => $styleName));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Style");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
         return json_encode($object);
     }
     // ====================== //

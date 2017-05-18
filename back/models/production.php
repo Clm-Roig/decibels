@@ -22,7 +22,7 @@ class production {
     public function getAllProductions() {
         $req = myPDO()->prepare('SELECT * FROM productions');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Production");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
         return json_encode($object);
     }
 
@@ -38,28 +38,28 @@ class production {
     public function getProduction($productionId) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_id = :production_id');
         $req->execute(array(':production_id' => $productionId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Production");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
         return json_encode($object);
     }
 
     public function getProductionsByName($productionName) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_name = :production_name');
         $req->execute(array(':production_name' => $productionName));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Production");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
         return json_encode($object);
     }
 
     public function getProductionsByDate($productionDate) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_date = :production_date');
         $req->execute(array(':production_date' => $productionDate));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Production");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
         return json_encode($object);
     }
 
     public function getProductionsByStyleId($productionStyleId) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_style_id = :production_style_id');
         $req->execute(array(':production_style_id' => $productionStyleId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Production");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
         return json_encode($object);
     }
     // ====================== //

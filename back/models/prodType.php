@@ -19,7 +19,7 @@ class prodType {
     public function getAllProdTypes() {
         $req = myPDO()->prepare('SELECT * FROM prod_types');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "ProdType");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
         return json_encode($object);
     }
 
@@ -35,14 +35,14 @@ class prodType {
     public function getProdType($prodTypeId) {
         $req = myPDO()->prepare('SELECT * FROM prod_type WHERE prod_type_id = :prod_type_id');
         $req->execute(array(':prod_type_id' => $prodTypeId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "ProdType");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
         return json_encode($object);
     }
 
     public function getProdTypeByName($prodTypeName) {
         $req = myPDO()->prepare('SELECT * FROM prod_type WHERE prod_type_name = :prod_type_name');
         $req->execute(array(':prod_type_name' => $prodTypeName));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "ProdType");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
         return json_encode($object);
     }
 

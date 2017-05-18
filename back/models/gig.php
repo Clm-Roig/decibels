@@ -22,7 +22,7 @@ class gig {
     public function getAllGigs() {
         $req = myPDO()->prepare('SELECT * FROM gigs');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
@@ -38,35 +38,35 @@ class gig {
     public function getGig($gigId) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_id = :gig_id');
         $req->execute(array(':gig_id' => $gigId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
     public function getGigsByPrice($gigPrice) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_price = :gig_price');
         $req->execute(array(':gig_price' => $gigPrice));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
     public function getGigsByPlace($gigPlace) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_place = :gig_place');
         $req->execute(array(':gig_place' => $gigPlace));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
     public function getGigsByDate($gigDate) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date = :gig_date');
         $req->execute(array(':gig_date' => $gigDate));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
     public function getGigsByStyleId($gigStyleId) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_style_id = :gig_style_id');
         $req->execute(array(':gig_style_id' => $gigStyleId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
@@ -139,7 +139,7 @@ class gig {
     public function getNextGigs($limit) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date >= NOW() ORDER BY gig_date DESC LIMIT ?');
         $req->execute(array($limit));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "Gig");
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return json_encode($object);
     }
 
