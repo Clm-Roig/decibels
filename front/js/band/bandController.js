@@ -15,6 +15,7 @@ angular.module('Decibels').controller('bandController',
         })
         .then(function success(response) {
             self.band = response.data;
+            console.log(self.band);
         },function error(response) {
             console.log('Error getting band : ' + response.data);
         });

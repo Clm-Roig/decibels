@@ -27,26 +27,29 @@ class BandSheetController {
         }
     }
 
+
     function getBandSheet() {
         $band = $this->Band->getBand($this->params['band_id'])[0];
 
         $style = $this->Style->getStyle($band->band_style_id);
 
-        $listMemberIdsInstr = $this->PlaysWith->getPlaysWithByBandId($this->params['band_id']);
-        var_dump($listMemberIdsInstr);
+        // TODO : Not working ? Null on member_id
+        $listPlaysWith = $this->PlaysWith->getPlaysWithByBandId($this->params['band_id']);
+        var_dump($listPlaysWith);
+
         $listMembers = [];
-        foreach($listMemberIdsInstr as $memberIdInstr) {
-            echo $memberIdInstr;
-            array_push($listMembers,$this->Member->getMember($memberIdInstr)[0]);
+
+        foreach($listPlaysWith as $index => $memberIdInstr) {
+            $member = $this->Member->getMember($memberIdInstr->plays_with_member_id);
+            array_push($listMembers,$member);
         }
 
+        //var_dump($listMembers);
 
         $style = (array) $style;
         $band = (array) $band;
 
-        $object = array_merge($band,$style,$listMembers);
-        return $object;
+
+        return $result;
     }
-
-
 }

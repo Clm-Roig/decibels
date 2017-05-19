@@ -4,9 +4,9 @@ require_once('../config/connexionBD.php');
 class playsWith {
 
     // ========= ATTRIBUTES ========= //
-    var $plays_with_member_id;     // integer
-    var $plays_with_band_id;       // integer
-    var $plays_with_instrument;   // text
+    var $plays_with_member_id;      // integer
+    var $plays_with_band_id;        // integer
+    var $plays_with_instrument;     // text
     // ============================= //
 
 
