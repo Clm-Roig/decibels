@@ -9,7 +9,7 @@
 	line-height: 50px;
 }
 
-.navbar ul li, {
+.navbar-nav > ul > li, {
 	line-height: 80px;
 }
 
