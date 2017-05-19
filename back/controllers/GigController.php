@@ -20,7 +20,7 @@ class GigController {
         return $this->Gig->getGig($this->params['gig_id']);
     }
 
-    function getNextGigs($limit) {
+    function getNextGigs() {
         return $this->Gig->getNextGigs($this->params['limit']);
     }
 }

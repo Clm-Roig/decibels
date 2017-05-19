@@ -26,7 +26,7 @@ class NewsController {
         return $this->News->getNews($this->params['news_id']);
     }
 
-    function getLatestNews($limit) {
+    function getLatestNews() {
         return $this->News->getLatestNews($this->params['limit']);
     }
 }

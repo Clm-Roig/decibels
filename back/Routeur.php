@@ -15,9 +15,9 @@ ini_set('display_errors', 1);
     }
 
     $controllerName = $request['controller'];
-    $methodName = $request['method'];
     $controllerObj = getController($controllerName, $request);
 
+    $methodName = $request['method'];
     $data = $controllerObj->$methodName();
     echo $data;
 
