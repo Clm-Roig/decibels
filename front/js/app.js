@@ -4,19 +4,9 @@ angular.module('Decibels',[
 ]).config(['$locationProvider', function($locationProvider){
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
-}]);
-/*
-.service('currentTab',function(){
-    var current;
-    var service = {
-        setCurrentTab: function(value) {
-            current = value;
-        },
+}])
 
-        isCurrentTab: function(value) {
-            return value == current;
-        }
-    }
-    return service;
-});
-*/
+.config(['$httpProvider', function ($httpProvider) {
+            // enable http caching
+           $httpProvider.defaults.cache = true;
+      }])
