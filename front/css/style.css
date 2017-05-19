@@ -5,7 +5,7 @@
 	border: 0;
 }
 
-.navbar a {
+.navbar-nav > li >a{
 	line-height: 50px;
 }
 
