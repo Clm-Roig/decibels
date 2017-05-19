@@ -1,5 +1,5 @@
 <?php
-include('../config/connexionBD.php');
+require('../config/connexionBD.php');
 
 class song {
 
