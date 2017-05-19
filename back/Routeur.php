@@ -20,6 +20,7 @@ ini_set('display_errors', 1);
 
     $methodName = $request['method'];
     $data = $controllerObj->$methodName();
+
     echo json_encode($data);
 
 
