@@ -13,7 +13,8 @@ class playsAt {
     public function getAllPlaysAt() {
         $req = myPDO()->prepare('SELECT * FROM plays_at');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsAt");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -29,14 +30,16 @@ class playsAt {
     public function getPlaysAtByBandId($playsAtBandId) {
         $req = myPDO()->prepare('SELECT * FROM plays_at WHERE plays_at_band_id = :plays_at_band_id');
         $req->execute(array(':plays_at_band_id' => $playsAtBandId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsAt");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getPlaysAtByGigId($playsAtGigId) {
         $req = myPDO()->prepare('SELECT * FROM plays_at WHERE plays_at_gig_id = :plays_at_gig_id');
         $req->execute(array(':plays_at_gig_id' => $playsAtGigId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsAt");
+        $object = array_map('reset',$object);
         return $object;
     }
 

@@ -18,10 +18,10 @@ class band {
     }
 
     public function getAllBands() {
-        $req = myPDO()->prepare('   SELECT * FROM bands
-                                ');
+        $req = myPDO()->prepare('   SELECT * FROM bands');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "band");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -48,7 +48,8 @@ class band {
                                     WHERE band_name = :band_name
                                 ');
         $req->execute(array(':band_name' => $bandName));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "band");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -57,7 +58,8 @@ class band {
                                     WHERE band_formed_in = :band_formed_in
                                 ');
         $req->execute(array(':band_formed_in' => $bandFormedIn));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "band");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -66,7 +68,8 @@ class band {
                                     WHERE band_style_id = :band_style_id
                                 ');
         $req->execute(array(':band_style_id' => $bandStyleId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "band");
+        $object = array_map('reset',$object);
         return $object;
     }
 

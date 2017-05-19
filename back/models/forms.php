@@ -13,7 +13,8 @@ class forms {
     public function getAllForms() {
         $req = myPDO()->prepare('SELECT * FROM forms');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "forms");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -29,14 +30,16 @@ class forms {
     public function getFormsBySongId($formsSongId) {
         $req = myPDO()->prepare('SELECT * FROM forms WHERE forms_song_id = :forms_song_id');
         $req->execute(array(':forms_song_id' => $formsSongId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "forms");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getFormsByProductionId($formsProductionId) {
         $req = myPDO()->prepare('SELECT * FROM forms WHERE forms_production_id = :forms_production_id');
         $req->execute(array(':forms_production_id' => $formsProductionId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "forms");
+        $object = array_map('reset',$object);
         return $object;
     }
 

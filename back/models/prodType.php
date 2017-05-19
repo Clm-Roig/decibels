@@ -19,7 +19,8 @@ class prodType {
     public function getAllProdTypes() {
         $req = myPDO()->prepare('SELECT * FROM prod_types');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "prodType");
+        $object = array_map('reset',$object);
         return $object;
     }
 

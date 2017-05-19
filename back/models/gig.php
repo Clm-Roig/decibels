@@ -22,7 +22,8 @@ class gig {
     public function getAllGigs() {
         $req = myPDO()->prepare('SELECT * FROM gigs');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "gig");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -45,28 +46,32 @@ class gig {
     public function getGigsByPrice($gigPrice) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_price = :gig_price');
         $req->execute(array(':gig_price' => $gigPrice));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "gig");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getGigsByPlace($gigPlace) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_place = :gig_place');
         $req->execute(array(':gig_place' => $gigPlace));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "gig");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getGigsByDate($gigDate) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date = :gig_date');
         $req->execute(array(':gig_date' => $gigDate));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "gig");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getGigsByStyleId($gigStyleId) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_style_id = :gig_style_id');
         $req->execute(array(':gig_style_id' => $gigStyleId));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "gig");
+        $object = array_map('reset',$object);
         return $object;
     }
 

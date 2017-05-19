@@ -21,7 +21,8 @@ class member {
     public function getAllMembers() {
         $req = myPDO()->prepare('SELECT * FROM members');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "member");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "member");
+        $object = array_map('reset',$object);
         return $object;
     }
 
@@ -44,21 +45,24 @@ class member {
     public function getMembersByFirstName($memberFirstName) {
         $req = myPDO()->prepare('SELECT * FROM members WHERE member_first_name = :member_first_name');
         $req->execute(array(':member_first_name' => $memberFirstName));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "member");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "member");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getMembersByLastName($memberLastName) {
         $req = myPDO()->prepare('SELECT * FROM members WHERE member_last_name = :member_last_name');
         $req->execute(array(':member_last_name' => $memberLastName));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "member");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "member");
+        $object = array_map('reset',$object);
         return $object;
     }
 
     public function getMembersByPseudo($memberPseudo) {
         $req = myPDO()->prepare('SELECT * FROM members WHERE member_pseudo = :member_pseudo');
         $req->execute(array(':member_pseudo' => $memberPseudo));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "member");
+        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "member");
+        $object = array_map('reset',$object);
         return $object;
     }
     // ====================== //
