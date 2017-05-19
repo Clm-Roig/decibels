@@ -5,6 +5,10 @@
 	border: 0;
 }
 
+.navbar a {
+	line-height: 50px;
+}
+
 .navbar ul li, .navbar-brand {
 	line-height: 80px;
 }
