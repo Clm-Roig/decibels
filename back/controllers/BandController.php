@@ -17,6 +17,11 @@ class BandController {
         return $bands;
     }
 
+    function countBands() {
+        $nb_bands = $this->Band->countBands();
+        return $nb_bands;
+    }
+
     function getBand() {
         return $this->Band->getBand($this->bandId);
     }

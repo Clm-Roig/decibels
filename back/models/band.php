@@ -8,6 +8,7 @@ class band {
     private $bandName;          // text
     private $bandFormedIn;      // integer
     private $bandStyleId;       // integer
+    private $bandStyleName;     // text
     // ============================= //
 
 
@@ -19,7 +20,9 @@ class band {
     }
 
     public function getAllBands() {
-        $req = myPDO()->prepare('SELECT * FROM bands');
+        $req = myPDO()->prepare('   SELECT * FROM bands AS B, styles AS S
+                                    WHERE B.band_style_id = S.style_id
+                                ');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return json_encode($object);
@@ -35,29 +38,47 @@ class band {
 
     // ==== GET requests ==== //
     public function getBand($bandId) {
-        $req = myPDO()->prepare('SELECT * FROM bands WHERE band_id = :band_id');
+        $req = myPDO()->prepare('   SELECT * FROM bands AS B, styles AS S
+                                    WHERE band_id = :band_id
+                                    AND B.band_style_id = S.style_id
+                                ');
         $req->execute(array(':band_id' => $bandId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return json_encode($object);
     }
 
     public function getBandsByName($bandName) {
-        $req = myPDO()->prepare('SELECT * FROM bands WHERE band_name = :band_name');
+        $req = myPDO()->prepare('   SELECT * FROM bands AS B, styles AS S
+                                    WHERE band_name = :band_name
+                                ');
         $req->execute(array(':band_name' => $bandName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return json_encode($object);
     }
 
     public function getBandsByFormedIn($bandFormedIn) {
-        $req = myPDO()->prepare('SELECT * FROM bands WHERE band_formed_in = :band_formed_in');
+        $req = myPDO()->prepare('   SELECT * FROM bands AS B, styles AS S
+                                    WHERE band_formed_in = :band_formed_in
+                                ');
         $req->execute(array(':band_formed_in' => $bandFormedIn));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return json_encode($object);
     }
 
     public function getBandsByStyleId($bandStyleId) {
-        $req = myPDO()->prepare('SELECT * FROM bands WHERE band_style_id = :band_style_id');
+        $req = myPDO()->prepare('   SELECT * FROM bands
+                                    WHERE band_style_id = :band_style_id
+                                ');
         $req->execute(array(':band_style_id' => $bandStyleId));
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        return json_encode($object);
+    }
+
+    public function getBandsByStyleName($styleName) {
+        $req = myPDO()->prepare('   SELECT * FROM bands AS B, styles AS S
+                                    WHERE S.style_name = :band_style_name
+                                ');
+        $req->execute(array(':band_style_name' => $styleName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return json_encode($object);
     }

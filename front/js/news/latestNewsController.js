@@ -2,7 +2,7 @@ angular.module('Decibels').controller('latestNewsController', ['$http', function
     this.title = "Latest News";
 
     var self = this;
-    self.limit = 10;
+    self.limit = 5;
 
     var urlRequest = '/back/Routeur.php?controller=News&method=getLatestNews&limit=' + (self.limit);
     $http({
