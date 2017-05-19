@@ -5,11 +5,11 @@
 	border: 0;
 }
 
-.navbar-nav > li >a{
+.navbar-nav > li > a, .navbar-brand {
 	line-height: 50px;
 }
 
-.navbar ul li, .navbar-brand {
+.navbar ul li, {
 	line-height: 80px;
 }
 
