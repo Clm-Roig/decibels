@@ -9,12 +9,12 @@
 	line-height: 50px;
 }
 
-.navbar-nav > ul > li, {
+.navbar-nav > li {
 	line-height: 80px;
 }
 
 footer {
-	background-color: #aaa;
+	background-color: #ccc;
 	bottom: 0px;
 	position: absolute;
 	width: 100%;
