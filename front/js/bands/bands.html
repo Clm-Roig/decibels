@@ -1,6 +1,8 @@
 <div ng-controller="bandsController as bands">
     <h2>{{bands.title}}</h2>
     <ul>
-        <li ng-repeat ="band in bands.listBands">{{band['band_name']}} ({{band['style_name']}})</li>
+        <li ng-repeat ="band in bands.listBands">
+            <a ng-href="/band/{{band['band_id']}}">{{band['band_name']}}</a> ({{band['style_name']}})
+        </li>
     </ul>
 </div>
