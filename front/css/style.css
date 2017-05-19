@@ -6,7 +6,9 @@
 }
 
 .navbar-nav > li > a, .navbar-brand {
+	height: auto;
 	line-height: 50px;
+
 }
 
 .navbar-nav > li {
