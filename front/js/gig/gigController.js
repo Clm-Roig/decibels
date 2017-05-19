@@ -8,7 +8,7 @@ angular.module('Decibels').controller('gigController',
             url: '/back/Routeur.php',
             params: {
                     'controller': 'Gig',
-                    'method': 'getGig';
+                    'method': 'getGig',
                     'id': self.gigId
             }
         })
