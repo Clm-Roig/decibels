@@ -3,14 +3,17 @@ angular.module('Decibels').controller('gigController',
         var self = this;
         self.gigId = $routeParams.gigId;
 
-        var urlRequest = '/back/Routeur.php?controller=Gig&method=getGig&id=' + (self.gigId);
         $http({
             method: 'GET',
-            url: urlRequest
+            url: '/back/Routeur.php',
+            params: {
+                    'controller': 'Gig',
+                    'method': 'getGig';
+                    'id': self.gigId
+            }
         })
         .then(function success(response) {
             self.gig = response.data[0];
-            console.log(response.data);
         },function error(response) {
             console.log('Error getting gig : ' + response.data);
         });

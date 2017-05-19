@@ -3,10 +3,13 @@ angular.module('Decibels').controller('counterController', ['$http', function($h
     self.count = {};
 
     // NB_BANDS
-    var urlRequest = '/back/Routeur.php?controller=Band&method=countBands';
     $http({
         method: 'GET',
-        url: urlRequest
+        url: '/back/Routeur.php',
+        params: {
+                'controller': 'Band',
+                'method': 'countBands'
+        }
     })
     .then(function success(response) {
         var nb_bands = "nb_bands";
@@ -16,10 +19,13 @@ angular.module('Decibels').controller('counterController', ['$http', function($h
     });
 
     // NB_PRODS
-    var urlRequest = '/back/Routeur.php?controller=Production&method=countProductions';
     $http({
         method: 'GET',
-        url: urlRequest
+        url: '/back/Routeur.php',
+        params: {
+                'controller': 'Production',
+                'method': 'countProductions'
+        }
     })
     .then(function success(response) {
         var nb_prods = "nb_prods";
@@ -29,10 +35,13 @@ angular.module('Decibels').controller('counterController', ['$http', function($h
     });
 
     // NB_NEWS
-    var urlRequest = '/back/Routeur.php?controller=News&method=countNews';
     $http({
         method: 'GET',
-        url: urlRequest
+        url: '/back/Routeur.php',
+        params: {
+                'controller': 'News',
+                'method': 'countNews'
+        }
     })
     .then(function success(response) {
         var nb_news = "nb_news";

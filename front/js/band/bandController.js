@@ -3,14 +3,18 @@ angular.module('Decibels').controller('bandController',
         var self = this;
         self.bandId = $routeParams.bandId;
 
-        var urlRequest = '/back/Routeur.php?controller=Band&method=getBand&id=' + (self.bandId);
+        var urlRequest = '/back/Routeur.php';
         $http({
             method: 'GET',
-            url: urlRequest
+            url: urlRequest,
+            params: {
+                        'controller': 'Band',
+                        'method': 'getBand',
+                        'id' : self.bandId
+            }
         })
         .then(function success(response) {
             self.band = response.data[0];
-            console.log(response.data);
         },function error(response) {
             console.log('Error getting band : ' + response.data);
         });

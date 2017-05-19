@@ -4,15 +4,18 @@ angular.module('Decibels').controller('latestNewsController', ['$http', function
     var self = this;
     self.limit = 5;
 
-    var urlRequest = '/back/Routeur.php?controller=News&method=getLatestNews&limit=' + (self.limit);
     $http({
         method: 'GET',
-        url: urlRequest
+        url: '/back/Routeur.php',
+        params: {
+                'controller': 'News',
+                'method': 'getLatestNews',
+                'limit': self.limit
+        }
     })
     .then(function success(response) {
         self.listNews = response.data;
-        console.log(response.data);
     },function error(response) {
-        console.log('Error getting news : ' + response.data);
+        console.log('Error getting latest news : ' + response.data);
     });
 }]);

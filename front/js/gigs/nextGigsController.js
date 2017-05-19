@@ -4,15 +4,18 @@ angular.module('Decibels').controller('nextGigsController', ['$http', function($
     var self = this;
     self.limit = 10;
 
-    var urlRequest = '/back/Routeur.php?controller=Gig&method=getNextGigs&limit=' + (self.limit);
     $http({
         method: 'GET',
-        url: urlRequest
+        url: '/back/Routeur.php',
+        params: {
+                'controller': 'Gig',
+                'method': 'getNextGigs',
+                'limit': self.limit
+        }
     })
     .then(function success(response) {
         self.listGigs = response.data;
-        console.log(response.data);
     },function error(response) {
-        console.log('Error getting gigs : ' + response.data);
+        console.log('Error getting next gigs : ' + response.data);
     });
 }]);
