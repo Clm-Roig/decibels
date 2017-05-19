@@ -9,7 +9,7 @@ angular.module('Decibels').controller('gigController',
             params: {
                     'controller': 'Gig',
                     'method': 'getGig',
-                    'id': self.gigId
+                    'gig_id': self.gigId
             }
         })
         .then(function success(response) {

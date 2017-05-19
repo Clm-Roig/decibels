@@ -3,12 +3,12 @@ require('models/member.php');
 class MemberController {
 
     private $Member;
-    private $memberId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->Member = new member();
-        if(!empty($_GET['id'])) {
-            $this->memberId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -18,6 +18,6 @@ class MemberController {
     }
 
     function getMember() {
-        return $this->Member->getMember($this->memberId);
+        return $this->Member->getMember($this->params['member_id']);
     }
 }

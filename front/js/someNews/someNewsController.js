@@ -9,7 +9,7 @@ angular.module('Decibels').controller('someNewsController',
             params: {
                     'controller': 'News',
                     'method': 'getNews',
-                    'id': self.newsId
+                    'news_id': self.newsId
             }
         })
         .then(function success(response) {

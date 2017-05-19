@@ -10,7 +10,7 @@ angular.module('Decibels').controller('bandController',
             params: {
                         'controller': 'Band',
                         'method': 'getBand',
-                        'id' : self.bandId
+                        'band_id' : self.bandId
             }
         })
         .then(function success(response) {

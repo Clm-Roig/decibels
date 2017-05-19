@@ -3,12 +3,12 @@ require('models/news.php');
 class NewsController {
 
     private $News;
-    private $newsId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->News = new news();
-        if(!empty($_GET['id'])) {
-            $this->newsId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -23,10 +23,10 @@ class NewsController {
     }
 
     function getNews() {
-        return $this->News->getNews($this->newsId);
+        return $this->News->getNews($this->params['news_id']);
     }
 
     function getLatestNews($limit) {
-        return $this->News->getLatestNews($limit);
+        return $this->News->getLatestNews($this->params['limit']);
     }
 }

@@ -3,12 +3,12 @@ require('models/style.php');
 class StyleController {
 
     private $Style;
-    private $styleId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->Style = new style();
-        if(!empty($_GET['id'])) {
-            $this->styleId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -18,6 +18,6 @@ class StyleController {
     }
 
     function getStyle() {
-        return $this->Style->getStyle($this->styleId);
+        return $this->Style->getStyle($this->params['style_id']);
     }
 }

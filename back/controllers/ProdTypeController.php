@@ -3,12 +3,12 @@ require('models/prodType.php');
 class ProdTypeController {
 
     private $ProdType;
-    private $prodTypeId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->ProdType = new prodType();
-        if(!empty($_GET['id'])) {
-            $this->prodTypeId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -18,6 +18,6 @@ class ProdTypeController {
     }
 
     function getProdType() {
-        return $this->ProdType->getProdType($this->prodTypeId);
+        return $this->ProdType->getProdType($this->params['prod_type_id']);
     }
 }

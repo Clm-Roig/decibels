@@ -3,12 +3,12 @@ require('models/gig.php');
 class GigController {
 
     private $Gig;
-    private $gigId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->Gig = new gig();
-        if(!empty($_GET['id'])) {
-            $this->gigId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -17,10 +17,10 @@ class GigController {
     }
 
     function getGig() {
-        return $this->Gig->getGig($this->gigId);
+        return $this->Gig->getGig($this->params['gig_id']);
     }
 
     function getNextGigs($limit) {
-        return $this->Gig->getNextGigs($limit);
+        return $this->Gig->getNextGigs($this->params['limit']);
     }
 }

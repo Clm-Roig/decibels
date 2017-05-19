@@ -3,12 +3,12 @@ require('models/song.php');
 class SongController {
 
     private $Song;
-    private $songId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->Song = new song();
-        if(!empty($_GET['id'])) {
-            $this->songId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -18,6 +18,6 @@ class SongController {
     }
 
     function getSong() {
-        return $this->Song->getSong($this->songId);
+        return $this->Song->getSong($this->params['song_id']);
     }
 }

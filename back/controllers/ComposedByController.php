@@ -3,13 +3,12 @@ require('models/composedBy.php');
 class ComposedByController {
 
     private $ComposedBy;
-    private $composedByBandId;
-    private $composedByProductionId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->ComposedBy = new composedBy();
-        if(!empty($_GET['id'])) {
-            $this->composedById = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -24,10 +23,10 @@ class ComposedByController {
     }
 
     function getComposedByBandId() {
-        return $this->ComposedBy->getComposedBy($this->$composedByBandId);
+        return $this->ComposedBy->getComposedBy($this->$params['band_id']);
     }
 
-    function getComposedByByProductionId() {
-        return $this->ComposedBy->getComposedBy($this->$composedByProductionId);
+    function getComposedByProductionId() {
+        return $this->ComposedBy->getComposedBy($this->$params['production_id']);
     }
 }

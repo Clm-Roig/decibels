@@ -3,12 +3,12 @@ require('models/band.php');
 class BandController {
 
     private $Band;
-    private $bandId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->Band = new band();
-        if(!empty($_GET['id'])) {
-            $this->bandId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -23,7 +23,7 @@ class BandController {
     }
 
     function getBand() {
-        return $this->Band->getBand($this->bandId);
+        return $this->Band->getBand($this->params['band_id']);
     }
 
 }

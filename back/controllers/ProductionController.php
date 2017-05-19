@@ -3,12 +3,12 @@ require('models/production.php');
 class ProductionController {
 
     private $Production;
-    private $productionId;
+    private $params;
 
-    function __construct() {
+    function __construct($params = null) {
         $this->Production = new production();
-        if(!empty($_GET['id'])) {
-            $this->productionId = $_GET['id'];
+        if($params != null) {
+            $this->params = $params;
         }
     }
 
@@ -23,6 +23,6 @@ class ProductionController {
     }
 
     function getProduction() {
-        return $this->Production->getProduction($this->productionId);
+        return $this->Production->getProduction($this->params['production_id']);
     }
 }

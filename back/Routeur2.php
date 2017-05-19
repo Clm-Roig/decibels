@@ -14,33 +14,18 @@ ini_set('display_errors', 1);
         $request = $_UPDATE;
     }
 
-    // format : ?controller=aController&method=aMethod&id=3
     $controllerName = $request['controller'];
-    $method = $request['method'];
-    $controllerObj = getController($controllerName);
+    $methodName = $request['method'];
+    $controllerObj = getController($controllerName, $request);
 
+    $data = $controllerObj->$methodName();
+    echo $data;
 
-    // Request with id
-    if(!empty($request['id'])){
-        $data = $controllerObj->$method($request['id']);
-        echo $data;
-
-    }
-    // Request with limit
-    else if(!empty($request['limit'])){
-        $data = $controllerObj->$method($request['limit']);
-        echo $data;
-    }
-    // Simple function without parameter
-    else {
-        $data = $controllerObj->$method();
-        echo $data;
-    }
 
     // ======== Functions ======== //
 
     // Retourne un objet Controller
-    function getController($controller) {
+    function getController($controller, $params) {
 
         $classController = $controller . "Controller";
         $fileController = "controllers/" . $classController . ".php";
@@ -48,7 +33,7 @@ ini_set('display_errors', 1);
         if (file_exists($fileController)) {
             // Instanciation du contrôleur adapté à la requête
             require($fileController);
-            $controller = new $classController;
+            $controller = new $classController($params);
             return $controller;
         }
         else {
