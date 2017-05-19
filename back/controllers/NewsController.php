@@ -17,6 +17,11 @@ class NewsController {
         return $news;
     }
 
+    function countNews() {
+        $nb_news = $this->News->countNews();
+        return $nb_news;
+    }
+
     function getNews() {
         return $this->News->getNews($this->newsId);
     }

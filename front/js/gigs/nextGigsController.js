@@ -1,5 +1,5 @@
 angular.module('Decibels').controller('nextGigsController', ['$http', function($http) {
-    this.title = "Next Gigs";
+    this.title = "Prochains concerts";
 
     var self = this;
     self.limit = 10;

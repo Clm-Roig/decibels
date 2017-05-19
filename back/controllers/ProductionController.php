@@ -17,6 +17,11 @@ class ProductionController {
         return $productions;
     }
 
+    function countProductions() {
+        $nb_prods = $this->Production->countProductions();
+        return $nb_prods;
+    }
+
     function getProduction() {
         return $this->Production->getProduction($this->productionId);
     }
