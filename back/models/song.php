@@ -1,13 +1,13 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class song {
 
     // ========= ATTRIBUTES ========= //
-    private $songId;            // integer
-    private $songName;          // text
-    private $songTrackNumber;   // integer
-    private $songLength;        // integer
+    var $song_id;            // integer
+    var $song_name;          // text
+    var $song_track_number;   // integer
+    var $song_length;        // integer
     // ============================= //
 
 
@@ -22,7 +22,7 @@ class song {
         $req = myPDO()->prepare('SELECT * FROM songs');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
-        return json_encode($object);
+        return $object;
     }
 
     public function countSongs() {
@@ -38,28 +38,28 @@ class song {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_id = :song_id');
         $req->execute(array(':song_id' => $songId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
-        return json_encode($object);
+        return $object;
     }
 
     public function getSongsByName($songName) {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_name = :song_name');
         $req->execute(array(':song_name' => $songName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
-        return json_encode($object);
+        return $object;
     }
 
     public function getSongsByTrackNumber($songTrackNumber) {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_track_number = :song_track_number');
         $req->execute(array(':song_track_number' => $songTrackNumber));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
-        return json_encode($object);
+        return $object;
     }
 
     public function getSongsByLength($songLength) {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_length = :song_length');
         $req->execute(array(':song_length' => $songLength));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
-        return json_encode($object);
+        return $object;
     }
     // ====================== //
 

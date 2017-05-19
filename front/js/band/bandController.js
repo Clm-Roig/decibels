@@ -3,20 +3,25 @@ angular.module('Decibels').controller('bandController',
         var self = this;
         self.bandId = $routeParams.bandId;
 
-        var urlRequest = '/back/Routeur.php';
+        // Bands general infos
         $http({
             method: 'GET',
-            url: urlRequest,
+            url: '/back/Routeur.php',
             params: {
-                        'controller': 'Band',
-                        'method': 'getBand',
+                        'controller': 'BandSheet',
+                        'method': 'getBandSheet',
                         'band_id' : self.bandId
             }
         })
         .then(function success(response) {
-            self.band = response.data[0];
+            self.band = response.data;
         },function error(response) {
             console.log('Error getting band : ' + response.data);
         });
+
+        // Members
+
+
+        // Productions
 
 }]);

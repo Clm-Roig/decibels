@@ -1,12 +1,12 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class playsWith {
 
     // ========= ATTRIBUTES ========= //
-    private $playsWithMemberId;     // integer
-    private $playsWithBandId;       // integer
-    private $playsWithInstrument;   // integer
+    var $plays_with_member_id;     // integer
+    var $plays_with_band_id;       // integer
+    var $plays_with_instrument;   // integer
     // ============================= //
 
 
@@ -15,7 +15,7 @@ class playsWith {
         $req = myPDO()->prepare('SELECT * FROM plays_with');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
-        return json_encode($object);
+        return $object;
     }
 
     public function countPlaysWith() {
@@ -31,21 +31,21 @@ class playsWith {
         $req = myPDO()->prepare('SELECT * FROM plays_with WHERE plays_with_member_id = :plays_with_member_id');
         $req->execute(array(':plays_with_member_id' => $playsWithMemberId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
-        return json_encode($object);
+        return $object;
     }
 
     public function getPlaysWithByGigId($playsWithBandId) {
         $req = myPDO()->prepare('SELECT * FROM plays_with WHERE plays_with_band_id = :plays_with_band_id');
         $req->execute(array(':plays_with_band_id' => $playsWithBandId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
-        return json_encode($object);
+        return $object;
     }
 
     public function getPlaysWithByInstrument($playsWithInstrument) {
         $req = myPDO()->prepare('SELECT * FROM plays_with WHERE plays_with_instrument = :plays_with_instrument');
         $req->execute(array(':plays_with_instrument' => $playsWithInstrument));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
-        return json_encode($object);
+        return $object;
     }
 
     // ====================== //

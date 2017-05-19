@@ -1,11 +1,11 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class prodType {
 
     // ========= ATTRIBUTES ========= //
-    private $prodTypeId;        // integer
-    private $prodTypeName;      // text
+    var $prod_type_id;        // integer
+    var $prod_type_name;      // text
     // ============================= //
 
 
@@ -20,7 +20,7 @@ class prodType {
         $req = myPDO()->prepare('SELECT * FROM prod_types');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
-        return json_encode($object);
+        return $object;
     }
 
     public function countProdTypes() {
@@ -36,14 +36,14 @@ class prodType {
         $req = myPDO()->prepare('SELECT * FROM prod_type WHERE prod_type_id = :prod_type_id');
         $req->execute(array(':prod_type_id' => $prodTypeId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
-        return json_encode($object);
+        return $object;
     }
 
     public function getProdTypeByName($prodTypeName) {
         $req = myPDO()->prepare('SELECT * FROM prod_type WHERE prod_type_name = :prod_type_name');
         $req->execute(array(':prod_type_name' => $prodTypeName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
-        return json_encode($object);
+        return $object;
     }
 
     // ====================== //

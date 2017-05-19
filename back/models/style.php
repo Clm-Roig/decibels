@@ -1,11 +1,11 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class style {
 
     // ========= ATTRIBUTES ========= //
-    private $styleId;            // integer
-    private $styleName;          // text
+    var $style_id;            // integer
+    var $style_name;          // text
     // ============================= //
 
 
@@ -20,7 +20,7 @@ class style {
         $req = myPDO()->prepare('SELECT * FROM styles');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
-        return json_encode($object);
+        return $object;
     }
 
     public function countStyles() {
@@ -36,14 +36,14 @@ class style {
         $req = myPDO()->prepare('SELECT * FROM styles WHERE style_id = :style_id');
         $req->execute(array(':style_id' => $styleId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
-        return json_encode($object);
+        return $object;
     }
 
     public function getStylesByName($styleName) {
         $req = myPDO()->prepare('SELECT * FROM styles WHERE style_name = :style_name');
         $req->execute(array(':style_name' => $styleName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
-        return json_encode($object);
+        return $object;
     }
     // ====================== //
 

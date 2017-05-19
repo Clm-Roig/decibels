@@ -1,11 +1,11 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class composedBy {
 
     // ========= ATTRIBUTES ========= //
-    private $composedByBandId;          // integer
-    private $composedByProductionId;    // integer
+    var $composed_by_band_id;          // integer
+    var $composed_by_production_id;    // integer
     // ============================= //
 
 
@@ -14,7 +14,7 @@ class composedBy {
         $req = myPDO()->prepare('SELECT * FROM composed_by');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
-        return json_encode($object);
+        return $object;
     }
 
     public function countComposedBy() {
@@ -30,14 +30,14 @@ class composedBy {
         $req = myPDO()->prepare('SELECT * FROM composed_by WHERE composed_by_band_id = :composed_by_band_id');
         $req->execute(array(':composed_by_band_id' => $composedByBandId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
-        return json_encode($object);
+        return $object;
     }
 
     public function getComposedByByProductionId($composedByProductionId) {
         $req = myPDO()->prepare('SELECT * FROM composed_by WHERE composed_by_production_id = :composed_by_production_id');
         $req->execute(array(':composed_by_production_id' => $composedByProductionId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
-        return json_encode($object);
+        return $object;
     }
 
     // ====================== //

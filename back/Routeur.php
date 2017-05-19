@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors', 1);
+
     // Request type
     if(!empty($_GET)) {
         $request = $_GET;
@@ -19,7 +20,7 @@ ini_set('display_errors', 1);
 
     $methodName = $request['method'];
     $data = $controllerObj->$methodName();
-    echo $data;
+    echo json_encode($data);
 
 
     // ======== Functions ======== //

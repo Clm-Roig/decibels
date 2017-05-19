@@ -1,11 +1,11 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class forms {
 
     // ========= ATTRIBUTES ========= //
-    private $formsSongId;           // integer
-    private $formsProductionId;     // integer
+    var $forms_song_id;           // integer
+    var $forms_production_id;     // integer
     // ============================= //
 
 
@@ -14,7 +14,7 @@ class forms {
         $req = myPDO()->prepare('SELECT * FROM forms');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
-        return json_encode($object);
+        return $object;
     }
 
     public function countForms() {
@@ -30,14 +30,14 @@ class forms {
         $req = myPDO()->prepare('SELECT * FROM forms WHERE forms_song_id = :forms_song_id');
         $req->execute(array(':forms_song_id' => $formsSongId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
-        return json_encode($object);
+        return $object;
     }
 
     public function getFormsByProductionId($formsProductionId) {
         $req = myPDO()->prepare('SELECT * FROM forms WHERE forms_production_id = :forms_production_id');
         $req->execute(array(':forms_production_id' => $formsProductionId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
-        return json_encode($object);
+        return $object;
     }
 
     // ====================== //

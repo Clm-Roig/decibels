@@ -1,11 +1,11 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class playsAt {
 
     // ========= ATTRIBUTES ========= //
-    private $playsAtBandId;     // integer
-    private $playsAtGigId;      // integer
+    var $plays_at_band_id;     // integer
+    var $plays_at_gig_id;      // integer
     // ============================= //
 
 
@@ -14,7 +14,7 @@ class playsAt {
         $req = myPDO()->prepare('SELECT * FROM plays_at');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
-        return json_encode($object);
+        return $object;
     }
 
     public function countPlaysAt() {
@@ -30,14 +30,14 @@ class playsAt {
         $req = myPDO()->prepare('SELECT * FROM plays_at WHERE plays_at_band_id = :plays_at_band_id');
         $req->execute(array(':plays_at_band_id' => $playsAtBandId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
-        return json_encode($object);
+        return $object;
     }
 
     public function getPlaysAtByGigId($playsAtGigId) {
         $req = myPDO()->prepare('SELECT * FROM plays_at WHERE plays_at_gig_id = :plays_at_gig_id');
         $req->execute(array(':plays_at_gig_id' => $playsAtGigId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
-        return json_encode($object);
+        return $object;
     }
 
     // ====================== //

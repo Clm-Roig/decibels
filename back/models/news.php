@@ -1,13 +1,13 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class news {
 
     // ========= ATTRIBUTES ========= //
-    private $newsId;        // integer
-    private $newsDate;      // text (date in DB)
-    private $newsTitle;     // text
-    private $newsText;      // text
+    var $news_id;        // integer
+    var $news_date;      // text (date in DB)
+    var $news_title;     // text
+    var $news_text;      // text
     // ============================= //
 
 
@@ -22,7 +22,7 @@ class news {
         $req = myPDO()->prepare('SELECT * FROM news');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return json_encode($object);
+        return $object;
     }
 
     public function countNews() {
@@ -38,28 +38,28 @@ class news {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_id = :news_id');
         $req->execute(array(':news_id' => $newsId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return json_encode($object);
+        return $object;
     }
 
     public function getNewsByDate($newsDate) {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_date = :news_date');
         $req->execute(array(':news_date' => $newsDate));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return json_encode($object);
+        return $object;
     }
 
     public function getNewsByTitle($newsTitle) {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_title = :news_title');
         $req->execute(array(':news_title' => $newsTitle));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return json_encode($object);
+        return $object;
     }
 
     public function getNewsText($newsText) {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_text = :news_text');
         $req->execute(array(':news_text' => $newsText));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return json_encode($object);
+        return $object;
     }
     // ====================== //
 
@@ -129,6 +129,6 @@ class news {
         $req = myPDO()->prepare('SELECT * FROM news ORDER BY news_date DESC LIMIT ?');
         $req->execute(array($limit));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return json_encode($object);
+        return $object;
     }
 }

@@ -1,14 +1,14 @@
 <?php
-require('../config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 class production {
 
     // ========= ATTRIBUTES ========= //
-    private $productionId;          // integer
-    private $productionName;        // text
-    private $productionDate;        // text (date in DB)
-    private $productionStyleId;     // integer
-    private $productionProdTypeId;     // integer
+    var $production_id;          // integer
+    var $production_name;        // text
+    var $production_date;        // text (date in DB)
+    var $production_style_id;     // integer
+    var $production_prod_type_id;     // integer
     // ============================= //
 
 
@@ -23,7 +23,7 @@ class production {
         $req = myPDO()->prepare('SELECT * FROM productions');
         $req->execute();
         $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
-        return json_encode($object);
+        return $object;
     }
 
     public function countProductions() {
@@ -39,28 +39,28 @@ class production {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_id = :production_id');
         $req->execute(array(':production_id' => $productionId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
-        return json_encode($object);
+        return $object;
     }
 
     public function getProductionsByName($productionName) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_name = :production_name');
         $req->execute(array(':production_name' => $productionName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
-        return json_encode($object);
+        return $object;
     }
 
     public function getProductionsByDate($productionDate) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_date = :production_date');
         $req->execute(array(':production_date' => $productionDate));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
-        return json_encode($object);
+        return $object;
     }
 
     public function getProductionsByStyleId($productionStyleId) {
         $req = myPDO()->prepare('SELECT * FROM productions WHERE production_style_id = :production_style_id');
         $req->execute(array(':production_style_id' => $productionStyleId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
-        return json_encode($object);
+        return $object;
     }
     // ====================== //
 
