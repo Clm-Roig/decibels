@@ -14,7 +14,9 @@
     <h2>Productions</h2>
     <ul>
         <li ng-repeat='production in band.productions'>
-            {{production['production_name']}} ({{production['prod_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
+            <a ng-href="/production/{{production['production_id']}}">
+                {{production['production_name']}} ({{production['prod_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
+            </a>
         </li>
     </ul>
 
