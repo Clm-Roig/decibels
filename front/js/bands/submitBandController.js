@@ -22,26 +22,35 @@ function($http) {
 
     // ==== Submission Form ==== //
     self.formData = {};
+    self.sent = false;
+    self.sentError = false;
+
+    if(self.formValid)
     self.submitForm = function(isValid) {
 
         if(isValid) {
-            console.log(self.formData);
-            /*
             $http({
                 method: 'POST',
                 url: '/back/Routeur.php',
                 params: {
                             'controller': 'Band',
-                            'method': 'insertBand'
+                            'method': 'insertBand',
+                            'params': self.formData
                 }
             })
             .then(function success(response){
-                console.log(response.data);
+                self.formData['band_name'] = "";
+                self.formData['band_style_id'] = "";
+                self.formData['band_formed_in'] = "";
+                self.sent = true;
+                self.sentError = false;
             }
             , function error(response) {
+                self.sentError = true;
+                self.sent = false;
                 console.log('Error inserting band : ' + response);
             });
-            */
+
         }
     }
 }]);
