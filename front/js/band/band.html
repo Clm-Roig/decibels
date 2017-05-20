@@ -1,5 +1,5 @@
 <div ng-controller="bandController as band">
-    <h1>{{band.info["band_name"]}} ({{band.info["band_style_name"]}})</h1>
+    <h1>{{band.info["band_name"]}} ({{band.info["style_name"]}})</h1>
     <p>Formé en {{band.info["band_formed_in"]}}</h2>
     <h2>Membres</h2>
     <ul>
@@ -7,14 +7,14 @@
             {{member['member_first_name']}}
             <span ng-show="member['member_pseudo']">"{{member['member_pseudo']}}"</span>
             {{member['member_last_name']}}
-            ({{member['member_instrument']}})
+            ({{member['plays_with_instrument']}})
         </li>
     </ul>
 
     <h2>Productions</h2>
     <ul>
         <li ng-repeat='production in band.productions'>
-            {{production['production_name']}} ({{production['production_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
+            {{production['production_name']}} ({{production['prod_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
         </li>
     </ul>
 

@@ -49,7 +49,6 @@ angular.module('Decibels').controller('bandController',
         })
         .then(function success(response) {
             self.productions = response.data;
-            console.log(self.productions);
         },function error(response) {
             console.log('Error getting productions : ' + response.data);
         });

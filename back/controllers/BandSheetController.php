@@ -35,40 +35,37 @@ class BandSheetController {
 
     // General information about de the band
     function getBandInfos() {
-        $band = $this->Band->getBand($this->params['band_id'])[0];
-
-        // Put style_name in band
-        $style = $this->Style->getStyle($band->band_style_id)[0];
-        $band->band_style_name = $style->style_name;
-
-        return $band;
+        $req = myPDO()->prepare('   SELECT B.*,S.style_name FROM bands AS B, styles AS S
+                                    WHERE B.band_style_id = S.style_id
+                                    AND B.band_id = :band_id
+                                ;');
+        $req->execute(array(':band_id' => $this->params['band_id']));
+        $infoBand = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $infoBand[0];
     }
 
     // Members of the band
     function getBandMembers() {
-        $listPlaysWith = $this->PlaysWith->getPlaysWithByBandId($this->params['band_id']);
-        $listMembers = array();
-
-        foreach($listPlaysWith as $index => $playsWith) {
-            $member = $this->Member->getMember($playsWith->plays_with_member_id)[0];
-            $member->member_instrument = $playsWith->plays_with_instrument;
-            array_push($listMembers,$member);
-        }
-
+        $req = myPDO()->prepare('   SELECT M.*,PW.plays_with_instrument FROM members AS M, plays_with AS PW
+                                    WHERE M.member_id = PW.plays_with_member_id
+                                    AND PW.plays_with_band_id = :band_id
+                                    ORDER BY PW.plays_with_instrument
+                                ;');
+        $req->execute(array(':band_id' => $this->params['band_id']));
+        $listMembers = $req->fetchAll(PDO::FETCH_ASSOC);
         return $listMembers;
     }
 
     // Productions of the band
     function getBandProductions() {
-        $listComposedBy = $this->ComposedBy->getComposedByByBandId($this->params['band_id']);
-        $listProds = array();
-
-        foreach($listComposedBy as $index => $composedBy) {
-            $production = $this->Production->getProduction($composedBy->composed_by_production_id)[0];
-            $production->production_type_name = $this->ProdType->getProdType($production->production_prod_type_id)[0]->prod_type_name;
-            array_push($listProds,$production);
-        }
-
+        $req = myPDO()->prepare('   SELECT P.*, PT.prod_type_name FROM productions AS P, composed_by AS CB, prod_types AS PT
+                                    WHERE CB.composed_by_production_id = P.production_id
+                                    AND P.production_prod_type_id = PT.prod_type_id
+                                    AND CB.composed_by_band_id = :band_id
+                                    ORDER BY P.production_date
+                                ;');
+        $req->execute(array(':band_id' => $this->params['band_id']));
+        $listProds = $req->fetchAll(PDO::FETCH_ASSOC);
         return $listProds;
     }
 }
