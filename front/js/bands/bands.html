@@ -21,9 +21,9 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="band_style">Style :</label>
             <div class="col-sm-4">
-                <select class="form-control" id="band_style">
-                    <option>---- Tous les styles ----</option>
-                    <option ng-repeat="style in bands.listStyles">{{style['style_name']}}</option>
+                <select class="form-control" id="band_style" required>
+                    <option value="">---- Tous les styles ----</option>
+                    <option ng-repeat="style in bands.listStyles" value="{{style['style_id']}}" >{{style['style_name']}}</option>
                 </select>
             </div>
         </div>
