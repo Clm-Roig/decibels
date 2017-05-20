@@ -32,16 +32,16 @@ function($http) {
                 url: '/back/Routeur.php',
                 params: {
                             'controller': 'Band',
-                            'method': 'insertBand',
+                            'method': 'insertBandTemp',
                             'band_name': self.formData['band_name'],
-                            'band_style_id': self.formData['band_style_id'],
+                            'band_style_name': self.formData['band_style_name'],
                             'band_formed_in': self.formData['band_formed_in']
                 }
             })
             .then(function success(response){
                 console.log(self.formData);
                 self.formData['band_name'] = null;
-                self.formData['band_style_id'] = null;
+                self.formData['band_style_name'] = null;
                 self.formData['band_formed_in'] = null;
                 self.sent = true;
                 self.sentError = false;

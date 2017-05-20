@@ -93,6 +93,27 @@ class band {
         }
     }
 
+    public function insertBandTemp($bandName, $bandFormedIn, $bandStyleId) {
+        $bandId = $this->getIdMax() + 1;
+        $sql = "INSERT INTO bands_temp VALUES (:band_id, :band_name, :band_formed_in, :band_style_id)";
+        $req = myPdo()->prepare($sql);
+        $params = [
+          ':band_id' => $bandId,
+          ':band_name' => $bandName,
+          ':band_formed_in' => $bandFormedIn,
+          ':band_style_id' => $bandStyleId
+        ];
+        try {
+            $req->execute($params);
+            return true;
+        }
+        catch (Exception $e) {
+            echo 'Error request "'.$sql.'" : ';
+            var_dump($e->getMessage());
+            return false;
+        }
+    }
+
     public function updateBand($bandId, $bandName, $bandFormedIn, $bandStyleId) {
         $sql = myPdo()->prepare("UPDATE bands SET band_name=:band_name, band_formed_in=:band_formed_in , band_style_id=:band_style_id WHERE band_id = :band_id");
         $params = [
