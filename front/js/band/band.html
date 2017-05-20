@@ -3,7 +3,8 @@
     <p>Formé en {{band.info["band_formed_in"]}}</h2>
     <h2>Membres</h2>
     <ul>
-        <li ng-repeat='member in band.members'>
+        <li loading ng-repeat='member in band.members'>
+            <img src="/front/images/black_spinner.gif" alt="Loading spinner"/>
             {{member['member_first_name']}}
             <span ng-show="member['member_pseudo']">"{{member['member_pseudo']}}"</span>
             {{member['member_last_name']}}
