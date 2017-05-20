@@ -1,9 +1,9 @@
 <div ng-controller="bandController as band">
-    <h1>{{band.infos["band"]["band_name"]}} ({{band.infos["band"]["band_style_name"]}})</h1>
-    <p>Formé en {{band.infos["band"]["band_formed_in"]}}</h2>
+    <h1>{{band.info["band_name"]}} ({{band.info["band_style_name"]}})</h1>
+    <p>Formé en {{band.info["band_formed_in"]}}</h2>
     <h2>Membres</h2>
     <ul>
-        <li ng-repeat='member in band.infos["members"]'>
+        <li ng-repeat='member in band.members'>
             {{member['member_first_name']}}
             <span ng-show="member['member_pseudo']">"{{member['member_pseudo']}}"</span>
             {{member['member_last_name']}}
@@ -13,7 +13,7 @@
 
     <h2>Productions</h2>
     <ul>
-        <li ng-repeat='production in band.infos["productions"]'>
+        <li ng-repeat='production in band.productions'>
             {{production['production_name']}} ({{production['production_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
         </li>
     </ul>

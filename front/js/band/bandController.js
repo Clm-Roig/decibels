@@ -9,20 +9,49 @@ angular.module('Decibels').controller('bandController',
             url: '/back/Routeur.php',
             params: {
                         'controller': 'BandSheet',
-                        'method': 'getBandSheet',
+                        'method': 'getBandInfos',
                         'band_id' : self.bandId
             }
         })
         .then(function success(response) {
-            self.infos = response.data;
-            console.log(self.infos);
+            self.info = response.data;
+            console.log(self.info);
         },function error(response) {
             console.log('Error getting band : ' + response.data);
         });
 
         // Members
-
+        $http({
+            method: 'GET',
+            url: '/back/Routeur.php',
+            params: {
+                        'controller': 'BandSheet',
+                        'method': 'getBandMembers',
+                        'band_id' : self.bandId
+            }
+        })
+        .then(function success(response) {
+            self.members = response.data;
+            console.log(self.members);
+        },function error(response) {
+            console.log('Error getting members : ' + response.data);
+        });
 
         // Productions
+        $http({
+            method: 'GET',
+            url: '/back/Routeur.php',
+            params: {
+                        'controller': 'BandSheet',
+                        'method': 'getBandProductions',
+                        'band_id' : self.bandId
+            }
+        })
+        .then(function success(response) {
+            self.productions = response.data;
+            console.log(self.productions);
+        },function error(response) {
+            console.log('Error getting productions : ' + response.data);
+        });
 
 }]);
