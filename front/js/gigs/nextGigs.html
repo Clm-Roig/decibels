@@ -3,7 +3,7 @@
     <ul>
         <li ng-repeat ="gig in nextGigs.listGigs">
             <a ng-href="/gig/{{gig['gig_id']}}">
-                {{gig['gig_date'] | date : 'dd/MM/yyyy'}} : {{gig['gig_place']}}
+                {{gig['gig_date'] | date : 'dd/MM/yyyy'}} - {{gig['gig_title']}}
             </a>
         </li>
     </ul>
