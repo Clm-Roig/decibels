@@ -1,0 +1,24 @@
+/* NAVBAR */
+.navbar {
+	border: 0;
+	box-shadow: 0 1px 4px;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+	height: auto;
+	line-height: 50px;
+}
+
+.navbar-nav > li {
+	line-height: 80px;
+	min-width: 100px;
+	text-align: center;
+}
+
+/* FOOTER */
+footer {
+	background-color: #ddd;
+	box-shadow: 0 -1px 4px;
+	height: 150px;
+	width: 100%;
+}
