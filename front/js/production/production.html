@@ -6,7 +6,7 @@
     <h2>Tracklist</h2>
     <ul>
         <li ng-repeat='song in prod.songs'>
-            {{song['song_track_number']}}. {{song['song_name']}} <span ng-show="song['song_length']">({{song['song_length']}})</span>
+            {{song['song_track_number']}}. {{song['song_name']}} <span ng-show="song['song_length'] != '0:0'">({{song['song_length']}})</span>
         </li>
     </ul>
 
