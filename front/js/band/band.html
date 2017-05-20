@@ -1,4 +1,10 @@
 <div ng-controller="bandController as band">
-    <h2>{{band.band["band_name"]}} ({{band.band["style_name"]}})</h2>
-    <p>Formé en {{band.band["band_formed_in"]}}</h2>
+    <h1>{{band.infos["band"]["band_name"]}} ({{band.infos["style"]["style_name"]}})</h1>
+    <p>Formé en {{band.infos["band"]["band_formed_in"]}}</h2>
+    <h2>Membres</h2>
+    <ul>
+        <li ng-repeat='member in band.infos["members"]'>
+            {{member['member_first_name']}} {{member['member_last_name']}} ({{member['member_instrument']}})
+        </li>
+    </ul>
 </div>
