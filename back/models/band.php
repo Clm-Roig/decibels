@@ -17,6 +17,11 @@ class band {
         return $maxId->fetch()[0];
     }
 
+    public function getIdMaxTemp() {
+        $maxId = myPDO()->query('SELECT MAX(band_id) FROM bands_temp');
+        return $maxId->fetch()[0];
+    }
+
     public function getAllBands() {
         $req = myPDO()->query('SELECT * FROM bands');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
@@ -94,14 +99,14 @@ class band {
     }
 
     public function insertBandTemp($bandName, $bandFormedIn, $bandStyleId) {
-        $bandId = $this->getIdMax() + 1;
-        $sql = "INSERT INTO bands_temp VALUES (:band_id, :band_name, :band_formed_in, :band_style_id)";
+        $bandId = $this->getIdMaxTemp() + 1;
+        $sql = "INSERT INTO bands_temp VALUES (:band_id, :band_name, :band_formed_in, :band_style_name)";
         $req = myPdo()->prepare($sql);
         $params = [
           ':band_id' => $bandId,
           ':band_name' => $bandName,
           ':band_formed_in' => $bandFormedIn,
-          ':band_style_id' => $bandStyleId
+          ':band_style_name' => $bandStyleId
         ];
         try {
             $req->execute($params);
