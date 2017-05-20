@@ -15,7 +15,6 @@ angular.module('Decibels').controller('productionController',
         })
         .then(function success(response) {
             self.info = response.data;
-            console.log(self.info);
         },function error(response) {
             console.log('Error getting production : ' + response.data);
         });

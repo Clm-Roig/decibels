@@ -14,7 +14,6 @@ function($http) {
     })
     .then(function success(response){
         self.listStyles = response.data;
-        console.log(self.listStyles);
     }
     , function error(response) {
         console.log('Error getting all styles : ' + response);
@@ -39,7 +38,6 @@ function($http) {
                 }
             })
             .then(function success(response){
-                console.log(self.formData);
                 self.formData['band_name'] = null;
                 self.formData['band_style_name'] = null;
                 self.formData['band_formed_in'] = null;

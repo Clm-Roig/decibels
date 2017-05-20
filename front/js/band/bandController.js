@@ -15,7 +15,6 @@ angular.module('Decibels').controller('bandController',
         })
         .then(function success(response) {
             self.info = response.data;
-            console.log(self.info);
         },function error(response) {
             console.log('Error getting band : ' + response.data);
         });
@@ -32,7 +31,6 @@ angular.module('Decibels').controller('bandController',
         })
         .then(function success(response) {
             self.members = response.data;
-            console.log(self.members);
         },function error(response) {
             console.log('Error getting members : ' + response.data);
         });
