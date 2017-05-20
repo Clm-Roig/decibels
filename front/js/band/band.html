@@ -1,6 +1,6 @@
 <div ng-controller="bandController as band">
     <h1>{{band.info["band_name"]}} ({{band.info["style_name"]}})</h1>
-    <p>Formé en {{band.info["band_formed_in"]}}</h2>
+    <p ng-show="band.info['band_formed_in']">Formé en {{band.info["band_formed_in"]}}</h2>
     <h2>Membres</h2>
     <ul>
         <li ng-repeat='member in band.members'>
