@@ -12,6 +12,7 @@ class BandController {
         }
     }
 
+    // ==== Simple requests ==== //
     function getAllBands() {
         $bands = $this->Band->getAllBands();
         return $bands;
@@ -24,6 +25,13 @@ class BandController {
 
     function getBand() {
         return $this->Band->getBand($this->params['band_id']);
+    }
+    // ======================= //
+
+    function getAllBandsSorted() {
+        $req = myPDO()->query('SELECT * FROM bands ORDER BY band_name');
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        return $object;
     }
 
     function insertBand() {

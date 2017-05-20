@@ -10,7 +10,7 @@ function($http, currentTab) {
         url: '/back/Routeur.php',
         params: {
                     'controller': 'Band',
-                    'method': 'getAllBands'
+                    'method': 'getAllBandsSorted'
         }
     })
     .then(function success(response){
