@@ -35,10 +35,13 @@ class BandSheetController {
 
 
     function getBandSheet() {
-        $band = $this->Band->getBand($this->params['band_id']);
-        $style = $this->Style->getStyle($band[0]->band_style_id);
-        $listPlaysWith = $this->PlaysWith->getPlaysWithByBandId($this->params['band_id']);
+        $band = $this->Band->getBand($this->params['band_id'])[0];
 
+        // Put style_name in band
+        $style = $this->Style->getStyle($band->band_style_id)[0];
+        $band->band_style_name = $style->style_name;
+
+        $listPlaysWith = $this->PlaysWith->getPlaysWithByBandId($this->params['band_id']);
         // Members
         $listMembers = array();
         foreach($listPlaysWith as $index => $playsWith) {
@@ -58,12 +61,15 @@ class BandSheetController {
         }
 
         // Preparing the result
-        $band = array("band" => $band[0]);
+        $band = array("band" => $band);
         $members = array("members" => $listMembers);
         $productions = array("productions" => $listProds);
-        $style = array("style" => $style[0]);
 
-        $result = array_merge($band,$members,$productions,$style);
+        $result = array_merge($band,$members,$productions);
         return $result;
+    }
+
+    function getBandInfos() {
+
     }
 }
