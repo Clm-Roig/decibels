@@ -20,16 +20,14 @@ class production {
     }
 
     public function getAllProductions() {
-        $req = myPDO()->prepare('SELECT * FROM productions');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM productions');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "production");
 
         return $object;
     }
 
     public function countProductions() {
-        $req = myPDO()->prepare('SELECT production_id FROM productions');
-        $req->execute();
+        $req = myPDO()->query('SELECT production_id FROM productions');
         $count = $req->rowCount();
         return $count;
     }

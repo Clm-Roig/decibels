@@ -11,15 +11,13 @@ class playsAt {
 
     // ==== Simple requests ==== //
     public function getAllPlaysAt() {
-        $req = myPDO()->prepare('SELECT * FROM plays_at');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM plays_at');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "playsAt");
         return $object;
     }
 
     public function countPlaysAt() {
-        $req = myPDO()->prepare('SELECT plays_at_band_id FROM plays_at');
-        $req->execute();
+        $req = myPDO()->query('SELECT plays_at_band_id FROM plays_at');
         $count = $req->rowCount();
         return $count;
     }

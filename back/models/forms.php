@@ -11,15 +11,13 @@ class forms {
 
     // ==== Simple requests ==== //
     public function getAllForms() {
-        $req = myPDO()->prepare('SELECT * FROM forms');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM forms');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "forms");
         return $object;
     }
 
     public function countForms() {
-        $req = myPDO()->prepare('SELECT forms_song_id FROM forms');
-        $req->execute();
+        $req = myPDO()->query('SELECT forms_song_id FROM forms');
         $count = $req->rowCount();
         return $count;
     }

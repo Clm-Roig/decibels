@@ -18,15 +18,13 @@ class band {
     }
 
     public function getAllBands() {
-        $req = myPDO()->prepare('   SELECT * FROM bands');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM bands');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return $object;
     }
 
     public function countBands() {
-        $req = myPDO()->prepare('SELECT band_id FROM bands');
-        $req->execute();
+        $req = myPDO()->query('SELECT band_id FROM bands');
         $count = $req->rowCount();
         return $count;
     }

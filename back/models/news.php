@@ -19,15 +19,13 @@ class news {
     }
 
     public function getAllNews() {
-        $req = myPDO()->prepare('SELECT * FROM news');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM news');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
         return $object;
     }
 
     public function countNews() {
-        $req = myPDO()->prepare('SELECT news_id FROM news');
-        $req->execute();
+        $req = myPDO()->query('SELECT news_id FROM news');
         $count = $req->rowCount();
         return $count;
     }

@@ -19,15 +19,13 @@ class member {
     }
 
     public function getAllMembers() {
-        $req = myPDO()->prepare('SELECT * FROM members');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM members');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "member");
         return $object;
     }
 
     public function countMembers() {
-        $req = myPDO()->prepare('SELECT member_id FROM members');
-        $req->execute();
+        $req = myPDO()->query('SELECT member_id FROM members');
         $count = $req->rowCount();
         return $count;
     }

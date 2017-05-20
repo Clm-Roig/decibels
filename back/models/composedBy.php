@@ -11,15 +11,13 @@ class composedBy {
 
     // ==== Simple requests ==== //
     public function getAllComposedBy() {
-        $req = myPDO()->prepare('SELECT * FROM composed_by');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM composed_by');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
         return $object;
     }
 
     public function countComposedBy() {
-        $req = myPDO()->prepare('SELECT composed_by_band_id FROM composed_by');
-        $req->execute();
+        $req = myPDO()->query('SELECT composed_by_band_id FROM composed_by');
         $count = $req->rowCount();
         return $count;
     }

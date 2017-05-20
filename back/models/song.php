@@ -19,15 +19,13 @@ class song {
     }
 
     public function getAllSongs() {
-        $req = myPDO()->prepare('SELECT * FROM songs');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM songs');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
         return $object;
     }
 
     public function countSongs() {
-        $req = myPDO()->prepare('SELECT song_id FROM songs');
-        $req->execute();
+        $req = myPDO()->query('SELECT song_id FROM songs');
         $count = $req->rowCount();
         return $count;
     }

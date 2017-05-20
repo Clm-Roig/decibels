@@ -17,15 +17,13 @@ class style {
     }
 
     public function getAllStyles() {
-        $req = myPDO()->prepare('SELECT * FROM styles');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM styles');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
         return $object;
     }
 
     public function countStyles() {
-        $req = myPDO()->prepare('SELECT style_id FROM styles');
-        $req->execute();
+        $req = myPDO()->query('SELECT style_id FROM styles');
         $count = $req->rowCount();
         return $count;
     }

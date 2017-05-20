@@ -11,15 +11,13 @@ class newsRefersTo {
 
     // ==== Simple requests ==== //
     public function getAllNewsRefersTo() {
-        $req = myPDO()->prepare('SELECT * FROM news_refers_to');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM news_refers_to');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "newsRefersTo");
         return $object;
     }
 
     public function countNewsRefersTo() {
-        $req = myPDO()->prepare('SELECT news_refers_to_band_id FROM news_refers_to');
-        $req->execute();
+        $req = myPDO()->query('SELECT news_refers_to_band_id FROM news_refers_to');
         $count = $req->rowCount();
         return $count;
     }

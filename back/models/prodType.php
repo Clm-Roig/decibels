@@ -17,15 +17,13 @@ class prodType {
     }
 
     public function getAllProdTypes() {
-        $req = myPDO()->prepare('SELECT * FROM prod_types');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM prod_types');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
         return $object;
     }
 
     public function countProdTypes() {
-        $req = myPDO()->prepare('SELECT prod_type_id FROM prod_types');
-        $req->execute();
+        $req = myPDO()->query('SELECT prod_type_id FROM prod_types');
         $count = $req->rowCount();
         return $count;
     }

@@ -20,15 +20,13 @@ class gig {
     }
 
     public function getAllGigs() {
-        $req = myPDO()->prepare('SELECT * FROM gigs');
-        $req->execute();
+        $req = myPDO()->query('SELECT * FROM gigs');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return $object;
     }
 
     public function countGigs() {
-        $req = myPDO()->prepare('SELECT gig_id FROM gigs');
-        $req->execute();
+        $req = myPDO()->query('SELECT gig_id FROM gigs');
         $count = $req->rowCount();
         return $count;
     }
