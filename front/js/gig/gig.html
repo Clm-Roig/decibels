@@ -1,3 +1,5 @@
 <div ng-controller="gigController as gig">
+    <h1>{{gig.gig["gig_title"]}}</h1>
     <h2>{{gig.gig["gig_place"]}} - {{gig.gig["gig_date"] | date : 'dd/MM/yyyy'}}</h2>
+    <h3>{{gig.gig["gig_price"] | currency: ''}}€</h3>
 </div>
