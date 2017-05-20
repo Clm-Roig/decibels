@@ -21,8 +21,7 @@ class news {
     public function getAllNews() {
         $req = myPDO()->prepare('SELECT * FROM news');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "news");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
         return $object;
     }
 
@@ -45,24 +44,21 @@ class news {
     public function getNewsByDate($newsDate) {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_date = :news_date');
         $req->execute(array(':news_date' => $newsDate));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "news");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
         return $object;
     }
 
     public function getNewsByTitle($newsTitle) {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_title = :news_title');
         $req->execute(array(':news_title' => $newsTitle));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "news");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
         return $object;
     }
 
     public function getNewsText($newsText) {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_text = :news_text');
         $req->execute(array(':news_text' => $newsText));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "news");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
         return $object;
     }
     // ====================== //

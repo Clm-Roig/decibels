@@ -14,8 +14,7 @@ class playsWith {
     public function getAllPlaysWith() {
         $req = myPDO()->prepare('SELECT * FROM plays_with');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsWith");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
         return $object;
     }
 
@@ -31,24 +30,21 @@ class playsWith {
     public function getPlaysWithByMemberId($playsWithMemberId) {
         $req = myPDO()->prepare('SELECT * FROM plays_with WHERE plays_with_member_id = :plays_with_member_id');
         $req->execute(array(':plays_with_member_id' => $playsWithMemberId));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsWith");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
         return $object;
     }
 
     public function getPlaysWithByBandId($playsWithBandId) {
         $req = myPDO()->prepare('SELECT * FROM plays_with WHERE plays_with_band_id = :plays_with_band_id');
         $req->execute(array(':plays_with_band_id' => $playsWithBandId));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsWith");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
         return $object;
     }
 
     public function getPlaysWithByInstrument($playsWithInstrument) {
         $req = myPDO()->prepare('SELECT * FROM plays_with WHERE plays_with_instrument = :plays_with_instrument');
         $req->execute(array(':plays_with_instrument' => $playsWithInstrument));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "playsWith");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "playsWith");
         return $object;
     }
 

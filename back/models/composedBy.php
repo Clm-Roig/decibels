@@ -13,8 +13,7 @@ class composedBy {
     public function getAllComposedBy() {
         $req = myPDO()->prepare('SELECT * FROM composed_by');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "composedBy");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
         return $object;
     }
 
@@ -30,16 +29,14 @@ class composedBy {
     public function getComposedByByBandId($composedByBandId) {
         $req = myPDO()->prepare('SELECT * FROM composed_by WHERE composed_by_band_id = :composed_by_band_id');
         $req->execute(array(':composed_by_band_id' => $composedByBandId));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "composedBy");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
         return $object;
     }
 
     public function getComposedByByProductionId($composedByProductionId) {
         $req = myPDO()->prepare('SELECT * FROM composed_by WHERE composed_by_production_id = :composed_by_production_id');
         $req->execute(array(':composed_by_production_id' => $composedByProductionId));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "composedBy");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "composedBy");
         return $object;
     }
 

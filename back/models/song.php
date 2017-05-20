@@ -21,8 +21,7 @@ class song {
     public function getAllSongs() {
         $req = myPDO()->prepare('SELECT * FROM songs');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "song");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
         return $object;
     }
 
@@ -45,24 +44,21 @@ class song {
     public function getSongsByName($songName) {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_name = :song_name');
         $req->execute(array(':song_name' => $songName));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "song");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
         return $object;
     }
 
     public function getSongsByTrackNumber($songTrackNumber) {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_track_number = :song_track_number');
         $req->execute(array(':song_track_number' => $songTrackNumber));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "song");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
         return $object;
     }
 
     public function getSongsByLength($songLength) {
         $req = myPDO()->prepare('SELECT * FROM songs WHERE song_length = :song_length');
         $req->execute(array(':song_length' => $songLength));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "song");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "song");
         return $object;
     }
     // ====================== //

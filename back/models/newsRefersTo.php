@@ -13,8 +13,7 @@ class newsRefersTo {
     public function getAllNewsRefersTo() {
         $req = myPDO()->prepare('SELECT * FROM news_refers_to');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "newsRefersTo");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "newsRefersTo");
         return $object;
     }
 
@@ -30,16 +29,14 @@ class newsRefersTo {
     public function getNewsRefersToByNewsId($newsRefersToNewsId) {
         $req = myPDO()->prepare('SELECT * FROM news_refers_to WHERE news_refers_to_news_id = :news_refers_to_news_id');
         $req->execute(array(':news_refers_to_news_id' => $newsRefersToNewsId));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "newsRefersTo");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "newsRefersTo");
         return $object;
     }
 
     public function getNewsRefersToByBandId($newsRefersToBandId) {
         $req = myPDO()->prepare('SELECT * FROM news_refers_to WHERE news_refers_to_band_id = :news_refers_to_band_id');
         $req->execute(array(':news_refers_to_band_id' => $newsRefersToBandId));
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "newsRefersTo");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "newsRefersTo");
         return $object;
     }
 

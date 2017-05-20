@@ -19,8 +19,7 @@ class style {
     public function getAllStyles() {
         $req = myPDO()->prepare('SELECT * FROM styles');
         $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_GROUP|PDO::FETCH_CLASS, "style");
-        $object = array_map('reset',$object);
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
         return $object;
     }
 
