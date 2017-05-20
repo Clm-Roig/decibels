@@ -33,14 +33,14 @@ class prodType {
 
     // ==== GET requests ==== //
     public function getProdType($prodTypeId) {
-        $req = myPDO()->prepare('SELECT * FROM prod_type WHERE prod_type_id = :prod_type_id');
+        $req = myPDO()->prepare('SELECT * FROM prod_types WHERE prod_type_id = :prod_type_id');
         $req->execute(array(':prod_type_id' => $prodTypeId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
         return $object;
     }
 
     public function getProdTypeByName($prodTypeName) {
-        $req = myPDO()->prepare('SELECT * FROM prod_type WHERE prod_type_name = :prod_type_name');
+        $req = myPDO()->prepare('SELECT * FROM prod_types WHERE prod_type_name = :prod_type_name');
         $req->execute(array(':prod_type_name' => $prodTypeName));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
         return $object;
@@ -53,7 +53,7 @@ class prodType {
 
     public function insertProdType($prodTypeName) {
         $prodTypeId = $this->getIdMax() + 1;
-        $sql = "INSERT INTO prod_type VALUES (:prod_type_id, :prod_type_name)";
+        $sql = "INSERT INTO prod_types VALUES (:prod_type_id, :prod_type_name)";
         $req = myPdo()->prepare($sql);
         $params = [
           ':prod_type_id' => $prodTypeId,
@@ -71,7 +71,7 @@ class prodType {
     }
 
     public function updateProdType($prodTypeId, $prodTypeName) {
-        $sql = myPdo()->prepare("UPDATE prod_type SET prod_type_name=:prod_type_name WHERE prod_type_id = :prod_type_id");
+        $sql = myPdo()->prepare("UPDATE prod_types SET prod_type_name=:prod_type_name WHERE prod_type_id = :prod_type_id");
         $params = [
           ':prod_type_name' => $prodTypeName,
           ':prod_type_id' => $prodTypeId
@@ -88,7 +88,7 @@ class prodType {
     }
 
     public function deleteProdType($prodTypeId) {
-        $sql = "DELETE FROM prod_type WHERE prod_type_id = :prod_type_id";
+        $sql = "DELETE FROM prod_types WHERE prod_type_id = :prod_type_id";
         $req = myPdo()->prepare($sql);
         $params = [
           ':prod_type_id' => $prodTypeId,

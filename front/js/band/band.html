@@ -10,4 +10,12 @@
             ({{member['member_instrument']}})
         </li>
     </ul>
+
+    <h2>Productions</h2>
+    <ul>
+        <li ng-repeat='production in band.infos["productions"]'>
+            {{production['production_name']}} ({{production['production_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
+        </li>
+    </ul>
+
 </div>
