@@ -21,8 +21,14 @@ ini_set('display_errors', 1);
     $methodName = $request['method'];
     $data = $controllerObj->$methodName();
 
-    echo json_encode($data);
+    // GET
+    if($data !== true && $data !== false) {
+        echo json_encode($data);
+    }
+    // POST / PUT / DELETE
+    else {
 
+    }
 
     // ======== Functions ======== //
 

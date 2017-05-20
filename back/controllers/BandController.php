@@ -26,4 +26,15 @@ class BandController {
         return $this->Band->getBand($this->params['band_id']);
     }
 
+    function insertBand() {
+        var_dump($this->params);
+        if($this->Band->insertBand($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_id'])) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 }
