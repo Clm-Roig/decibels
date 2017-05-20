@@ -1,12 +1,11 @@
 angular.module('Decibels',[
-    'ngRoute',
-    'currentTab'
+    'ngRoute'
 ]).config(['$locationProvider', function($locationProvider){
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
 }])
 
 .config(['$httpProvider', function ($httpProvider) {
-            // enable http caching
-           $httpProvider.defaults.cache = true;
-      }])
+        // enable http caching
+       $httpProvider.defaults.cache = true;
+}])

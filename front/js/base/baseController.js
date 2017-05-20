@@ -1,4 +1,8 @@
-angular.module('Decibels').controller('baseController', ['$http','currentTab', function($http, currentTab) {
+angular.module('Decibels').controller('baseController', [
+    '$http', 'currentTab', 'cssInjector',
+function($http, currentTab, cssInjector) {
+
+    cssInjector.injectCss("front/js/base/base.css");
     this.setCurrentTab = function(value) {
         currentTab.setCurrentTab(value);
     };

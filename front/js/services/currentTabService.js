@@ -1,4 +1,4 @@
-angular.module('currentTab',[])
+angular.module('Decibels')
 .service('currentTab',function(){
     var current;
     var service = {
