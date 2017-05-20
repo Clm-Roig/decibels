@@ -1,9 +1,10 @@
 <div ng-controller="bandsController as bands">
     <h1>Tous les groupes de Montpellier</h1>
     <ul>
-        <li ng-repeat ="band in bands.listBands">
+        <li ng-repeat="band in bands.listBands">
             <a ng-href="/band/{{band['band_id']}}">{{band['band_name']}}</a>
         </li>
+        <li ng-show='bandSubmitted'>{{bandSubmitted}}</li>
     </ul>
 
     <h2>Soumettre un groupe</h2>
@@ -13,7 +14,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="band_name">Nom du groupe</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="band_name" placeholder="Nom du groupe" required>
+                <input type="text" class="form-control" id="band_name" placeholder="Nom du groupe" ng-model="bandSubmitted" required>
             </div>
         </div>
 
@@ -21,10 +22,8 @@
             <label class="control-label col-sm-2" for="band_style">Style :</label>
             <div class="col-sm-4">
                 <select class="form-control" id="band_style">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <option>---- Tous les styles ----</option>
+                    <option ng-repeat="style in bands.listStyles">{{style['style_name']}}</option>
                 </select>
             </div>
         </div>
@@ -32,7 +31,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="band_formed_in">Année de formation :</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="band_formed_in" placeholder="Format : yyyy">
+                <input type="number" class="form-control" id="band_formed_in" placeholder="Format : yyyy">
             </div>
         </div>
 

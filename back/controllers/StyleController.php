@@ -17,6 +17,13 @@ class StyleController {
         return $styles;
     }
 
+    function getAllStylesSorted() {
+        $req = myPDO()->prepare('SELECT * FROM styles ORDER BY style_name');
+        $req->execute();
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
+        return $object;
+    }
+
     function getStyle() {
         return $this->Style->getStyle($this->params['style_id']);
     }
