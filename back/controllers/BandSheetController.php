@@ -57,7 +57,6 @@ class BandSheetController {
             array_push($listProds,$production);
         }
 
-
         // Preparing the result
         $band = array("band" => $band[0]);
         $members = array("members" => $listMembers);
