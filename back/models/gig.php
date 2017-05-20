@@ -9,7 +9,6 @@ class gig {
     var $gig_place;      // text
     var $gig_date;       // date
     var $gig_title;      // text
-    var $gig_text;       // text
     var $gig_style_id;   // integer
     // ============================= //
 
@@ -70,13 +69,6 @@ class gig {
         return $object;
     }
 
-    public function getGigsByGigText($gigText) {
-        $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_text = :gig_text');
-        $req->execute(array(':gig_text' => $gigText));
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
-        return $object;
-    }
-
     public function getGigsByStyleId($gigStyleId) {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_style_id = :gig_style_id');
         $req->execute(array(':gig_style_id' => $gigStyleId));
@@ -91,7 +83,7 @@ class gig {
 
     public function insertGig($gigPrice, $gigPlace, $gigDate, $gigTitle, $gigText, $gigStyleId) {
         $gigId = $this->getIdMax() + 1;
-        $sql = "INSERT INTO gigs VALUES (:gig_id, :gig_price, :gig_place, :gig_date, :gig_title, :gig_text, :gig_style_id)";
+        $sql = "INSERT INTO gigs VALUES (:gig_id, :gig_price, :gig_place, :gig_date, :gig_title, :gig_style_id)";
         $req = myPdo()->prepare($sql);
         $params = [
           ':gig_id' => $gigId,
@@ -99,7 +91,6 @@ class gig {
           ':gig_place' => $gigPlace,
           ':gig_date' => $gigDate,
           ':gig_title' => $gigTitle,
-          ':gig_text' => $gigText,
           ':gig_style_id' => $gigStyleId
         ];
         try {
@@ -114,13 +105,12 @@ class gig {
     }
 
     public function updateGig($gigId, $gigPrice, $gigPlace, $gigDate, $gigTitle, $gigText, $gigStyleId) {
-        $sql = myPdo()->prepare("UPDATE gigs SET gig_price=:gig_price, gig_place=:gig_place, gig_date=:gig_date, gig_title=:gig_tile, gig_text=:gig_text, gig_style_id=:gig_style_id WHERE gig_id = :gig_id");
+        $sql = myPdo()->prepare("UPDATE gigs SET gig_price=:gig_price, gig_place=:gig_place, gig_date=:gig_date, gig_title=:gig_tile, gig_style_id=:gig_style_id WHERE gig_id = :gig_id");
         $params = [
           ':gig_price' => $gigPrice,
           ':gig_place' => $gigPlace,
           ':gig_date' => $gigDate,
           ':gig_title' => $gigTitle,
-          ':gig_text' => $gigText,
           ':gig_style_id' => $gigStyleId,
           ':gig_id' => $gigId
         ];
