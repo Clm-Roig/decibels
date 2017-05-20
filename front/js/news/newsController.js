@@ -8,7 +8,7 @@ angular.module('Decibels').controller('newsController', ['$http','currentTab', f
         url: '/back/Routeur.php',
         params: {
                 'controller': 'News',
-                'method': 'getAllNews'
+                'method': 'getAllNewsSorted'
         }
     })
     .then(function success(response){
