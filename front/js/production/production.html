@@ -1,0 +1,13 @@
+<div ng-controller="productionController as prod">
+    <h1>{{prod.info["production_name"]}}</h1>
+    <h2>{{prod.info["style_name"]}}</h2>
+    <p>Date de sortie : {{prod.info["production_date"] | date: 'dd/MM/yyyy'}}</p>
+
+    <h2>Tracklist</h2>
+    <ul>
+        <li ng-repeat='song in prod.songs'>
+            {{song['song_track_number']}}. {{song['song_name']}} <span ng-show="song['song_length']">({{song['song_length']}})</span>
+        </li>
+    </ul>
+
+</div>

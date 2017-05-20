@@ -26,6 +26,9 @@ angular.module('Decibels')
         .when('/news', {
             templateUrl : 'front/js/news/news.html',
         })
+        .when('/production/:productionId', {
+            templateUrl : 'front/js/production/production.html',
+        })
         .when('#', {
             redirectTo : '/'
         })
