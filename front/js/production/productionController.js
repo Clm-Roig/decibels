@@ -32,7 +32,12 @@ angular.module('Decibels').controller('productionController',
         })
         .then(function success(response) {
             self.songs = response.data;
-            console.log(self.songs);
+            // Conversion song_length from sec to mm:ss
+            for (index = 0; index < self.songs.length; ++index) {
+                var min = self.songs[index]['song_length']/60 >> 0;
+                var sec = self.songs[index]['song_length'] - 60*min;
+                self.songs[index]['song_length'] = min +':'+ sec;
+            }
         },function error(response) {
             console.log('Error getting songs : ' + response.data);
         });
