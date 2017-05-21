@@ -2,6 +2,7 @@
 .navbar {
 	border: 0;
 	box-shadow: 0 1px 4px;
+	margin-bottom: 0;
 }
 
 .navbar-nav > li > a, .navbar-brand {
@@ -31,6 +32,15 @@
 	text-shadow: 0 1px 25px #666;
 }
 
+.navbar-search {
+	margin: 0;
+}
+
+/* CONTENT */
+.main-content {
+	background-color: #eef;
+}
+
 /* FOOTER */
 footer {
 	background-color: #ddd;
@@ -41,4 +51,5 @@ footer {
 
 footer h2 {
 	line-height: 100px;
+	margin-top: 0;
 }

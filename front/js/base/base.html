@@ -41,7 +41,7 @@
                 <li ng-class = "{active: base.isCurrentTab(3)}"><a href="/news" ng-click="base.setCurrentTab(3)">Actualités</a></li>
                 <li ng-class = "{active: base.isCurrentTab(4)}"><a href="/gigs" ng-click="base.setCurrentTab(4)">Concerts</a></li>
                 <li>
-                    <form class="form-inline">
+                    <form class="navbar-form navbar-left navbar-search">
                         <div class="form-group">
                             <label for="search"></label>
                             <input type="text" class="form-control input-sm" id="search" placeholder="Recherche">
@@ -54,7 +54,7 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row main-content">
             <div class="col-sm-12">
                 <div ng-view></div>
             </div>
