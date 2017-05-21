@@ -1,0 +1,26 @@
+h3.hidden-control-message {
+    visibility: hidden;
+}
+
+h3.temp-visible-control-message {
+    animation: control-message-anim;
+    animation-duration: 3s;
+    color: #e94;
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes control-message-anim {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    60% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

@@ -1,7 +1,8 @@
 angular.module('Decibels').controller('submitBandController',
-    ['$http',
-function($http) {
+    ['$http','cssInjector','$timeout',
+function($http,cssInjector,$timeout) {
     var self = this;
+    cssInjector.injectCss("front/js/bands/bands.css");
 
     // Get Styles for submission
     $http({
@@ -21,8 +22,8 @@ function($http) {
 
     // ==== Submission Form ==== //
     self.formData = {};
-    self.sent = false;
-    self.sentError = false;
+    self.submitControl = "Groupe soumis, merci !";
+    self.messageClass = "hidden-control-message";
 
     self.submitForm = function(isValid) {
         if(isValid) {
@@ -41,12 +42,16 @@ function($http) {
                 self.formData['band_name'] = null;
                 self.formData['band_style_name'] = null;
                 self.formData['band_formed_in'] = null;
-                self.sent = true;
-                self.sentError = false;
+
+                self.submitControl = "Groupe soumis, merci !";
+                self.messageClass = "temp-visible-control-message";
+                $timeout(function () { self.messageClass = "hidden-control-message"; }, 3000);
             }
             , function error(response) {
-                self.sentError = true;
-                self.sent = false;
+                self.submitControl = "Erreur lors de la soumission, veuillez réessayer.";
+                self.messageClass = "temp-visible-control-message";
+                $timeout(function () { self.messageClass = "hidden-control-message"; }, 2000);
+
                 console.log('Error inserting band : ' + response);
             });
 

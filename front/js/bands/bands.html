@@ -44,14 +44,9 @@
                 </div>
             </div>
 
-
-                <div ng-show="submitBand.sent">
-                    <h3>Groupe soumis, merci !</h3>
-                </div>
-
-                <div ng-show="submitBand.sentError">
-                    <h3>Erreur lors de la soumission, veuillez réessayer.</h3>
-                </div>
+            <div>
+                <h3 ng-class="submitBand.messageClass">{{submitBand.submitControl}}</h3>
+            </div>
 
         </form>
 
