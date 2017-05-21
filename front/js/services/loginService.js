@@ -21,10 +21,9 @@ angular.module('Decibels')
                 return true;
             },function error(response) {
                 console.log('Error log in : ' + response.data);
-                return false
+                return false;
             });
-
         }
-    }
+    };
     return service;
 }]);
