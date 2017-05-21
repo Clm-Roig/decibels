@@ -1,0 +1,23 @@
+<div ng-controller="adminController as admin">
+    <h1>Gestion du site</h1>
+
+    <h2>Ajouter un style</h2>
+
+    <form name="addStyleForm" class="form-inline" ng-submit="admin.submitAddStyleForm(addStyleForm.$valid)">
+
+        <div class="form-group">
+            <label class="control-label"for="style_name">Nom du style :</label>
+                <input type="text" class="form-control" id="style_name" ng-model="admin.new_style_name" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Saisir</button>
+        </div>
+
+        <div>
+            <p>{{admin.submitMessage}}</p>
+        </div>
+
+    </form>
+
+</div>
