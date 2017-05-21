@@ -27,4 +27,9 @@ class StyleController {
     function getStyle() {
         return $this->Style->getStyle($this->params['style_id']);
     }
+
+    function insertStyle() {
+        $return = $this->Style->insertStyle($this->params['style_name']);
+        return $return;
+    }
 }

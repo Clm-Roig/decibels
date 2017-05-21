@@ -23,7 +23,7 @@ class AdminController {
                 // check password
                 $isLogOk = password_verify($this->params['admin_password'],$admin->admin_password);
                 if($isLogOk) {
-                    $token = ["token" => "dsq56qsd"];
+                    $token = ["token" => "admin"];
                 }
                 else {
                     // unauthorized (wrong password)

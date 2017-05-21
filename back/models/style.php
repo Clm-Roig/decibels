@@ -49,21 +49,28 @@ class style {
     // ==== POST / PUT / DELETE requests ==== //
 
     public function insertStyle($styleName) {
-        $styleId = $this->getIdMax() + 1;
-        $sql = "INSERT INTO styles VALUES (:style_id, :style_name)";
-        $req = myPdo()->prepare($sql);
-        $params = [
-          ':style_id' => $styleId,
-          ':style_name' => $styleNames
-        ];
-        try {
-            $req->execute($params);
-            return true;
+        // Is this style already in the DB ?
+        $exists = $this->getStylesByName($styleName);
+        if(empty($exists)) {
+            $styleId = $this->getIdMax() + 1;
+            $sql = "INSERT INTO styles VALUES (:style_id, :style_name)";
+            $req = myPdo()->prepare($sql);
+            $params = [
+              ':style_id' => $styleId,
+              ':style_name' => $styleName
+            ];
+            try {
+                $req->execute($params);
+                http_response_code(200);
+            }
+            catch (Exception $e) {
+                echo 'Error request "'.$sql.'" : ';
+                var_dump($e->getMessage());
+                http_response_code(400);
+            }
         }
-        catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
-            return false;
+        else {
+            http_response_code(409);
         }
     }
 

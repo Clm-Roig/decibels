@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('loginController', [
-    '$http', 'currentTab', 'login', '$cookies',
-function($http, currentTab, login, $cookies) {
+    '$http', 'currentTab', 'login', '$cookies','$location',
+function($http, currentTab, login, $cookies, $location) {
     var self = this;
     currentTab.setCurrentTab(0);
 
@@ -8,6 +8,7 @@ function($http, currentTab, login, $cookies) {
     self.callback = function(success,response) {
         if(success) {
             $cookies.put('token',response);
+            $location.path("/dashboard/admin");
         }
         else {
             console.log('Error log in : '+response.status);

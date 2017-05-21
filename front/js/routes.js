@@ -17,6 +17,9 @@ angular.module('Decibels')
         .when('/contact', {
             templateUrl : 'front/js/contact/contact.html',
         })
+        .when('/dashboard/admin', {
+            templateUrl : 'front/js/admin/admin.html',
+        })
         .when('/gig/:gigId', {
             templateUrl : 'front/js/gig/gig.html',
         })
