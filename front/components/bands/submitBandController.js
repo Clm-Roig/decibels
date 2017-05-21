@@ -2,7 +2,7 @@ angular.module('Decibels').controller('submitBandController',
     ['$http','cssInjector','$timeout',
 function($http,cssInjector,$timeout) {
     var self = this;
-    cssInjector.injectCss("front/js/bands/bands.css");
+    cssInjector.injectCss("front/components/bands/bands.css");
 
     // Get Styles for submission
     $http({

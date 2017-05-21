@@ -2,7 +2,7 @@ angular.module('Decibels').controller('latestNewsController',
     ['$http', 'cssInjector',
 function($http, cssInjector) {
     var self = this;
-    cssInjector.injectCss('/front/js/news/latestNews.css');
+    cssInjector.injectCss('/front/components/news/latestNews.css');
     self.limit = 10;
 
     $http({

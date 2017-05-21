@@ -1,7 +1,7 @@
 angular.module('Decibels').controller('nextGigsController',
 ['$http', 'cssInjector',
 function($http, cssInjector) {
-    cssInjector.injectCss('/front/js/gigs/nextGigs.css');
+    cssInjector.injectCss('/front/components/gigs/nextGigs.css');
 
     var self = this;
     self.limit = 10;
