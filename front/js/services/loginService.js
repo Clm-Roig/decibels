@@ -1,7 +1,7 @@
 angular.module('Decibels')
 .service('login', ['$http', function($http){
     var service = {
-        signIn: function(username, password) {
+        signIn: function(username, password, callback) {
             var data = {
                 username: username,
                 password: password
@@ -18,10 +18,9 @@ angular.module('Decibels')
                 }
             })
             .then(function success(response) {
-                return true;
-            },function error(response) {
-                console.log('Error log in : ' + response.data);
-                return false;
+                callback(true,response.data);
+            }, function error(response) {
+                callbak(false,response.data);
             });
         }
     };

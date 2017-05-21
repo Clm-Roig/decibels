@@ -5,15 +5,21 @@ function($http, currentTab, login) {
     currentTab.setCurrentTab(0);
 
     // ==== Submit form ==== //
+    self.callback = function(success,response) {
+        if(success) {
+            self.token = response.data;
+        }
+        else {
+            console.log('Error log in : '+response.data);
+        }
+    };
+
     self.submitForm = function(isValid) {
         if(isValid) {
-            if(login.signIn(self.username,self.password)) {
-                alert('Authentification réussie !');
-            }
-            else {
-                alert('Authentification ratée...');
-            }
+            login.signIn(self.username,self.password,self.callback);
         }
     }
+
+
 
 }]);
