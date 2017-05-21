@@ -25,10 +25,7 @@ ini_set('display_errors', 1);
     if($data !== true && $data !== false) {
         echo json_encode($data);
     }
-    // POST / PUT / DELETE
-    else {
-        
-    }
+    // POST / PUT / DELETE change the http_response_code by theirself in /models
 
     // ======== Functions ======== //
 

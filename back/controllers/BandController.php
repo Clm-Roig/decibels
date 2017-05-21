@@ -37,10 +37,10 @@ class BandController {
     function insertBandTemp() {
         var_dump($this->params);
         if($this->Band->insertBandTemp($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_name'])) {
-            return true;
+            http_response_code(200);
         }
         else {
-            return false;
+            http_response_code(400);
         }
 
     }
