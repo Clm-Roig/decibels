@@ -5,6 +5,9 @@ angular.module('Decibels')
         .when('/', {
             templateUrl : 'front/js/home/home.html',
         })
+        .when('/admin', {
+            templateUrl : 'front/js/login/login.html',
+        })
         .when('/band/:bandId', {
             templateUrl : 'front/js/band/band.html',
         })
