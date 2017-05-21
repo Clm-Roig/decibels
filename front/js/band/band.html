@@ -1,23 +1,28 @@
 <div ng-controller="bandController as band">
     <h1>{{band.info["band_name"]}} ({{band.info["style_name"]}})</h1>
     <p ng-show="band.info['band_formed_in']">Formé en {{band.info["band_formed_in"]}}</h2>
-    <h2>Membres</h2>
-    <ul>
-        <li ng-repeat='member in band.members'>
-            {{member['member_first_name']}}
-            <span ng-show="member['member_pseudo']">"{{member['member_pseudo']}}"</span>
-            {{member['member_last_name']}}
-            ({{member['plays_with_instrument']}})
-        </li>
-    </ul>
 
-    <h2>Productions</h2>
-    <ul>
-        <li ng-repeat='production in band.productions'>
-            <a ng-href="/production/{{production['production_id']}}">
-                {{production['production_name']}} ({{production['prod_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
-            </a>
-        </li>
-    </ul>
+    <div class="col-sm-6">
+        <h2>Productions</h2>
+        <ul class="productions-list">
+            <li ng-repeat='production in band.productions'>
+                <a ng-href="/production/{{production['production_id']}}">
+                    {{production['production_name']}} ({{production['prod_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-6">
+        <h2>Membres</h2>
+        <ul class="members-list">
+            <li ng-repeat='member in band.members'>
+                {{member['member_first_name']}}
+                <span ng-show="member['member_pseudo']">"{{member['member_pseudo']}}"</span>
+                {{member['member_last_name']}}
+                ({{member['plays_with_instrument']}})
+            </li>
+        </ul>
+    </div>
 
 </div>

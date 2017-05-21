@@ -15,22 +15,31 @@ class AdminController {
     // Check for admin connection
     function signIn() {
         $token = "";
-        $admin = $this->Admin->getAdminsByUsername($this->params['admin_username'])[0];
-        if(is_a($admin,'admin')) {
-            // check password
-            $isLogOk = password_verify($this->params['admin_password'],$admin->admin_password);
-            if($isLogOk) {
-                $token = ["token" => "dsq56qsd"];
+
+        $admin = $this->Admin->getAdminsByUsername($this->params['admin_username']);
+        if(!empty($admin)) {
+            $admin = $admin[0];
+            if(is_a($admin,'admin')) {
+                // check password
+                $isLogOk = password_verify($this->params['admin_password'],$admin->admin_password);
+                if($isLogOk) {
+                    $token = ["token" => "dsq56qsd"];
+                }
+                else {
+                    // unauthorized (wrong password)
+                    http_response_code(401);
+                }
             }
             else {
-                // unauthorized (wrong password)
-                http_response_code(401);
+            // unauthorized (wrong username)
+            http_response_code(401);
             }
         }
         else {
             // unauthorized (wrong username)
             http_response_code(401);
         }
+
         return $token;
     }
 

@@ -14,9 +14,9 @@ angular.module('Decibels')
                 }
             })
             .then(function success(response) {
-                callback(true,response.data);
+                callback(true,response.data['token']);
             }, function error(response) {
-                callbak(false,response.data);
+                callback(false,response);
             });
         }
     };
