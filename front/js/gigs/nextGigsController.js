@@ -1,5 +1,7 @@
-angular.module('Decibels').controller('nextGigsController', ['$http', function($http) {
-    this.title = "Prochains concerts";
+angular.module('Decibels').controller('nextGigsController',
+['$http', 'cssInjector',
+function($http, cssInjector) {
+    cssInjector.injectCss('/front/js/gigs/nextGigs.css');
 
     var self = this;
     self.limit = 10;

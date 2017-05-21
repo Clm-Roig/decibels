@@ -1,6 +1,6 @@
 <div ng-controller="latestNewsController as latestNews">
     <h2>Dernières Actualités</h2>
-    <ul>
+    <ul class="latest-news-list">
         <li ng-repeat="news in latestNews.listNews">
             <a ng-href="/news/{{news['news_id']}}">
                 {{news['news_date'] | date : 'dd/MM/yyyy'}} - {{news['news_title']}}

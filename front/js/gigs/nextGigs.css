@@ -1,0 +1,9 @@
+ul.next-gigs-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.next-gigs-list > li {
+    font-size: 14px;
+    line-height: 22px;
+}

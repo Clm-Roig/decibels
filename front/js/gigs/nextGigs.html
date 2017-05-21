@@ -1,6 +1,6 @@
 <div ng-controller="nextGigsController as nextGigs">
-    <h2>{{nextGigs.title}}</h2>
-    <ul>
+    <h2>Prochains concerts</h2>
+    <ul class="next-gigs-list">
         <li ng-repeat ="gig in nextGigs.listGigs">
             <a ng-href="/gig/{{gig['gig_id']}}">
                 {{gig['gig_date'] | date : 'dd/MM/yyyy'}} - {{gig['gig_title']}}

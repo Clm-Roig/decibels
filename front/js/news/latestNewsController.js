@@ -1,6 +1,9 @@
-angular.module('Decibels').controller('latestNewsController', ['$http', function($http) {
+angular.module('Decibels').controller('latestNewsController',
+    ['$http', 'cssInjector',
+function($http, cssInjector) {
     var self = this;
-    self.limit = 5;
+    cssInjector.injectCss('/front/js/news/latestNews.css');
+    self.limit = 10;
 
     $http({
         method: 'GET',
