@@ -1,6 +1,6 @@
 <?php
 require('models/admin.php');
-class LoginController {
+class AdminController {
 
     private $Admin;
     private $params;
@@ -14,31 +14,24 @@ class LoginController {
 
     // Check for admin connection
     function signIn() {
+        $token = "";
         $admin = $this->Admin->getAdminsByUsername($this->params['admin_username'])[0];
         if(is_a($admin,'admin')) {
             // check password
-            $pswHashed = password_hash($this->password['admin_password'],PASSWORD_DEFAULT);
-            $isLogOk = $this->Admin->getAdminsByPassword($pswHashed);
-            if(is_a($isLogOk,'admin')) {
+            $isLogOk = password_verify($this->params['admin_password'],$admin->admin_password);
+            if($isLogOk) {
                 $token = ["token" => "dsq56qsd"];
             }
             else {
-                // unauthorized
+                // unauthorized (wrong password)
                 http_response_code(401);
             }
         }
         else {
-            // unauthorized
+            // unauthorized (wrong username)
             http_response_code(401);
         }
-
-        return $obj;
-    }
-
-    // Create a new Admin
-    function signUp() {
-        $pswHashed = password_hash($this->password['admin_password'],PASSWORD_DEFAULT);
-        $admin = $this->Admin->insertAdmin($this->params['admin_username'],$pswHashed);
+        return $token;
     }
 
 }

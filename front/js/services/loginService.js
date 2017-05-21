@@ -7,7 +7,7 @@ angular.module('Decibels')
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
-                        'controller': 'Login',
+                        'controller': 'Admin',
                         'method': 'signIn',
                         'admin_username': username,
                         'admin_password': password
