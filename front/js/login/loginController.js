@@ -16,7 +16,7 @@ function($http, currentTab, login) {
 
     self.submitForm = function(isValid) {
         if(isValid) {
-            login.signIn(self.username,self.password,self.callback);
+            login.signIn(self.admin_username,self.admin_password,self.callback);
         }
     }
 

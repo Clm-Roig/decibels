@@ -2,10 +2,6 @@ angular.module('Decibels')
 .service('login', ['$http', function($http){
     var service = {
         signIn: function(username, password, callback) {
-            var data = {
-                username: username,
-                password: password
-            };
 
             $http({
                 method: 'GET',
@@ -13,8 +9,8 @@ angular.module('Decibels')
                 params: {
                         'controller': 'Login',
                         'method': 'signIn',
-                        'username': data['username'],
-                        'password': data['password']
+                        'admin_username': username,
+                        'admin_password': password
                 }
             })
             .then(function success(response) {
