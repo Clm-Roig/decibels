@@ -1,33 +1,10 @@
 <?php
-require('models/band.php');
-require('models/composedBy.php');
-require('models/member.php');
-require('models/playsWith.php');
-require('models/production.php');
-require('models/prodType.php');
-require('models/style.php');
-
+require_once('../config/connexionBD.php');
 class BandSheetController {
-
-    private $Band;
-    private $ComposedBy;
-    private $Member;
-    private $PlaysWith;
-    private $Production;
-    private $ProdType;
-    private $Style;
 
     private $params;
 
     function __construct($params = null) {
-        $this->Band = new band();
-        $this->ComposedBy = new composedBy();
-        $this->Member = new member();
-        $this->PlaysWith = new playsWith();
-        $this->Production = new production();
-        $this->ProdType = new prodType();
-        $this->Style = new style();
-
         if($params != null) {
             $this->params = $params;
         }
