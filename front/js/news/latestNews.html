@@ -1,5 +1,5 @@
 <div ng-controller="latestNewsController as latestNews">
-    <h2>{{latestNews.title}}</h2>
+    <h2>Dernières Actualités</h2>
     <ul>
         <li ng-repeat="news in latestNews.listNews">
             <a ng-href="/news/{{news['news_id']}}">

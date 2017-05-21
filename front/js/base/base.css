@@ -35,6 +35,10 @@
 footer {
 	background-color: #ddd;
 	box-shadow: 0 -1px 4px;
-	height: 150px;
+	height: 100px;
 	width: 100%;
+}
+
+footer h2 {
+	line-height: 100px;
 }
