@@ -13,12 +13,12 @@ angular.module('Decibels').controller('adminController',
         if(!success) {
             $location.path("/");
         }
+        else { 
+            // We're logged in, display Disconnect button
+            $scope.changeShowDisconnectButton(true);
+        }
     };
     alreadyLoggedIn.isAlreadyLoggedIn(self.callbackAlreadyLoggedIn);
-
-    // Display Disconnect button
-    $scope.changeShowDisconnectButton(true);
-
 
     // Submit addStyleForm
     self.submitMessage = "";
