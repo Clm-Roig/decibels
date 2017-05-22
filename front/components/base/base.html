@@ -49,6 +49,11 @@
                         <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
                 </li>
+
+                <li ng-show="base.showDisconnect">
+                    <button type="button" class="btn btn-danger" ng-click='base.disconnect()'>Se déconnecter</button>
+                </li>
+
             </ul>
         </div>
     </nav>

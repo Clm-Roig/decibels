@@ -1,23 +1,27 @@
 angular.module('Decibels').controller('adminController',
-    ['$http','$cookies','$location', '$timeout', 'alreadyLoggedIn','createNewAdmin',
-    function($http, $cookies, $location, $timeout, alreadyLoggedIn, createNewAdmin) {
+    ['$http','$cookies','$location', '$timeout', 'alreadyLoggedIn','createNewAdmin', '$scope',
+    function($http, $cookies, $location, $timeout, alreadyLoggedIn, createNewAdmin, $scope) {
+
+    // ========= INITIALISATION ========= //
 
     var self = this;
     self.isRoot = $cookies.get('isRoot');
 
-    console.log("Am i Root ? " + self.isRoot);
+    // Display Disconnect button
+    $scope.changeShowDisconnectButton(true);
 
-    // ==== Check for valid token ==== //
+
+    // ========= FUNCTIONS ========= //
+    // Check for valid token
     self.callbackAlreadyLoggedIn = function(success,response) {
         if(!success) {
             $location.path("/");
         }
     };
-
     alreadyLoggedIn.isAlreadyLoggedIn(self.callbackAlreadyLoggedIn);
 
 
-    // ==== Submit addStyleForm ==== //
+    // Submit addStyleForm
     self.submitMessage = "";
     self.submitAddStyleForm = function(isValid) {
         if(isValid) {
@@ -50,7 +54,7 @@ angular.module('Decibels').controller('adminController',
         }
     }
 
-    // ==== Submit new Admin form ==== //
+    // Submit new Admin form
     self.callbackNewAdmin = function(success,response) {
         if(success) {
             $cookies.put('token',response.data['token']);
