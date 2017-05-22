@@ -1,23 +1,53 @@
 <div ng-controller="adminController as admin">
     <h1>Gestion du site</h1>
 
-    <h2>Ajouter un style</h2>
+    <div class="col-sm-6">
+        <h2>Ajouter un style</h2>
 
-    <form name="addStyleForm" class="form-inline" ng-submit="admin.submitAddStyleForm(addStyleForm.$valid)">
+        <form name="addStyleForm" class="form-inline" ng-submit="admin.submitAddStyleForm(addStyleForm.$valid)">
 
-        <div class="form-group">
-            <label class="control-label"for="style_name">Nom du style :</label>
-                <input type="text" class="form-control" id="style_name" ng-model="admin.new_style_name" required>
-        </div>
+            <div class="form-group">
+                <label class="control-label"for="style_name">Nom du style :</label>
+                    <input type="text" class="form-control" id="style_name" ng-model="admin.new_style_name" required>
+            </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">Saisir</button>
-        </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Saisir</button>
+            </div>
 
-        <div>
-            <p>{{admin.submitMessage}}</p>
-        </div>
+            <div>
+                <p>{{admin.submitMessage}}</p>
+            </div>
 
-    </form>
+        </form>
+    </div>
+
+    <div class="col-sm-6" ng-show="{{admin.isRoot}}">
+        <h2>Ajouter un nouvel administrateur</h2>
+
+        <form name="signUpForm" class="form-horizontal" ng-submit="admin.submitNewAdminForm(signUpForm.$valid)">
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="new_username">Nom d'utilisateur :</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="new_username" placeholder="Nom d'utilisateur" ng-model="admin.new_admin_username" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="new_password">Mot de passe :</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="new_password" placeholder="Mot de passe" ng-model="admin.new_admin_password" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Ajouter admin</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
 
 </div>

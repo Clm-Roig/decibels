@@ -1,22 +1,21 @@
 angular.module('Decibels')
-.service('login', ['$http', function($http){
+.service('alreadyLoggedIn', ['$http','$cookies', function($http, $cookies){
     var service = {
-        signIn: function(username, password, callback) {
+        isAlreadyLoggedIn: function(callback) {
 
             $http({
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
                         'controller': 'Admin',
-                        'method': 'signIn',
-                        'admin_username': username,
-                        'admin_password': password
+                        'method': 'isAlreadyLoggedIn',
+                        'token': $cookies.get('token')
                 }
             })
             .then(function success(response) {
-                callback(true,response.data);
+                callback(true);
             }, function error(response) {
-                callback(false,response);
+                callback(false);
             });
         }
     };

@@ -45,7 +45,7 @@ class admin {
         return $object;
     }
 
-    public function getAdminsByPassword($adminPassword) {
+    public function getAdminByPassword($adminPassword) {
         $req = myPDO()->prepare('SELECT * FROM admins WHERE admin_password = :admin_password');
         $req->execute(array(':admin_password' => $adminPassword));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "admin");

@@ -1,14 +1,15 @@
 angular.module('Decibels').controller('loginController', [
-    '$http', 'currentTab', 'login', '$cookies','$location',
-function($http, currentTab, login, $cookies, $location) {
+    '$http', 'currentTab', 'login', '$cookies','$location','createNewAdmin',
+function($http, currentTab, login, $cookies, $location, createNewAdmin) {
     var self = this;
     currentTab.setCurrentTab(0);
 
     // ==== Submit login form ==== //
     self.callback = function(success,response) {
         if(success) {
-            $cookies.put('token',response);
-            $location.path("/dashboard/admin");
+            $cookies.put('token',response['token']);
+            $cookies.put('isRoot',response['isRoot']);
+            $location.path("/admin");
         }
         else {
             console.log('Error log in : '+response.status);

@@ -5,7 +5,7 @@ angular.module('Decibels')
         .when('/', {
             templateUrl : 'front/components/home/home.html',
         })
-        .when('/admin', {
+        .when('/login', {
             templateUrl : 'front/components/login/login.html',
         })
         .when('/band/:bandId', {
@@ -17,7 +17,7 @@ angular.module('Decibels')
         .when('/contact', {
             templateUrl : 'front/components/contact/contact.html',
         })
-        .when('/dashboard/admin', {
+        .when('/admin', {
             templateUrl : 'front/components/admin/admin.html',
         })
         .when('/gig/:gigId', {

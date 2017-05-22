@@ -1,10 +1,21 @@
 angular.module('Decibels').controller('adminController',
-    ['$http','$cookies','$location', '$timeout',
-    function($http, $cookies, $location, $timeout) {
+    ['$http','$cookies','$location', '$timeout', 'alreadyLoggedIn','createNewAdmin',
+    function($http, $cookies, $location, $timeout, alreadyLoggedIn, createNewAdmin) {
+
     var self = this;
-    if($cookies.get('token') != 'admin') {
-        $location.path("/login");
-    }
+    self.isRoot = $cookies.get('isRoot');
+
+    console.log("Am i Root ? " + self.isRoot);
+
+    // ==== Check for valid token ==== //
+    self.callbackAlreadyLoggedIn = function(success,response) {
+        if(!success) {
+            $location.path("/");
+        }
+    };
+
+    alreadyLoggedIn.isAlreadyLoggedIn(self.callbackAlreadyLoggedIn);
+
 
     // ==== Submit addStyleForm ==== //
     self.submitMessage = "";
@@ -36,6 +47,23 @@ angular.module('Decibels').controller('adminController',
                 console.log('Error inserting style : ' + response);
             });
 
+        }
+    }
+
+    // ==== Submit new Admin form ==== //
+    self.callbackNewAdmin = function(success,response) {
+        if(success) {
+            $cookies.put('token',response.data['token']);
+            $location.path("/dashboard/admin");
+        }
+        else {
+            console.log('Error new admin : '+response.data);
+        }
+    };
+
+    self.submitNewAdminForm = function(isValid) {
+        if(isValid) {
+            createNewAdmin.signUp(self.new_admin_username,self.new_admin_password,self.callbackNewAdmin);
         }
     }
 
