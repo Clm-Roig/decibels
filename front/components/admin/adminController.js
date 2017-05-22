@@ -7,10 +7,6 @@ angular.module('Decibels').controller('adminController',
     var self = this;
     self.isRoot = $cookies.get('isRoot');
 
-    // Display Disconnect button
-    $scope.changeShowDisconnectButton(true);
-
-
     // ========= FUNCTIONS ========= //
     // Check for valid token
     self.callbackAlreadyLoggedIn = function(success,response) {
@@ -19,6 +15,9 @@ angular.module('Decibels').controller('adminController',
         }
     };
     alreadyLoggedIn.isAlreadyLoggedIn(self.callbackAlreadyLoggedIn);
+
+    // Display Disconnect button
+    $scope.changeShowDisconnectButton(true);
 
 
     // Submit addStyleForm
