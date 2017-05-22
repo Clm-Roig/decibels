@@ -14,6 +14,9 @@ ini_set('display_errors', 1);
     else if(!empty($_UPDATE)) {
         $request = $_UPDATE;
     }
+    else if(!empty($_DELETE)) {
+        $request = $_DELETE;
+    }
 
     $controllerName = $request['controller'];
     $controllerObj = getController($controllerName, $request);
