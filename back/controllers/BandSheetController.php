@@ -1,5 +1,5 @@
 <?php
-require_once('models/bandSheetModels.php');
+require_once('models/bandSheetModel.php');
 
 class BandSheetController {
 
