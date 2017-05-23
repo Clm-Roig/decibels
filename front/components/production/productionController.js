@@ -1,5 +1,6 @@
 angular.module('Decibels').controller('productionController',
-    ['$http','$routeParams', function($http,$routeParams) {
+['$http','$routeParams',
+function($http,$routeParams) {
         var self = this;
         self.productionId = $routeParams.productionId;
 

@@ -1,6 +1,6 @@
-angular.module('Decibels').controller('baseController', [
-    '$http', 'currentTab', '$cookies', '$location','$scope',
-function($http, currentTab, $cookies, $location, $scope) {
+angular.module('Decibels').controller('baseController',
+['currentTab', '$cookies', '$location','$scope',
+function($currentTab, $cookies, $location, $scope) {
 
     // ========= INITIALISATION ========= //
     var self = this;

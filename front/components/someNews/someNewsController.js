@@ -1,5 +1,5 @@
 angular.module('Decibels').controller('someNewsController',
-    ['$http','$routeParams', function($http,$routeParams) {
+['$http','$routeParams', function($http,$routeParams) {
         var self = this;
         self.newsId = $routeParams.newsId;
 

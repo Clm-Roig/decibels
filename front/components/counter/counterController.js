@@ -1,4 +1,6 @@
-angular.module('Decibels').controller('counterController', ['$http', function($http) {
+angular.module('Decibels').controller('counterController',
+['$http',
+function($http) {
     var self = this;
     self.count = {};
 

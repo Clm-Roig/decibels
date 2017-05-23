@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('gigsController',
-['$http','currentTab','gig',
-function($http, currentTab, gig) {
+['currentTab','gig',
+function(currentTab, gig) {
     var self = this;
     currentTab.setCurrentTab(4);
 
