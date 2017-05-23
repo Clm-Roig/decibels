@@ -2,21 +2,7 @@
 ini_set('display_errors', 1);
 
     // Request type
-    if(!empty($_GET)) {
-        $request = $_GET;
-    }
-    else if(!empty($_POST)) {
-        $request = $_POST;
-    }
-    else if(!empty($_PUT)) {
-        $request = $_PUT;
-    }
-    else if(!empty($_UPDATE)) {
-        $request = $_UPDATE;
-    }
-    else if(!empty($_DELETE)) {
-        $request = $_DELETE;
-    }
+    $request = $_.$_SERVER['REQUEST_METHOD'];
 
     $controllerName = $request['controller'];
     $controllerObj = getController($controllerName, $request);
@@ -28,7 +14,9 @@ ini_set('display_errors', 1);
     if($data !== true && $data !== false) {
         echo json_encode($data);
     }
-    // POST / PUT / DELETE change the http_response_code by theirself in /models
+    else {
+        // POST / PUT / DELETE change the http_response_code by theirself in /models
+    }
 
     // ======== Functions ======== //
 
