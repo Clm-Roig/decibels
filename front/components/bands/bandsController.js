@@ -1,23 +1,13 @@
 angular.module('Decibels').controller('bandsController',
-    ['$http', 'currentTab',
-function($http, currentTab) {
+    ['currentTab','bandService',
+function(currentTab, bandService) {
     var self = this;
     currentTab.setCurrentTab(2);
 
-    // Get bands
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                    'controller': 'Band',
-                    'method': 'getAllBandsSorted'
-        }
-    })
-    .then(function success(response){
-        self.listBands = response.data;
+    callbackBands = function(success,response) {
+        if(success) self.listBands = response.data;
+        else console.log('Error getting all bands : ' + response);;
     }
-    , function error(response) {
-        console.log('Error getting all bands : ' + response);
-    });
 
+    bandService.getAllBands(callbackBands);
 }]);
