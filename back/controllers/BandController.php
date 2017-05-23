@@ -29,9 +29,7 @@ class BandController {
     // ======================= //
 
     function getAllBandsSorted() {
-        $req = myPDO()->query('SELECT * FROM bands ORDER BY band_name');
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
-        return $object;
+        return $this->Band->getAllBandsSorted();
     }
 
     function insertBandTemp() {

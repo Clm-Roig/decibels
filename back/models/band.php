@@ -27,6 +27,12 @@ class band {
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return $object;
     }
+    
+    function getAllBandsSorted() {
+        $req = myPDO()->query('SELECT * FROM bands ORDER BY band_name');
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
+        return $object;
+    }
 
     public function countBands() {
         $req = myPDO()->query('SELECT band_id FROM bands');

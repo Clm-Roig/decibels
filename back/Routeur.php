@@ -34,14 +34,14 @@ ini_set('display_errors', 1);
 
     // ======== Functions ======== //
 
-    // Retourne un objet Controller
+    // Retuns a controller
     function getController($controller, $params) {
 
         $classController = $controller . "Controller";
         $fileController = "controllers/" . $classController . ".php";
 
         if (file_exists($fileController)) {
-            // Instanciation du contrôleur adapté à la requête
+            // Controller creation
             require($fileController);
             $controller = new $classController($params);
             return $controller;
