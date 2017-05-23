@@ -2,8 +2,21 @@
 ini_set('display_errors', 1);
 
     // Request type
-    $request = $_.$_SERVER['REQUEST_METHOD'];
-    var_dump($request);
+    if(!empty($_GET)) {
+        $request = $_GET;
+    }
+    else if(!empty($_POST)) {
+        $request = $_POST;
+    }
+    else if(!empty($_PUT)) {
+        $request = $_PUT;
+    }
+    else if(!empty($_UPDATE)) {
+        $request = $_UPDATE;
+    }
+    else if(!empty($_DELETE)) {
+        $request = $_DELETE;
+    }
 
     $controllerName = $request['controller'];
     $controllerObj = getController($controllerName, $request);
