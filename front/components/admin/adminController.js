@@ -10,13 +10,13 @@ angular.module('Decibels').controller('adminController',
     // ========= FUNCTIONS ========= //
     // Check for valid token
     callbackAlreadyLoggedIn = function(success,response) {
-        if(!success) {
-            $scope.changeShowDisconnectButton(true);
-            $location.path("/");
-        }
-        else { 
+        if(success) {
             // We're logged in, display Disconnect button
             $scope.changeShowDisconnectButton(true);
+        }
+        else { 
+            $scope.changeShowDisconnectButton(false);
+            $location.path("/");
         }
     };
     login.amILogged(callbackAlreadyLoggedIn);

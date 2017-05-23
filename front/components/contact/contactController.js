@@ -1,5 +1,5 @@
-angular.module('Decibels').controller('contactController', ['$http', 'currentTab', function($http, currentTab) {
-    var self = this;
+angular.module('Decibels').controller('contactController',
+['currentTab',
+function(, currentTab) {
     currentTab.setCurrentTab(-1);
-    self.title = "Contact";
 }]);
