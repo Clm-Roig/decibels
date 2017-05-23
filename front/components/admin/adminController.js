@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('adminController',
-    ['$http','$cookies','$location', '$timeout', 'login','createNewAdmin', '$scope', 'currentTab', 'style',
-    function($http, $cookies, $location, $timeout, login, createNewAdmin, $scope, currentTab, style) {
+['$cookies','$location', '$timeout', 'login','createNewAdmin', '$scope', 'currentTab', 'style',
+function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTab, style) {
 
     // ========= INITIALISATION ========= //
     var self = this;
