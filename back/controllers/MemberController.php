@@ -1,5 +1,6 @@
 <?php
 require('models/member.php');
+
 class MemberController {
 
     private $Member;

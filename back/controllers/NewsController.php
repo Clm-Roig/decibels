@@ -1,5 +1,6 @@
 <?php
 require('models/news.php');
+
 class NewsController {
 
     private $News;

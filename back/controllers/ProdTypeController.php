@@ -1,5 +1,6 @@
 <?php
 require('models/prodType.php');
+
 class ProdTypeController {
 
     private $ProdType;

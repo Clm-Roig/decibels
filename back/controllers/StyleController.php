@@ -1,5 +1,6 @@
 <?php
 require('models/style.php');
+
 class StyleController {
 
     private $Style;

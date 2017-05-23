@@ -1,5 +1,6 @@
 <?php
 require('models/composedBy.php');
+
 class ComposedByController {
 
     private $ComposedBy;

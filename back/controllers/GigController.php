@@ -1,5 +1,6 @@
 <?php
 require('models/gig.php');
+
 class GigController {
 
     private $Gig;
