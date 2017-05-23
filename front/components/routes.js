@@ -2,6 +2,8 @@ angular.module('Decibels')
 .config(['$routeProvider',
     function($routeProvider){
         $routeProvider
+
+        // ==== Routes front-end ==== //
         .when('/', {
             templateUrl : 'front/components/home/home.html',
         })
@@ -38,6 +40,12 @@ angular.module('Decibels')
         .when('#', {
             redirectTo : '/'
         })
+
+        // ==== Routes back-end ?==== //
+
+
+
+
         .otherwise({
             redirectTo : '/'
         });
