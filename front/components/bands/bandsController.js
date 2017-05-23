@@ -2,6 +2,7 @@ angular.module('Decibels').controller('bandsController',
     ['currentTab','band',
 function(currentTab, band) {
     var self = this;
+
     currentTab.setCurrentTab(2);
 
     callbackBands = function(success,response) {

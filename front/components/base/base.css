@@ -7,7 +7,15 @@
 
 .navbar-brand {
 	font-size: 50px;
-	text-shadow: 0 1px 2px;
+	text-shadow: 0 1px 0 #eee,
+	0 2px 0 #e5e5e5,
+	-1px 3px 0 #C8C8C8,
+	-1px 4px 0 #C1C1C1,
+	-2px 5px 0 #B9B9B9,
+	-2px 6px 0 #B2B2B2,
+	-2px 7px 2px rgba(0,0,0, 0.6),
+	-2px 7px 8px rgba(0,0,0, 0.2),
+	-2px 7px 45px rgba(0,0,0, 0.4);
 }
 
 .navbar-nav > li > a, .navbar-brand {
@@ -51,12 +59,38 @@
 
 /* FOOTER */
 footer {
-	background-color: #f8f8f8;
+	/*background-color: #f8f8f8;*/
+	background: url("/front/images/comedie.jpg");
+	background-position: 100% 83%;
+	background-size: 100%;
 	box-shadow: 0 -1px 4px;
-	padding: 10px;
+	height: 150px;
+
+	padding: 0;
+	text-align: center;
 	width: 100%;
 }
 
+.footer-text {
+	background-color: gray;
+	border-radius: 0 0 30% 30%;
+	box-shadow: 0 2px 3px;
+	font-size: 18px;
+	margin: auto;
+	opacity: 0.9;
+	padding: 10px;
+	width: 300px;
+}
+
 footer p {
+	color: #ccc;
 	margin : 0;
+}
+
+footer a {
+	color: #e94;
+}
+
+footer a:hover {
+	color: #ddd;
 }

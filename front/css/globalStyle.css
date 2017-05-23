@@ -5,6 +5,7 @@ body {
 a:hover {
     color: #e94;
     text-decoration: none;
+    transition: 0.2s;
 }
 
 p {
