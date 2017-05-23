@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('bandsController',
-    ['currentTab','bandService',
-function(currentTab, bandService) {
+    ['currentTab','band',
+function(currentTab, band) {
     var self = this;
     currentTab.setCurrentTab(2);
 
@@ -9,5 +9,5 @@ function(currentTab, bandService) {
         else console.log('Error getting all bands : ' + response);;
     }
 
-    bandService.getAllBands(callbackBands);
+    band.getAllBands(callbackBands);
 }]);

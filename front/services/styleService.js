@@ -1,23 +1,24 @@
 angular.module('Decibels')
-.service('band', ['$http',
+.service('style', ['$http',
 function($http){
 
     var service = {
-        getAllBands: function(callback) {
+        insertStyle: function(style_name,callback) {
             // Get bands
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: '/back/Routeur.php',
                 params: {
-                            'controller': 'Band',
-                            'method': 'getAllBandsSorted'
+                            'controller': 'Style',
+                            'method': 'insertStyle',
+                            'style_name': style_name
                 }
             })
             .then(function success(response){
                 callback(true,response);
             }
             , function error(response) {
-                callback(false,response);;
+                callback(false,response);
             });
         }
     }
