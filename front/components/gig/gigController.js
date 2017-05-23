@@ -1,21 +1,15 @@
 angular.module('Decibels').controller('gigController',
-    ['$http','$routeParams', function($http,$routeParams) {
-        var self = this;
-        self.gigId = $routeParams.gigId;
+['$routeParams','gig',
+function($routeParams,gig) {
+    var self = this;
+    self.gigId = $routeParams.gigId;
 
-        $http({
-            method: 'GET',
-            url: '/back/Routeur.php',
-            params: {
-                    'controller': 'Gig',
-                    'method': 'getGig',
-                    'gig_id': self.gigId
-            }
-        })
-        .then(function success(response) {
-            self.gig = response.data[0];
-        },function error(response) {
-            console.log('Error getting gig : ' + response.data);
-        });
+    callbackGig = function(success,response) {
+        if(success) {
+            self.gig = response.data;
+        }
+        else console.log('Error getting gig : ' + response.data);
+    }
 
+    gig.getGig(self.gigId,callbackGig);
 }]);

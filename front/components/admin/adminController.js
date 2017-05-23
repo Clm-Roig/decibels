@@ -9,7 +9,7 @@ angular.module('Decibels').controller('adminController',
 
     // ========= FUNCTIONS ========= //
     // Check for valid token
-    self.callbackAlreadyLoggedIn = function(success,response) {
+    callbackAlreadyLoggedIn = function(success,response) {
         if(!success) {
             $scope.changeShowDisconnectButton(true);
             $location.path("/");
@@ -19,7 +19,7 @@ angular.module('Decibels').controller('adminController',
             $scope.changeShowDisconnectButton(true);
         }
     };
-    login.amILogged(self.callbackAlreadyLoggedIn);
+    login.amILogged(callbackAlreadyLoggedIn);
 
     // Submit addStyleForm
     self.submitMessage = "";
@@ -50,7 +50,7 @@ angular.module('Decibels').controller('adminController',
     }
 
     // Submit new Admin form
-    self.callbackNewAdmin = function(success,response) {
+    callbackNewAdmin = function(success,response) {
         if(success) {
             $cookies.put('token',response.data['token']);
             $location.path("/dashboard/admin");
@@ -62,7 +62,7 @@ angular.module('Decibels').controller('adminController',
 
     self.submitNewAdminForm = function(isValid) {
         if(isValid) {
-            createNewAdmin.signUp(self.new_admin_username,self.new_admin_password,self.callbackNewAdmin);
+            createNewAdmin.signUp(self.new_admin_username,self.new_admin_password,callbackNewAdmin);
         }
     }
 

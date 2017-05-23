@@ -46,7 +46,7 @@ class gig {
         $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_id = :gig_id');
         $req->execute(array(':gig_id' => $gigId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
-        return $object;
+        return $object[0];
     }
 
     public function getGigsByPrice($gigPrice) {
