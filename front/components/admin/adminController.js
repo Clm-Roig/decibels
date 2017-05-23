@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('adminController',
-    ['$http','$cookies','$location', '$timeout', 'alreadyLoggedIn','createNewAdmin', '$scope',
-    function($http, $cookies, $location, $timeout, alreadyLoggedIn, createNewAdmin, $scope) {
+    ['$http','$cookies','$location', '$timeout', 'login','createNewAdmin', '$scope',
+    function($http, $cookies, $location, $timeout, login, createNewAdmin, $scope) {
 
     // ========= INITIALISATION ========= //
 
@@ -18,7 +18,7 @@ angular.module('Decibels').controller('adminController',
             $scope.changeShowDisconnectButton(true);
         }
     };
-    alreadyLoggedIn.isAlreadyLoggedIn(self.callbackAlreadyLoggedIn);
+    login.amILogged(self.callbackAlreadyLoggedIn);
 
     // Submit addStyleForm
     self.submitMessage = "";

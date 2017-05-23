@@ -1,5 +1,6 @@
 angular.module('Decibels')
-.service('login', ['$http', function($http){
+.service('login',
+    ['$http','$cookies', function($http,$cookies){
     var service = {
         signIn: function(username, password, callback) {
 
@@ -17,6 +18,24 @@ angular.module('Decibels')
                 callback(true,response.data);
             }, function error(response) {
                 callback(false,response);
+            });
+        },
+
+        amILogged: function(callback) {
+
+            $http({
+                method: 'GET',
+                url: '/back/Routeur.php',
+                params: {
+                        'controller': 'Admin',
+                        'method': 'isAlreadyLoggedIn',
+                        'token': $cookies.get('token')
+                }
+            })
+            .then(function success(response) {
+                callback(true);
+            }, function error(response) {
+                callback(false);
             });
         }
     };
