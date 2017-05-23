@@ -8,6 +8,6 @@ function($routeParams,gig) {
         if(success) self.gig = response.data;
         else console.log('Error getting gig : ' + response.data);
     }
-
     gig.getGig(self.gigId,callbackGig);
+    
 }]);

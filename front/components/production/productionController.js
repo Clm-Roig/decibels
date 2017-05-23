@@ -1,36 +1,17 @@
 angular.module('Decibels').controller('productionController',
-['$http','$routeParams',
-function($http,$routeParams) {
-        var self = this;
-        self.productionId = $routeParams.productionId;
+['$http','$routeParams','production',
+function($http, $routeParams, production) {
+    var self = this;
+    self.productionId = $routeParams.productionId;
 
-        // Production infos
-        $http({
-            method: 'GET',
-            url: '/back/Routeur.php',
-            params: {
-                        'controller': 'ProductionSheet',
-                        'method': 'getProductionInfos',
-                        'production_id' : self.productionId
-            }
-        })
-        .then(function success(response) {
-            self.info = response.data;
-        },function error(response) {
-            console.log('Error getting production : ' + response.data);
-        });
+    callbackProductionInfos = function(success,response) {
+        if(success) self.info = response.data;
+        else console.log('Error getting production : ' + response.data);
+    }
+    production.getProductionInfos(self.productionId,callbackProductionInfos);
 
-        // Songs of the production
-        $http({
-            method: 'GET',
-            url: '/back/Routeur.php',
-            params: {
-                        'controller': 'ProductionSheet',
-                        'method': 'getProductionSongs',
-                        'production_id' : self.productionId
-            }
-        })
-        .then(function success(response) {
+    callbackProductionSongs = function(success,response) {
+        if(success) {
             self.songs = response.data;
             // Conversion song_length from sec to mm:ss
             for (index = 0; index < self.songs.length; ++index) {
@@ -38,8 +19,9 @@ function($http,$routeParams) {
                 var sec = self.songs[index]['song_length'] - 60*min;
                 self.songs[index]['song_length'] = min +':'+ sec;
             }
-        },function error(response) {
-            console.log('Error getting songs : ' + response.data);
-        });
+        }
+        else console.log('Error getting production songs : ' + response.data);
+    }
+    production.getProductionSongs(self.productionId,callbackProductionSongs);
 
 }]);
