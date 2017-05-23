@@ -4,7 +4,6 @@ function($http){
 
     var service = {
         insertStyle: function(style_name,callback) {
-            // Get bands
             $http({
                 method: 'POST',
                 url: '/back/Routeur.php',

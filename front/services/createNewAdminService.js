@@ -4,7 +4,7 @@ angular.module('Decibels')
         signUp: function(username, password, callback) {
 
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: '/back/Routeur.php',
                 params: {
                         'controller': 'Admin',
