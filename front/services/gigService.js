@@ -4,13 +4,29 @@ function($http){
 
     var service = {
         getAllGigs: function(callback) {
-            // Get gigs
             $http({
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
                         'controller': 'Gig',
                         'method': 'getAllGigsSorted'
+                }
+            })
+            .then(function success(response){
+                callback(true,response);
+            },function error(response) {
+                callback(false,response);
+            });
+        },
+
+        getNextGigs: function(limit,callback) {
+            $http({
+                method: 'GET',
+                url: '/back/Routeur.php',
+                params: {
+                        'controller': 'Gig',
+                        'method': 'getNextGigs',
+                        'limit': limit
                 }
             })
             .then(function success(response){

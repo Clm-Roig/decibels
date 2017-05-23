@@ -1,23 +1,14 @@
 angular.module('Decibels').controller('nextGigsController',
-['$http', 'cssInjector',
-function($http, cssInjector) {
+['$http', 'cssInjector','gig',
+function($http, cssInjector, gig) {
     cssInjector.injectCss('/front/components/gigs/nextGigs.css');
 
     var self = this;
     self.limit = 10;
 
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'Gig',
-                'method': 'getNextGigs',
-                'limit': self.limit
-        }
-    })
-    .then(function success(response) {
-        self.listGigs = response.data;
-    },function error(response) {
-        console.log('Error getting next gigs : ' + response.data);
-    });
+    callbackNextGigs = function(success,response) {
+        if(success) self.listGigs = response.data;
+        else console.log('Error getting next gigs : ' + response.data);
+    }
+    gig.getNextGigs(self.limit, callbackNextGigs);
 }]);

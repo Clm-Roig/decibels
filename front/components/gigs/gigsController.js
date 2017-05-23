@@ -8,6 +8,6 @@ function(currentTab, gig) {
         if(success) self.listGigs = response.data;
         else console.log('Error getting all gigs : ' + response.data);
     }
-
     gig.getAllGigs(callbackAllGigs);
+    
 }]);
