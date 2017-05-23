@@ -1,54 +1,31 @@
 angular.module('Decibels').controller('bandController',
-    ['$http','$routeParams', function($http,$routeParams) {
-        var self = this;
-        self.bandId = $routeParams.bandId;
+['$http','$routeParams','band',
+function($http, $routeParams, band) {
+    var self = this;
+    self.bandId = $routeParams.bandId;
 
-        // Bands general infos
-        $http({
-            method: 'GET',
-            url: '/back/Routeur.php',
-            params: {
-                        'controller': 'BandSheet',
-                        'method': 'getBandInfos',
-                        'band_id' : self.bandId
-            }
-        })
-        .then(function success(response) {
-            self.info = response.data;
-        },function error(response) {
-            console.log('Error getting band : ' + response.data);
-        });
+    // Get Band Infos
+    callbackBandInfos = function(success,response) {
+        if(success) self.info = response.data;
+        else console.log('Error getting band infos : ' + response);;
+    }
 
-        // Members
-        $http({
-            method: 'GET',
-            url: '/back/Routeur.php',
-            params: {
-                        'controller': 'BandSheet',
-                        'method': 'getBandMembers',
-                        'band_id' : self.bandId
-            }
-        })
-        .then(function success(response) {
-            self.members = response.data;
-        },function error(response) {
-            console.log('Error getting members : ' + response.data);
-        });
+    band.getBandInfos(self.bandId,callbackBandInfos);
 
-        // Productions
-        $http({
-            method: 'GET',
-            url: '/back/Routeur.php',
-            params: {
-                        'controller': 'BandSheet',
-                        'method': 'getBandProductions',
-                        'band_id' : self.bandId
-            }
-        })
-        .then(function success(response) {
-            self.productions = response.data;
-        },function error(response) {
-            console.log('Error getting productions : ' + response.data);
-        });
+    // Get Band Members
+    callbackBandMembers = function(success,response) {
+        if(success) self.members = response.data;
+        else console.log('Error getting band members : ' + response);;
+    }
+
+    band.getBandMembers(self.bandId,callbackBandMembers);
+
+    // Get band Productions
+    callbackBandProductions = function(success,response) {
+        if(success) self.productions = response.data;
+        else console.log('Error getting band productions : ' + response);;
+    }
+
+    band.getBandProductions(self.bandId,callbackBandProductions);
 
 }]);
