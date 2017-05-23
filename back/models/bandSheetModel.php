@@ -1,5 +1,5 @@
 <?php
-require_once('/config/connexionBD.php');
+require_once('../config/connexionBD.php');
 
 function getBandInfos($band_id) {
     $req = myPDO()->prepare('   SELECT B.*,S.style_name FROM bands AS B, styles AS S
