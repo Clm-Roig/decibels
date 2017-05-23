@@ -1,19 +1,13 @@
-angular.module('Decibels').controller('gigsController', ['$http','currentTab', function($http,currentTab) {
+angular.module('Decibels').controller('gigsController',
+['$http','currentTab','gig',
+function($http, currentTab, gig) {
     var self = this;
     currentTab.setCurrentTab(4);
 
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'Gig',
-                'method': 'getAllGigsSorted'
-        }
-    })
-    .then(function success(response){
-        self.listGigs = response.data;
+    callbackAllGigs = function(success,response) {
+        if(success) self.listGigs = response.data;
+        else console.log('Error getting all gigs : ' + response.data);
     }
-    , function error(response) {
-        console.log('Error getting all gigs : ' + response);
-    });
+
+    gig.getAllGigs(callbackAllGigs);
 }]);

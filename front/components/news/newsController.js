@@ -1,19 +1,13 @@
-angular.module('Decibels').controller('newsController', ['$http','currentTab', function($http,currentTab) {
+angular.module('Decibels').controller('newsController',
+['currentTab', 'news',
+function(currentTab, news) {
     var self = this;
     currentTab.setCurrentTab(3);
 
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'News',
-                'method': 'getAllNewsSorted'
-        }
-    })
-    .then(function success(response){
-        self.listNews = response.data;
+    callbackAllNews = function(success,response) {
+        if(success) self.listNews = response.data;
+        else console.log('Error getting all news : ' + response.data);
     }
-    , function error(response) {
-        console.log('Error getting all news : ' + response);
-    });
+    news.getAllNews(callbackAllNews);
+
 }]);

@@ -5,9 +5,7 @@ function($routeParams,gig) {
     self.gigId = $routeParams.gigId;
 
     callbackGig = function(success,response) {
-        if(success) {
-            self.gig = response.data;
-        }
+        if(success) self.gig = response.data;
         else console.log('Error getting gig : ' + response.data);
     }
 

@@ -1,22 +1,14 @@
 angular.module('Decibels').controller('latestNewsController',
-    ['$http', 'cssInjector',
-function($http, cssInjector) {
+['cssInjector', 'news',
+function(cssInjector, news) {
     var self = this;
     cssInjector.injectCss('/front/components/news/latestNews.css');
     self.limit = 10;
 
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'News',
-                'method': 'getLatestNews',
-                'limit': self.limit
-        }
-    })
-    .then(function success(response) {
-        self.listNews = response.data;
-    },function error(response) {
-        console.log('Error getting latest news : ' + response.data);
-    });
+    callbackLatestNews = function(success,response) {
+        if(success) self.listNews = response.data;
+        else console.log('Error getting latest news : ' + response.data);
+    }
+    news.getLatestNews(self.limit,callbackLatestNews);
+    
 }]);

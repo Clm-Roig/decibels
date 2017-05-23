@@ -1,5 +1,5 @@
 <div ng-controller="newsController as news">
-    <h2>Toutes les actualités</h2>
+    <h1>Toutes les actualités</h1>
     <ul>
         <li ng-repeat ="new in news.listNews">
             <a ng-href="/news/{{new['news_id']}}">{{new['news_date'] | date : 'dd/MM/yyyy'}} - {{new['news_title']}}</a>
