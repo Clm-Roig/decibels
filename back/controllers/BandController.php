@@ -14,13 +14,11 @@ class BandController {
 
     // ==== Simple requests ==== //
     function getAllBands() {
-        $bands = $this->Band->getAllBands();
-        return $bands;
+        return $this->Band->getAllBands();
     }
 
     function countBands() {
-        $nb_bands = $this->Band->countBands();
-        return $nb_bands;
+        return $this->Band->countBands();
     }
 
     function getBand() {

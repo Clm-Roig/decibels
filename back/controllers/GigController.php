@@ -17,10 +17,7 @@ class GigController {
     }
 
     function getAllGigsSorted() {
-        $req = myPDO()->prepare('SELECT * FROM gigs ORDER BY gig_date DESC');
-        $req->execute();
-        $all_gigs_sorted = $req->fetchAll(PDO::FETCH_CLASS, "gig");
-        return $all_gigs_sorted;
+        return $this->Gig->getAllGigsSorted();
     }
 
     function getGig() {

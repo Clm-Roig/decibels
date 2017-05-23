@@ -13,15 +13,11 @@ class StyleController {
     }
 
     function getAllStyles() {
-        $styles = $this->Style->getAllStyles();
-        return $styles;
+        return $this->Style->getAllStyles();
     }
 
     function getAllStylesSorted() {
-        $req = myPDO()->prepare('SELECT * FROM styles ORDER BY style_name');
-        $req->execute();
-        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
-        return $object;
+        return $this->Style->getAllStylesSorted();
     }
 
     function getStyle() {
@@ -29,7 +25,6 @@ class StyleController {
     }
 
     function insertStyle() {
-        $return = $this->Style->insertStyle($this->params['style_name']);
-        return $return;
+        return $this->Style->insertStyle($this->params['style_name']);
     }
 }

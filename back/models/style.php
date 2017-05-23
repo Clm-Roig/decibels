@@ -22,6 +22,13 @@ class style {
         return $object;
     }
 
+    public function getAllStylesSorted() {
+        $req = myPDO()->prepare('SELECT * FROM styles ORDER BY style_name');
+        $req->execute();
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "style");
+        return $object;
+    }
+
     public function countStyles() {
         $req = myPDO()->query('SELECT style_id FROM styles');
         $count = $req->rowCount();

@@ -26,6 +26,14 @@ class gig {
         return $object;
     }
 
+    public function getAllGigsSorted() {
+        $req = myPDO()->prepare('SELECT * FROM gigs ORDER BY gig_date DESC');
+        $req->execute();
+        $all_gigs_sorted = $req->fetchAll(PDO::FETCH_CLASS, "gig");
+        return $all_gigs_sorted;
+    }
+
+
     public function countGigs() {
         $req = myPDO()->query('SELECT gig_id FROM gigs');
         $count = $req->rowCount();

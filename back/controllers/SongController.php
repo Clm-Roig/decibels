@@ -13,8 +13,7 @@ class SongController {
     }
 
     function getAllSongs() {
-        $songs = $this->Song->getAllSongs();
-        return $songs;
+        return $this->Song->getAllSongs();
     }
 
     function getSong() {

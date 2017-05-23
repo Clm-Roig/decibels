@@ -13,8 +13,7 @@ class MemberController {
     }
 
     function getAllMembers() {
-        $members = $this->Member->getAllMembers();
-        return $members;
+        return $this->Member->getAllMembers();;
     }
 
     function getMember() {

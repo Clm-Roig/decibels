@@ -24,6 +24,13 @@ class news {
         return $object;
     }
 
+    public function getAllNewsSorted() {
+        $req = myPDO()->prepare('SELECT * FROM news ORDER BY news_date DESC');
+        $req->execute();
+        $all_news_sorted = $req->fetchAll(PDO::FETCH_CLASS, "news");
+        return $all_news_sorted;
+    }
+
     public function countNews() {
         $req = myPDO()->query('SELECT news_id FROM news');
         $count = $req->rowCount();

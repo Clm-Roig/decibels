@@ -13,20 +13,15 @@ class NewsController {
     }
 
     function getAllNews() {
-        $news = $this->News->getAllNews();
-        return $news;
+        return $this->News->getAllNews();
     }
 
     function getAllNewsSorted() {
-        $req = myPDO()->prepare('SELECT * FROM news ORDER BY news_date DESC');
-        $req->execute();
-        $all_news_sorted = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return $all_news_sorted;
+        return $this->News->getAllNewsSorted();
     }
 
     function countNews() {
-        $nb_news = $this->News->countNews();
-        return $nb_news;
+        return $this->News->countNews();;
     }
 
     function getNews() {
