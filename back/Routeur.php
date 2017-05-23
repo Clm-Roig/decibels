@@ -3,6 +3,7 @@ ini_set('display_errors', 1);
 
     // Request type
     $request = $_.$_SERVER['REQUEST_METHOD'];
+    var_dump($request);
 
     $controllerName = $request['controller'];
     $controllerObj = getController($controllerName, $request);
@@ -15,7 +16,7 @@ ini_set('display_errors', 1);
         echo json_encode($data);
     }
     else {
-        // POST / PUT / DELETE change the http_response_code by theirself in /models
+    // POST / PUT / DELETE change the http_response_code by theirself in /models
     }
 
     // ======== Functions ======== //
