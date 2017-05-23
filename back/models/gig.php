@@ -153,7 +153,7 @@ class gig {
 
     // ==== Complex requests ==== //
     public function getNextGigs($limit) {
-        $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date >= NOW() ORDER BY gig_date DESC LIMIT ?');
+        $req = myPDO()->prepare('SELECT * FROM gigs WHERE gig_date >= NOW() ORDER BY gig_date ASC LIMIT ?');
         $req->execute(array($limit));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "gig");
         return $object;
