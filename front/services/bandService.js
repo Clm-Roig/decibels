@@ -37,6 +37,23 @@ function($http){
             });
         },
 
+        countBands: function(callback) {
+            $http({
+                method: 'GET',
+                url: '/back/Routeur.php',
+                params: {
+                        'controller': 'Band',
+                        'method': 'countBands'
+                }
+            })
+            .then(function success(response) {
+                var nb_bands = "nb_bands";
+                callback(true,response);
+            },function error(response) {
+                callback(false,response);
+            });
+        },
+
         getBandMembers: function(band_id,callback) {
             $http({
                 method: 'GET',

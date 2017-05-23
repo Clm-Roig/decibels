@@ -1,15 +1,15 @@
 angular.module('Decibels')
-.service('news', ['$http',
+.service('production', ['$http',
 function($http){
 
     var service = {
-        getAllNews: function(callback) {
+        getAllProductions: function(callback) {
             $http({
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
-                        'controller': 'News',
-                        'method': 'getAllNewsSorted'
+                        'controller': 'Production',
+                        'method': 'getAllProductions'
                 }
             })
             .then(function success(response){
@@ -19,14 +19,13 @@ function($http){
             });
         },
 
-        getLatestNews: function(limit,callback) {
+        countProductions: function(callback) {
             $http({
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
-                        'controller': 'News',
-                        'method': 'getLatestNews',
-                        'limit': limit
+                        'controller': 'Production',
+                        'method': 'countProductions'
                 }
             })
             .then(function success(response){
@@ -36,30 +35,14 @@ function($http){
             });
         },
 
-        countNews: function(callback) {
+        getProduction: function(production_id,callback) {
             $http({
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
-                        'controller': 'News',
-                        'method': 'countNews'
-                }
-            })
-            .then(function success(response){
-                callback(true,response);
-            },function error(response) {
-                callback(false,response);
-            });
-        },
-
-        getNews: function(news_id,callback) {
-            $http({
-                method: 'GET',
-                url: '/back/Routeur.php',
-                params: {
-                        'controller': 'News',
-                        'method': 'getNews',
-                        'news_id': news_id
+                        'controller': 'Production',
+                        'method': 'getProduction',
+                        'news_id': production_id
                 }
             })
             .then(function success(response) {

@@ -1,54 +1,25 @@
 angular.module('Decibels').controller('counterController',
-['$http',
-function($http) {
+['$http','news','production', 'band',
+function($http, news, production, band) {
     var self = this;
     self.count = {};
 
-    // NB_BANDS
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'Band',
-                'method': 'countBands'
-        }
-    })
-    .then(function success(response) {
-        var nb_bands = "nb_bands";
-        self.count[nb_bands] = response.data;
-    },function error(response) {
-        console.log('Error getting nb_bands : ' + response.data);
-    });
+    callbackNbBands = function(success,response) {
+        if(success) self.count['nb_bands'] = response.data;
+        else console.log('Error getting nb of bands : ' + response);;
+    }
+    band.countBands(callbackNbBands);
 
-    // NB_PRODS
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'Production',
-                'method': 'countProductions'
-        }
-    })
-    .then(function success(response) {
-        var nb_prods = "nb_prods";
-        self.count[nb_prods] = response.data;
-    },function error(response) {
-        console.log('Error getting nb_prods : ' + response.data);
-    });
+    callbackNbNews = function(success,response) {
+        if(success) self.count['nb_news'] = response.data;
+        else console.log('Error getting nb of news : ' + response);;
+    }
+    news.countNews(callbackNbNews);
 
-    // NB_NEWS
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                'controller': 'News',
-                'method': 'countNews'
-        }
-    })
-    .then(function success(response) {
-        var nb_news = "nb_news";
-        self.count[nb_news] = response.data;
-    },function error(response) {
-        console.log('Error getting nb_news : ' + response.data);
-    });
+    callbackNbProductions = function(success,response) {
+        if(success) self.count['nb_prods'] = response.data;
+        else console.log('Error getting nb of productions : ' + response);;
+    }
+    production.countProductions(callbackNbProductions);
+
 }]);
