@@ -19,6 +19,23 @@ function($http){
             , function error(response) {
                 callback(false,response);
             });
+        },
+
+        getAllStyles: function(callback) {
+            $http({
+                method: 'POST',
+                url: '/back/Routeur.php',
+                params: {
+                            'controller': 'Style',
+                            'method': 'getAllStylesSorted'
+                }
+            })
+            .then(function success(response){
+                callback(true,response);
+            }
+            , function error(response) {
+                callback(false,response);
+            });
         }
     }
     return service;

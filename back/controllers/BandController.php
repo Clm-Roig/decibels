@@ -31,14 +31,23 @@ class BandController {
     }
 
     function insertBandTemp() {
-        var_dump($this->params);
         if($this->Band->insertBandTemp($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_name'])) {
             http_response_code(200);
         }
         else {
+            // Bad request
             http_response_code(400);
         }
+    }
 
+    function insertBand() {
+        if($this->Band->insertBand($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_id'])) {
+            http_response_code(200);
+        }
+        else {
+            // Bad request
+            http_response_code(400);
+        }
     }
 
 }
