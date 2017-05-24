@@ -14,8 +14,11 @@ class ProdTypeController {
     }
 
     function getAllProdTypes() {
-        $prodTypes = $this->ProdType->getAllProdTypes();
-        return $prodTypes;
+        return $this->ProdType->getAllProdTypes();
+    }
+
+    function getAllProdTypesSorted() {
+        return $this->ProdType->getAllProdTypesSorted();
     }
 
     function getProdType() {

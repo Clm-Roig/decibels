@@ -52,7 +52,6 @@ class playsWith {
     // ==== POST / PUT / DELETE requests ==== //
 
     public function insertPlaysWith($playsWithMemberId, $playsWithBandId, $playsWithInstrument) {
-        $playsWithId = $this->getIdMax() + 1;
         $sql = "INSERT INTO plays_with VALUES (:plays_with_member_id, :plays_with_band_id, :plays_with_instrument)";
         $req = myPdo()->prepare($sql);
         $params = [

@@ -44,7 +44,6 @@ class composedBy {
     // ==== POST / PUT / DELETE requests ==== //
 
     public function insertComposedBy($composedByBandId, $composedByProductionId) {
-        $composedById = $this->getIdMax() + 1;
         $sql = "INSERT INTO composed_by VALUES (:composed_by_band_id, :composed_by_production_id)";
         $req = myPdo()->prepare($sql);
         $params = [

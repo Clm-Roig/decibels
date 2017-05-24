@@ -44,7 +44,6 @@ class forms {
     // ==== POST / PUT / DELETE requests ==== //
 
     public function insertForms($formsSongId, $formsProductionId) {
-        $formsId = $this->getIdMax() + 1;
         $sql = "INSERT INTO forms VALUES (:forms_song_id, :forms_production_id)";
         $req = myPdo()->prepare($sql);
         $params = [

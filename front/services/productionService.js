@@ -84,6 +84,28 @@ function($http){
             },function error(response) {
                 callback(false,response);
             });
+        },
+
+        insertProduction: function(band_id, production_name, production_prod_type_id, production_date, production_style_id, callback) {
+            $http({
+                method: 'POST',
+                url: '/back/Routeur.php',
+                params: {
+                            'controller': 'Production',
+                            'method': 'insertProduction',
+                            'band_id': band_id,
+                            'production_name': production_name,
+                            'production_prod_type_id': production_prod_type_id,
+                            'production_date': production_date,
+                            'production_style_id': production_style_id
+                }
+            })
+            .then(function success(response){
+                callback(true,response);
+            }
+            , function error(response) {
+                callback(false,response);
+            });
         }
     }
 

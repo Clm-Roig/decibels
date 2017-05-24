@@ -44,7 +44,6 @@ class playsAt {
     // ==== POST / PUT / DELETE requests ==== //
 
     public function insertPlaysAt($playsAtBandId, $playsAtGigId) {
-        $playsAtId = $this->getIdMax() + 1;
         $sql = "INSERT INTO plays_at VALUES (:plays_at_band_id, :plays_at_gig_id)";
         $req = myPdo()->prepare($sql);
         $params = [

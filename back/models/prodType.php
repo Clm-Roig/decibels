@@ -22,6 +22,12 @@ class prodType {
         return $object;
     }
 
+    public function getAllProdTypesSorted() {
+        $req = myPDO()->query('SELECT * FROM prod_types ORDER BY prod_type_name');
+        $object = $req->fetchAll(PDO::FETCH_CLASS, "prodType");
+        return $object;
+    }
+
     public function countProdTypes() {
         $req = myPDO()->query('SELECT prod_type_id FROM prod_types');
         $count = $req->rowCount();

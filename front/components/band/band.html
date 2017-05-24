@@ -1,7 +1,7 @@
 <div ng-controller="bandController as band">
     <h1>{{band.info["band_name"]}} ({{band.info["style_name"]}})</h1>
     <hr class="underH1"></hr>
-    
+
     <p ng-show="band.info['band_formed_in']">Formé en {{band.info["band_formed_in"]}}</h2>
 
     <div class="col-sm-6">
@@ -12,6 +12,57 @@
                     {{production['production_name']}} ({{production['prod_type_name']}} - {{production['production_date'] | date : 'yyyy'}})
                 </a>
             </li>
+
+            <li ng-show="base.showDisconnect">
+                <a href="#"><span ng-show="!band.addProd" ng-model="band.addProd" ng-click="band.addProd = true" class="glyphicon glyphicon-plus"></span></a>
+                <a href="#"><span ng-show="band.addProd" ng-model="band.addProd" ng-click="band.addProd = false" class="glyphicon glyphicon-minus"></span></a>
+
+                <div class="col-sm-12">
+                    <form ng-show="band.addProd" name="newProductionForm" class="form-horizontal" ng-submit="band.submitNewProductionForm(newProductionForm.$valid)">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="production_name">Nom</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="production_name" placeholder="Nom" ng-model="band.production_name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="production_type">Type</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="production_prod_type_id" ng-model="band.production_prod_type_id" required>
+                                    <option value="">---- Types de prod. ----</option>
+                                    <option ng-repeat="prodType in band.listProdTypes" ng-value="prodType['prod_type_id']">{{prodType['prod_type_name']}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="production_date">Date</label>
+                            <md-datepicker ng-model="band.production_date" md-placeholder="Enter date"></md-datepicker>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="production_style_id">Style</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="band" ng-model="band.production_style_id" required>
+                                    <option value="">---- Tous les styles ----</option>
+                                    <option ng-repeat="style in band.listStyles" ng-value="style['style_id']">{{style['style_name']}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Ajouter Production</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </li>
+
         </ul>
     </div>
 
