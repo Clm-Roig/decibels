@@ -40,9 +40,11 @@ angular.module('Decibels')
         .when('#', {
             redirectTo : '/'
         })
+        .when('/api', {
+            templateUrl: '/api.php',
+        })
         .otherwise({
             redirectTo : '/'
         });
-
     }
 ]);
