@@ -5,11 +5,11 @@ function(currentTab, $cookies, $location, $scope) {
     // ========= INITIALISATION ========= //
     var self = this;
 
-    self.showDisconnect = false;
+    self.showToAdmin = false;
 
     // Am I and admin logged in ?
     if($cookies.get("token")) {
-        self.showDisconnect = true;
+        self.showToAdmin = true;
     }
 
     // ========= FUNCTIONS ========= //
@@ -18,12 +18,12 @@ function(currentTab, $cookies, $location, $scope) {
     self.disconnect = function() {
         $cookies.remove("token");
         $cookies.remove("isRoot");
-        self.showDisconnect = false;
+        self.showToAdmin = false;
         $location.path("/");
     }
 
-    $scope.changeShowDisconnectButton = function(value) {
-        self.showDisconnect = value;
+    $scope.changeShowToAdminButton = function(value) {
+        self.showToAdmin = value;
     }
 
     this.setCurrentTab = function(value) {

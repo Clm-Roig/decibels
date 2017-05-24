@@ -12,10 +12,10 @@ function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTa
     callbackAlreadyLoggedIn = function(success,response) {
         if(success) {
             // We're logged in, display Disconnect button
-            $scope.changeShowDisconnectButton(true);
+            $scope.changeShowToAdminButton(true);
         }
         else { 
-            $scope.changeShowDisconnectButton(false);
+            $scope.changeShowToAdminButton(false);
             $location.path("/");
         }
     };
