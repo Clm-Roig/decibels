@@ -40,7 +40,6 @@ angular.module('Decibels')
         .when('#', {
             redirectTo : '/'
         })
-
         .otherwise({
             redirectTo : '/'
         });
