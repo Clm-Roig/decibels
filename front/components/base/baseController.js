@@ -33,4 +33,5 @@ function(currentTab, $cookies, $location, $scope) {
         return currentTab.isCurrentTab(value);
     };
 
+
 }]);
