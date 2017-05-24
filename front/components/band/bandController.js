@@ -61,13 +61,13 @@ function($http, $routeParams, band, style, prodType, production, $timeout) {
             // Mise à jour de la liste des productions du groupe
             band.getBandProductions(self.bandId,callbackBandProductions);
 
-            $timeout(function () { self.submitMessage = ""; }, 3000);
+            $timeout(function () { self.submitProductionMessage = ""; }, 3000);
         }
         else {
             if(response.status == 400) {
                 self.submitProductionMessage = "Echec de l'enregistrement, requête invalide.";
             }
-            $timeout(function () { self.submitStyleMessage = ""; }, 3000);
+            $timeout(function () { self.submitProductionMessage = ""; }, 3000);
         }
     };
 
