@@ -27,7 +27,7 @@ class band {
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return $object;
     }
-    
+
     function getAllBandsSorted() {
         $req = myPDO()->query('SELECT * FROM bands ORDER BY band_name');
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
@@ -98,8 +98,8 @@ class band {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }
@@ -119,8 +119,8 @@ class band {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }
@@ -138,8 +138,8 @@ class band {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }
@@ -155,8 +155,8 @@ class band {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }

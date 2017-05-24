@@ -76,7 +76,7 @@ class AdminController {
                     $valid = true;
                 }
                 $i++;
-            } // token valid or allAdmins browsed entirely
+            } // end loop : token valid or allAdmins browsed entirely
 
             if(!$valid) {
                 // not an admin_id (forbidden)

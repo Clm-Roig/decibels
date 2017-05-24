@@ -68,15 +68,14 @@ class style {
             ];
             try {
                 $req->execute($params);
-                http_response_code(200);
             }
             catch (Exception $e) {
-                echo 'Error request "'.$sql.'" : ';
-                var_dump($e->getMessage());
+                // error during execute (bad request)
                 http_response_code(400);
             }
         }
         else {
+            // style already registered (conflict)
             http_response_code(409);
         }
     }
@@ -92,8 +91,6 @@ class style {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
             return false;
         }
     }
@@ -109,8 +106,6 @@ class style {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
             return false;
         }
     }

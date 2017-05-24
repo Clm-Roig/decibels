@@ -106,8 +106,8 @@ class gig {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }
@@ -127,8 +127,8 @@ class gig {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }
@@ -144,8 +144,8 @@ class gig {
             return true;
         }
         catch (Exception $e) {
-            echo 'Error request "'.$sql.'" : ';
-            var_dump($e->getMessage());
+            // error during execute (bad request)
+            http_response_code(400);
             return false;
         }
     }
