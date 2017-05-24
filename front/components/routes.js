@@ -41,13 +41,9 @@ angular.module('Decibels')
             redirectTo : '/'
         })
 
-        // ==== Routes back-end ?==== //
-
-
-
-
         .otherwise({
             redirectTo : '/'
         });
+
     }
 ]);
