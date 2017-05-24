@@ -1,5 +1,7 @@
 <div ng-controller="productionController as prod">
     <h1>{{prod.info["production_name"]}}</h1>
+    <hr class="underH1"></hr>
+    
     <h2>{{prod.info["style_name"]}}</h2>
     <p>Date de sortie : {{prod.info["production_date"] | date: 'dd/MM/yyyy'}}</p>
 

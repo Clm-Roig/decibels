@@ -2,6 +2,16 @@ body {
     font-size: 16px;
 }
 
+h1 {
+    font-family: Vedana;
+    text-shadow: 0 1px 1px;
+}
+
+hr.underH1 {
+    background-color: #e94;
+    height: 2px;
+}
+
 a:hover {
     color: #e94;
     text-decoration: none;

@@ -49,6 +49,10 @@
 	margin: 0;
 }
 
+.btn-admin {
+	background-color: #23527c;
+}
+
 /* CONTENT */
 .main-content {
 	background-image: url("/front/images/background.jpg");

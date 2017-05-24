@@ -1,8 +1,11 @@
 <div ng-controller="gigsController as gigs">
-    <h2>Tous les concerts</h2>
+    <h1>Tous les concerts</h1>
+    <hr class="underH1"></hr>
+
     <ul>
         <li ng-repeat ="gig in gigs.listGigs">
             <a ng-href="/gig/{{gig['gig_id']}}">{{gig["gig_date"] | date : 'dd/MM/yyyy'}} - {{gig["gig_title"]}}</a>
         </li>
     </ul>
+    
 </div>

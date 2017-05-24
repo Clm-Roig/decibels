@@ -1,5 +1,7 @@
 <div ng-controller="bandsController as bands">
     <h1>Tous les groupes de Montpellier</h1>
+    <hr class="underH1"></hr>
+
     <ul>
         <li ng-repeat="band in bands.listBands">
             <a ng-href="/band/{{band['band_id']}}">{{band['band_name']}}</a>
