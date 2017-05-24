@@ -27,7 +27,7 @@ class BandController {
     // ======================= //
 
     function getAllBandsSorted() {
-        return $this->Band->getAllBandsSorted();
+        return $this->Band->getAllBandsSorted($this->params['limit'],$this->params['offset']);
     }
 
     function insertBandTemp() {

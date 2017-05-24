@@ -2,49 +2,56 @@
     <h1>Tous les groupes de Montpellier</h1>
     <hr class="underH1"></hr>
 
-    <ul>
-        <li ng-repeat="band in bands.listBands">
-            <a ng-href="/band/{{band['band_id']}}">{{band['band_name']}}</a>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-sm-3" ng-repeat="(key,someBands) in bands.listBands">
+            <ul>
+                <li ng-repeat="band in someBands">
+                    <a ng-href="/band/{{band['band_id']}}">{{band['band_name']}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <h2>Soumettre un groupe</h2>
+    <div class="row">
+        <h2>Soumettre un groupe</h2>
 
-    <div ng-controller="submitBandController as submitBand">
+        <div ng-controller="submitBandController as submitBand">
 
-        <form name="submitBandForm" ng-submit="submitBand.submitForm(submitBandForm.$valid)" class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-sm-3" for="band_name">Nom du groupe :</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="band_name" placeholder="Nom du groupe" ng-model="submitBand.formData.band_name" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                    <label class="control-label col-sm-3" for="band_style">Style :</label>
+            <form name="submitBandForm" ng-submit="submitBand.submitForm(submitBandForm.$valid)" class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="band_name">Nom du groupe :</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="band_style_name" placeholder="Style du groupe" ng-model="submitBand.formData.band_style_name" required>
+                        <input type="text" class="form-control" id="band_name" placeholder="Nom du groupe" ng-model="submitBand.formData.band_name" required>
                     </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-3" for="band_formed_in">Année de formation (facultatif) :</label>
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" id="band_formed_in" ng-model="submitBand.formData.band_formed_in" placeholder="Format : yyyy">
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Soumettre</button>
+                <div class="form-group">
+                        <label class="control-label col-sm-3" for="band_style">Style :</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="band_style_name" placeholder="Style du groupe" ng-model="submitBand.formData.band_style_name" required>
+                        </div>
                 </div>
-            </div>
 
-            <div>
-                <h3 ng-class="submitBand.messageClass">{{submitBand.submitControl}}</h3>
-            </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="band_formed_in">Année de formation (facultatif) :</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" id="band_formed_in" ng-model="submitBand.formData.band_formed_in" placeholder="Format : yyyy">
+                    </div>
+                </div>
 
-        </form>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Soumettre</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 ng-class="submitBand.messageClass">{{submitBand.submitControl}}</h3>
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
 

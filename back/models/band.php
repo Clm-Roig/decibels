@@ -28,8 +28,19 @@ class band {
         return $object;
     }
 
-    function getAllBandsSorted() {
-        $req = myPDO()->query('SELECT * FROM bands ORDER BY band_name');
+    function getAllBandsSorted($limit = null, $offset = 0) {
+        if(empty($limit)) {
+            $req = myPDO()->query('SELECT * FROM bands ORDER BY band_name');
+        }
+        else {
+            $req = myPDO()->prepare('   SELECT * FROM bands
+                                        ORDER BY band_name
+                                        LIMIT :limit
+                                        OFFSET :offset
+                                    ');
+
+            $req->execute(array(':limit' => $limit, ':offset' => $offset));
+        }
         $object = $req->fetchAll(PDO::FETCH_CLASS, "band");
         return $object;
     }

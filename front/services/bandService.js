@@ -3,13 +3,15 @@ angular.module('Decibels')
 function($http){
 
     var service = {
-        getAllBands: function(callback) {
+        getAllBands: function(limit, offset, callback) {
             $http({
                 method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
                             'controller': 'Band',
-                            'method': 'getAllBandsSorted'
+                            'method': 'getAllBandsSorted',
+                            'limit': limit,
+                            'offset': offset
                 }
             })
             .then(function success(response){
