@@ -4,22 +4,6 @@ function($http,cssInjector,$timeout) {
     var self = this;
     cssInjector.injectCss("front/components/bands/bands.css");
 
-    // Get Styles for submission
-    $http({
-        method: 'GET',
-        url: '/back/Routeur.php',
-        params: {
-                    'controller': 'Style',
-                    'method': 'getAllStylesSorted'
-        }
-    })
-    .then(function success(response){
-        self.listStyles = response.data;
-    }
-    , function error(response) {
-        console.log('Error getting all styles : ' + response);
-    });
-
     // ==== Submission Form ==== //
     self.formData = {};
     self.submitControl = "Groupe soumis, merci !";

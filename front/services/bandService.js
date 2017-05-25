@@ -107,13 +107,32 @@ function($http){
             });
         },
 
+        insertBandTemp: function(band_name,band_formed_in,band_style_id,callback) {
+            $http({
+                method: 'POST',
+                url: '/back/Routeur.php',
+                params: {
+                            'controller': 'Band',
+                            'method': 'insertBandTemp',
+                            'band_name': band_name,
+                            'band_formed_in': band_formed_in,
+                            'band_style_id': band_style_id
+                }
+            })
+            .then(function success(response){
+                callback(true,response);
+            }
+            , function error(response) {
+                callback(false,response);
+            });
+
         insertBand: function(band_name,band_formed_in,band_style_id,callback) {
             $http({
                 method: 'POST',
                 url: '/back/Routeur.php',
-                url: 'decibels-api.herokuapp.com/bands/',
-
                 params: {
+                            'controller': 'Band',
+                            'method': 'insertBand',
                             'band_name': band_name,
                             'band_formed_in': band_formed_in,
                             'band_style_id': band_style_id
