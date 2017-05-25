@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('bandController',
-['$http','$routeParams','band','style','prodType','production', '$timeout', '$location',
-function($http, $routeParams, band, style, prodType, production, $timeout, $location) {
+['$routeParams','band','style','prodType','production', '$timeout', '$location',
+function($routeParams, band, style, prodType, production, $timeout, $location) {
     var self = this;
     self.bandId = $routeParams.bandId;
 
