@@ -77,8 +77,6 @@ function($routeParams, band, style, prodType, production, $timeout, $location) {
         }
     };
 
-
-
     // ==== DELETE BAND ==== //
     callbackDeleteBand = function(success,response) {
         if(success) {
@@ -91,7 +89,5 @@ function($routeParams, band, style, prodType, production, $timeout, $location) {
     self.deleteBand = function() {
         band.deleteBand(self.bandId, callbackDeleteBand);
     };
-
-
-
+    
 }]);

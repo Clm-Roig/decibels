@@ -43,7 +43,7 @@ class news {
         $req = myPDO()->prepare('SELECT * FROM news WHERE news_id = :news_id');
         $req->execute(array(':news_id' => $newsId));
         $object = $req->fetchAll(PDO::FETCH_CLASS, "news");
-        return $object;
+        return $object[0];
     }
 
     public function getNewsByDate($newsDate) {

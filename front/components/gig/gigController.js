@@ -9,5 +9,5 @@ function($routeParams,gig) {
         else console.log('Error getting gig : ' + response.data);
     }
     gig.getGig(self.gigId,callbackGig);
-    
+
 }]);
