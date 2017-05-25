@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('submitBandController',
-    ['$http','cssInjector','$timeout',
-function($http,cssInjector,$timeout) {
+    ['$http','cssInjector','$timeout','band',
+function($http,cssInjector,$timeout,band) {
     var self = this;
     cssInjector.injectCss("front/components/bands/bands.css");
 
@@ -9,36 +9,27 @@ function($http,cssInjector,$timeout) {
     self.submitControl = "Groupe soumis, merci !";
     self.messageClass = "hidden-control-message";
 
+    // Submit new band form;
+    callbackSubmitBand = function(success,response) {
+        if(success) {
+            self.formData['band_name'] = null;
+            self.formData['band_style_name'] = null;
+            self.formData['band_formed_in'] = null;
+            self.submitControl = "Groupe soumis, merci !";
+            self.messageClass = "temp-visible-control-message";
+            $timeout(function () { self.messageClass = "hidden-control-message"; }, 3000);
+        }
+        else {
+            self.submitControl = "Erreur lors de la soumission, veuillez réessayer.";
+            self.messageClass = "temp-visible-control-message";
+            $timeout(function () { self.messageClass = "hidden-control-message"; }, 3000);
+        }
+    };
+
     self.submitForm = function(isValid) {
         if(isValid) {
-            $http({
-                method: 'POST',
-                url: '/back/Routeur.php',
-                params: {
-                            'controller': 'Band',
-                            'method': 'insertBandTemp',
-                            'band_name': self.formData['band_name'],
-                            'band_style_name': self.formData['band_style_name'],
-                            'band_formed_in': self.formData['band_formed_in']
-                }
-            })
-            .then(function success(response){
-                self.formData['band_name'] = null;
-                self.formData['band_style_name'] = null;
-                self.formData['band_formed_in'] = null;
-
-                self.submitControl = "Groupe soumis, merci !";
-                self.messageClass = "temp-visible-control-message";
-                $timeout(function () { self.messageClass = "hidden-control-message"; }, 3000);
-            }
-            , function error(response) {
-                self.submitControl = "Erreur lors de la soumission, veuillez réessayer.";
-                self.messageClass = "temp-visible-control-message";
-                $timeout(function () { self.messageClass = "hidden-control-message"; }, 2000);
-
-                console.log('Error inserting band : ' + response);
-            });
-
+            band.insertBandTemp(self.formData['band_name'],self.formData['band_formed_in'],self.formData['band_style_name'],callbackSubmitBand);
         }
     }
+
 }]);

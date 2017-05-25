@@ -125,6 +125,7 @@ function($http){
             , function error(response) {
                 callback(false,response);
             });
+        },
 
         insertBand: function(band_name,band_formed_in,band_style_id,callback) {
             $http({
