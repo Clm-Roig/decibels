@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('nextGigsController',
-['$http', 'cssInjector','gig',
-function($http, cssInjector, gig) {
+['cssInjector','gig',
+function(cssInjector, gig) {
     cssInjector.injectCss('/front/components/gigs/nextGigs.css');
 
     var self = this;

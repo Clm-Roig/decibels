@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('counterController',
-['$http','news','production', 'band',
-function($http, news, production, band) {
+['news','production', 'band',
+function(news, production, band) {
     var self = this;
     self.count = {};
 
