@@ -1,0 +1,11 @@
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (2, 'Opprobre', 2013, 6);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (1, 'Antropofago', 2009, 4);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (3, 'Set & Match', 2010, 9);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (4, 'Bois Vert', 2012, 10);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (5, 'Alkotek', 2012, 11);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (7, 'Persian Rugs', 2012, 13);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (6, 'Beneath an Obsidian Sky', 2015, 12);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (8, 'Silver Chain', null, 15);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (9, 'Sekator', 2015, 16);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (10, 'Lady Killers', 2006, 1);
+INSERT INTO public.bands (band_id, band_name, band_formed_in, band_style_id) VALUES (11, 'Xerod', 2014, 26);

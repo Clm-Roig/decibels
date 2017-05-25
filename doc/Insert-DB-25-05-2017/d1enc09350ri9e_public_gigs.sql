@@ -1,0 +1,3 @@
+INSERT INTO public.gigs (gig_id, gig_price, gig_place, gig_date, gig_style_id, gig_title) VALUES (1, 5.00, 'Black Sheep', '2017-06-04', 14, 'Antropofago + Laniakea + Syrinx');
+INSERT INTO public.gigs (gig_id, gig_price, gig_place, gig_date, gig_style_id, gig_title) VALUES (2, 5.00, 'Black Sheep', '2017-05-26', 1, 'CCS #19 : Decasia, Deadly Vipers, Lady Killers');
+INSERT INTO public.gigs (gig_id, gig_price, gig_place, gig_date, gig_style_id, gig_title) VALUES (3, 5.00, 'Secret Place', '2017-06-17', 32, 'Waverly Lies North + Detoxed + Sexplush');

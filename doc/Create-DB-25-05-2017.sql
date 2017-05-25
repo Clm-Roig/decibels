@@ -1,12 +1,60 @@
+DROP TABLE IF EXISTS composed_by;
+DROP TABLE IF EXISTS plays_at;
+DROP TABLE IF EXISTS plays_with;
+DROP TABLE IF EXISTS news_refers_to;
+DROP TABLE IF EXISTS admins;
+DROP TABLE IF EXISTS bands;
+DROP TABLE IF EXISTS bands_temp;
+DROP TABLE IF EXISTS forms;
+DROP TABLE IF EXISTS gigs;
+DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS news;
+DROP TABLE IF EXISTS productions;
+DROP TABLE IF EXISTS prod_types;
+DROP TABLE IF EXISTS songs;
+DROP TABLE IF EXISTS styles;
+
+CREATE TABLE styles
+(
+    style_id INTEGER PRIMARY KEY NOT NULL,
+    style_name TEXT
+);
+
+CREATE TABLE prod_types
+(
+    prod_type_id INTEGER PRIMARY KEY NOT NULL,
+    prod_type_name TEXT
+);
+
+CREATE TABLE productions
+(
+    production_id INTEGER PRIMARY KEY NOT NULL,
+    production_name TEXT,
+    production_date DATE,
+    production_style_id INTEGER,
+    production_prod_type_id INTEGER,
+    CONSTRAINT productions_styles_style_id_fk FOREIGN KEY (production_style_id) REFERENCES styles (style_id),
+    CONSTRAINT productions_prod_types_prod_type_id_fk FOREIGN KEY (production_prod_type_id) REFERENCES prod_types (prod_type_id)
+);
+
+CREATE TABLE songs
+(
+    song_id INTEGER PRIMARY KEY NOT NULL,
+    song_name TEXT NOT NULL,
+    song_track_number INTEGER NOT NULL,
+    song_length INTEGER
+);
+
+
 CREATE TABLE admins
 (
-    admin_id INTEGER DEFAULT nextval('admins_admin_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    admin_id INTEGER PRIMARY KEY NOT NULL,
     admin_username TEXT NOT NULL,
     admin_password TEXT NOT NULL
 );
 CREATE TABLE bands
 (
-    band_id INTEGER DEFAULT nextval('bands_band_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    band_id INTEGER PRIMARY KEY NOT NULL,
     band_name TEXT,
     band_formed_in INTEGER,
     band_style_id INTEGER,
@@ -14,7 +62,7 @@ CREATE TABLE bands
 );
 CREATE TABLE bands_temp
 (
-    band_id INTEGER DEFAULT nextval('bands_temp_band_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    band_id INTEGER PRIMARY KEY NOT NULL,
     band_name TEXT,
     band_formed_in INTEGER,
     band_style_name TEXT
@@ -37,7 +85,7 @@ CREATE TABLE forms
 );
 CREATE TABLE gigs
 (
-    gig_id INTEGER DEFAULT nextval('gigs_gig_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    gig_id INTEGER PRIMARY KEY NOT NULL,
     gig_price NUMERIC(6,2),
     gig_place TEXT,
     gig_date DATE,
@@ -47,14 +95,14 @@ CREATE TABLE gigs
 );
 CREATE TABLE members
 (
-    member_id INTEGER DEFAULT nextval('members_member_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    member_id INTEGER PRIMARY KEY NOT NULL,
     member_first_name TEXT,
     member_last_name TEXT,
     member_pseudo TEXT
 );
 CREATE TABLE news
 (
-    news_id INTEGER DEFAULT nextval('news_news_id_seq'::regclass) PRIMARY KEY NOT NULL,
+    news_id INTEGER PRIMARY KEY NOT NULL,
     news_date DATE,
     news_title TEXT,
     news_text TEXT
@@ -83,32 +131,4 @@ CREATE TABLE plays_with
     CONSTRAINT plays_with_plays_with_band_id_plays_with_member_id_pk PRIMARY KEY (plays_with_band_id, plays_with_member_id),
     CONSTRAINT plays_with_members_member_id_fk FOREIGN KEY (plays_with_member_id) REFERENCES members (member_id),
     CONSTRAINT plays_with_bands_band_id_fk FOREIGN KEY (plays_with_band_id) REFERENCES bands (band_id)
-);
-CREATE TABLE prod_types
-(
-    prod_type_id INTEGER DEFAULT nextval('prod_types_prod_type_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    prod_type_name TEXT
-);
-CREATE TABLE productions
-(
-    production_id INTEGER DEFAULT nextval('productions_production_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    production_name TEXT,
-    production_date DATE,
-    production_style_id INTEGER,
-    production_prod_type_id INTEGER,
-    CONSTRAINT productions_styles_style_id_fk FOREIGN KEY (production_style_id) REFERENCES styles (style_id),
-    CONSTRAINT productions_prod_types_prod_type_id_fk FOREIGN KEY (production_prod_type_id) REFERENCES prod_types (prod_type_id)
-);
-CREATE TABLE songs
-(
-    song_id INTEGER DEFAULT nextval('songs_song_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    song_name TEXT NOT NULL,
-    song_track_number INTEGER NOT NULL,
-    song_length INTEGER
-);
-CREATE UNIQUE INDEX songs_song_id_uindex ON songs (song_id);
-CREATE TABLE styles
-(
-    style_id INTEGER DEFAULT nextval('styles_style_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    style_name TEXT
 );

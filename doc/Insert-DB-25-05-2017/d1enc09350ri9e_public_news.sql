@@ -1,0 +1,8 @@
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (1, '2017-05-17', 'Lancement du site', 'Le site Décibels est désormais en ligne !');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (7, '2017-05-21', 'Groupe Silver Chain ajouté', 'Le groupe Silver Chain a bien été ajouté à la base de données du site, merci !');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (6, '2017-05-20', 'Groupe Set & Match ajouté', 'Le groupe Set & Match a bien été ajouté à la base de données du site, merci !');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (3, '2017-05-18', 'Une news random', 'Bonjour, ceci est une news random pour tester mon html.');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (5, '2017-05-18', 'Le site avance', 'Ouais bah le site avance quoi.');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (2, '2017-05-19', 'Soumission de groupes', 'Il est désormais possible de soumettre des groupes pour les ajouter (après modération) à la base de données de Décibels.');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (4, '2017-05-19', 'Groupe Antropofago ajouté', 'Le groupe Antropofago a bien été ajouté à la base de données, merci !');
+INSERT INTO public.news (news_id, news_date, news_title, news_text) VALUES (8, '2017-05-21', 'Groupe Sekator ajouté', 'Le groupe Sekator a bien été ajouté à la base de données du site, merci !');

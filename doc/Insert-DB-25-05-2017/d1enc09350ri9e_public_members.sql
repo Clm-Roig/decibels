@@ -1,0 +1,10 @@
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (1, 'Clément', 'Roig', '');
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (2, 'Olivier', 'Dufresnoy', null);
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (4, 'Yannick', 'Turi', 'Zhand');
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (5, 'Vincent', 'Lièvre', null);
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (6, 'Baptiste', 'Belot', null);
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (3, 'Cyril', '', 'Maelstrom');
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (7, 'Gordon', 'Huillery', null);
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (8, 'Florian', 'Delort', null);
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (9, 'Adrien', 'Michel', null);
+INSERT INTO public.members (member_id, member_first_name, member_last_name, member_pseudo) VALUES (10, 'Aurélie', 'Gerard', null);

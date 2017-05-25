@@ -1,0 +1,2 @@
+INSERT INTO public.admins (admin_id, admin_username, admin_password) VALUES (1, 'klum', '$2y$10$NTEzQjFDM0RfQ2wwbTFyZuK7jnvkaj/ZOZ65uauxGZmkJlKZZsm3m');
+INSERT INTO public.admins (admin_id, admin_username, admin_password) VALUES (2, 'test', '$2y$10$NTEzQjFDM0RfQ2wwbTFyZuo.V.SwfLyK0f/Qp7Y5Z4IY1o51A..L.');
