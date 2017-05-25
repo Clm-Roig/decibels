@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 
-    // Request type
+    // TODO : API... 
     if(!empty($_GET)) {
         $request = $_GET;
     }

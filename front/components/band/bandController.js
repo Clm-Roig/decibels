@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('bandController',
-['$http','$routeParams','band','style','prodType','production', '$timeout',
-function($http, $routeParams, band, style, prodType, production, $timeout) {
+['$http','$routeParams','band','style','prodType','production', '$timeout', '$location',
+function($http, $routeParams, band, style, prodType, production, $timeout, $location) {
     var self = this;
     self.bandId = $routeParams.bandId;
 
@@ -75,6 +75,21 @@ function($http, $routeParams, band, style, prodType, production, $timeout) {
         if(isValid) {
             production.insertProduction(self.bandId,self.production_name,self.production_prod_type_id,self.production_date,self.production_style_id, callbackAddProduction);
         }
+    };
+
+
+
+    // ==== DELETE BAND ==== //
+    callbackDeleteBand = function(success,response) {
+        if(success) {
+            $location.path("/bands");
+        }
+        else {
+        }
+    };
+
+    self.deleteBand = function() {
+        band.deleteBand(self.bandId, callbackDeleteBand);
     };
 
 

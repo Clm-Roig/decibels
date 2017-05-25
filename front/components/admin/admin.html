@@ -78,7 +78,7 @@
                 <label class="control-label col-sm-4" for="new_band_style">Style</label>
                 <div class="col-sm-4">
                     <select class="form-control" id="new_band_style" ng-model="admin.new_band_style_id" required>
-                        <option value="">---- Tous les styles ----</option>
+                        <option value="">-- Tous les styles --</option>
                         <option ng-repeat="style in admin.listStyles" ng-value="style['style_id']">{{style['style_name']}}</option>
                     </select>
                 </div>

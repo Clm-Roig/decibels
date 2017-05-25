@@ -18,6 +18,18 @@ a:hover {
     transition: 0.2s;
 }
 
+.glyphicon {
+    vertical-align: middle;
+}
+
+.glyphicon:hover {
+    text-decoration: underline;
+}
+
+.glyphicon-remove {
+    color: #c9302c;
+}
+
 p {
     text-align: justify;
 }

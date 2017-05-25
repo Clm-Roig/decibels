@@ -1,5 +1,6 @@
 <div ng-controller="bandController as band">
-    <h1>{{band.info["band_name"]}} ({{band.info["style_name"]}})</h1>
+    <h1>{{band.info["band_name"]}} ({{band.info["style_name"]}})  <span ng-show="base.showToAdmin" ng-click="band.deleteBand()" class="glyphicon glyphicon-remove"> </span></h1>
+
     <hr class="underH1"></hr>
 
     <p ng-show="band.info['band_formed_in']">Formé en {{band.info["band_formed_in"]}}</h2>

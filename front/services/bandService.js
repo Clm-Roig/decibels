@@ -90,13 +90,30 @@ function($http){
             });
         },
 
+        deleteBand: function(band_id,callback) {
+            $http({
+                method: 'DELETE',
+                url: '/back/Routeur.php',
+                params: {
+                            'controller': 'Band',
+                            'method': 'deleteBand',
+                            'band_id' : band_id
+                }
+            })
+            .then(function success(response) {
+                callback(true,response);
+            },function error(response) {
+                callback(false,response);
+            });
+        },
+
         insertBand: function(band_name,band_formed_in,band_style_id,callback) {
             $http({
                 method: 'POST',
                 url: '/back/Routeur.php',
+                url: 'decibels-api.herokuapp.com/bands/',
+
                 params: {
-                            'controller': 'Band',
-                            'method': 'insertBand',
                             'band_name': band_name,
                             'band_formed_in': band_formed_in,
                             'band_style_id': band_style_id

@@ -30,24 +30,17 @@ class BandController {
         return $this->Band->getAllBandsSorted($this->params['limit'],$this->params['offset']);
     }
 
+    function deleteBand() {
+        $this->Band->deleteBand($this->params['band_id']);
+    }
+
     function insertBandTemp() {
-        if($this->Band->insertBandTemp($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_name'])) {
-            http_response_code(200);
-        }
-        else {
-            // Bad request
-            http_response_code(400);
-        }
+        $this->Band->insertBandTemp($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_name']);
+
     }
 
     function insertBand() {
-        if($this->Band->insertBand($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_id'])) {
-            http_response_code(200);
-        }
-        else {
-            // Bad request
-            http_response_code(400);
-        }
+        $this->Band->insertBand($this->params['band_name'],$this->params['band_formed_in'],$this->params['band_style_id']);
     }
 
 }
