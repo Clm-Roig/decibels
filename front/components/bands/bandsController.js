@@ -6,7 +6,7 @@ function(currentTab, band) {
     currentTab.setCurrentTab(2);
 
     // Get list of bands (4 by 4)
-    self.limit = 4;
+    self.limit = 5;
     self.offset = 0;
     self.c = 0;
     self.listBands = {};
