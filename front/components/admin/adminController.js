@@ -44,7 +44,7 @@ function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTa
             // Mise à jour de la liste des styles disponibles
             style.getAllStyles(callbackAllStyles);
 
-            $timeout(function () { self.submitMessage = ""; }, 3000);
+            $timeout(function () { self.submitStyleMessage = ""; }, 3000);
         }
         else {
             if(response.status == 400) {
