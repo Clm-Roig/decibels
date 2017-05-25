@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-
-    // TODO : API... 
+    // TODO : API...
     if(!empty($_GET)) {
         $request = $_GET;
     }
