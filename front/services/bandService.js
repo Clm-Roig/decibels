@@ -49,7 +49,6 @@ function($http){
                 }
             })
             .then(function success(response) {
-                var nb_bands = "nb_bands";
                 callback(true,response);
             },function error(response) {
                 callback(false,response);
