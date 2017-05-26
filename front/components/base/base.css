@@ -83,13 +83,13 @@ footer {
 	box-shadow: 0 2px 3px;
 	font-size: 18px;
 	margin: auto;
-	opacity: 0.9;
+	opacity: 0.95;
 	padding: 10px;
 	width: 300px;
 }
 
 footer p {
-	color: #ccc;
+	color: #ddd;
 	margin : 0;
 }
 
