@@ -32,4 +32,8 @@ class NewsController {
     function getLatestNews() {
         return $this->News->getLatestNews($this->params['limit']);
     }
+
+    function insertNews() {
+        return $this->News->insertNews($this->params['news_title'], $this->params['news_text']);
+    }
 }

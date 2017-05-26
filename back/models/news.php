@@ -71,13 +71,13 @@ class news {
 
     // ==== POST / PUT / DELETE requests ==== //
 
-    public function insertNews($newsDate, $newsTitle, $newsText) {
+    // Une news a pour date le jour où elle est insérée
+    public function insertNews($newsTitle, $newsText) {
         $newsId = $this->getIdMax() + 1;
-        $sql = "INSERT INTO news VALUES (:news_id, :news_date, :news_title, :news_text)";
+        $sql = "INSERT INTO news VALUES (:news_id, NOW(), :news_title, :news_text)";
         $req = myPdo()->prepare($sql);
         $params = [
           ':news_id' => $newsId,
-          ':news_date' => $newsDate,
           ':news_title' => $newsTitle,
           ':news_text' => $newsText
         ];

@@ -91,7 +91,7 @@ class AdminController {
 
 
     // Register a new admin
-    function signUp() {
+    function createAdmin() {
         $pswHashed = hashPassword($this->params['admin_password']);
         $usernameUsed = $this->Admin->getAdminsByUsername($this->params['admin_username']);
 

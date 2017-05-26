@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('loginController',
-['currentTab', 'login', '$cookies','$location','createNewAdmin',
-function(currentTab, login, $cookies, $location, createNewAdmin) {
+['currentTab', 'login', '$cookies','$location',
+function(currentTab, login, $cookies, $location) {
     var self = this;
     currentTab.setCurrentTab(0);
 

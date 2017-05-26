@@ -52,6 +52,24 @@ function($http){
             });
         },
 
+        insertNews: function(news_title, news_text, callback) {
+            $http({
+                method: 'POST',
+                url: '/back/Routeur.php',
+                params: {
+                        'controller': 'News',
+                        'method': 'insertNews',
+                        'news_title': news_title,
+                        'news_text': news_text
+                }
+            })
+            .then(function success(response){
+                callback(true,response);
+            },function error(response) {
+                callback(false,response);
+            });
+        },
+
         getNews: function(news_id,callback) {
             $http({
                 method: 'GET',

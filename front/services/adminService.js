@@ -1,14 +1,14 @@
 angular.module('Decibels')
-.service('createNewAdmin', ['$http', function($http){
+.service('admin', ['$http', function($http){
     var service = {
-        signUp: function(username, password, callback) {
+        createAdmin: function(username, password, callback) {
 
             $http({
                 method: 'POST',
                 url: '/back/Routeur.php',
                 params: {
                         'controller': 'Admin',
-                        'method': 'signUp',
+                        'method': 'createAdmin',
                         'admin_username': username,
                         'admin_password': password
                 }

@@ -23,7 +23,7 @@
     $data = $controllerObj->$methodName();
 
     // GET
-    if($data !== true && $data !== false) {
+    if($_SERVER['REQUEST_METHOD'] == "GET") {
         echo json_encode($data);
     }
     else {
@@ -32,7 +32,7 @@
 
     // ======== Functions ======== //
 
-    // Retuns a controller
+    // Returns a controller with the parameters loaded in it
     function getController($controller, $params) {
 
         $classController = $controller . "Controller";

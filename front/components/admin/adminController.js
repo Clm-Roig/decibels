@@ -1,6 +1,6 @@
 angular.module('Decibels').controller('adminController',
-['$cookies','$location', '$timeout', 'login','createNewAdmin', '$scope', 'currentTab', 'style','band',
-function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTab, style, band) {
+['$cookies','$location', '$timeout', 'login','admin', '$scope', 'currentTab', 'style','band','news',
+function($cookies, $location, $timeout, login, admin, $scope, currentTab, style, band, news) {
 
     // ========= INITIALISATION ========= //
     var self = this;
@@ -34,6 +34,27 @@ function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTa
 
     // ==== Submit forms ==== //
 
+    // Submit new News form
+    self.submitNewsMessage = "";
+    callbackAddNews = function(success,response) {
+        if(success) {
+            self.news_title = null;
+            self.news_text = null;
+            self.submitNewsMessage = "News enregistrée !";
+            $timeout(function () { self.submitNewsMessage = ""; }, 3000);
+        }
+        else {
+            self.submitNewsMessage = "Echec de l'enregistrement, requête invalide.";
+            $timeout(function () { self.submitNewsMessage = ""; }, 3000);
+        }
+    };
+
+    self.submitAddNewsForm = function(isValid) {
+        if(isValid) {
+            news.insertNews(self.news_title,self.news_text,callbackAddNews);
+        }
+    }
+
     // Submit addStyleForm
     self.submitStyleMessage = "";
     callbackAddStyle = function(success,response) {
@@ -61,9 +82,6 @@ function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTa
         if(isValid) {
             style.insertStyle(self.new_style_name,callbackAddStyle);
         }
-        else {
-
-        }
     }
 
     // Submit new Admin form
@@ -83,7 +101,7 @@ function($cookies, $location, $timeout, login, createNewAdmin, $scope, currentTa
 
     self.submitNewAdminForm = function(isValid) {
         if(isValid) {
-            createNewAdmin.signUp(self.new_admin_username,self.new_admin_password,callbackNewAdmin);
+            admin.createAdmin(self.new_admin_username,self.new_admin_password,callbackNewAdmin);
         }
     }
 
