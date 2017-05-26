@@ -23,7 +23,7 @@ function($http){
 
         getAllProdTypes: function(callback) {
             $http({
-                method: 'POST',
+                method: 'GET',
                 url: '/back/Routeur.php',
                 params: {
                             'controller': 'ProdType',
