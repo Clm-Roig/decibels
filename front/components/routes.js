@@ -28,6 +28,9 @@ angular.module('Decibels')
         .when('/gigs', {
             templateUrl : 'front/components/gigs/gigs.html',
         })
+        .when('/login', {
+            templateUrl : 'front/components/login/login.html',
+        })
         .when('/news/:newsId', {
             templateUrl : 'front/components/someNews/someNews.html',
         })
@@ -39,9 +42,6 @@ angular.module('Decibels')
         })
         .when('#', {
             redirectTo : '/'
-        })
-        .when('/api', {
-            templateUrl: '/api.php',
         })
         .otherwise({
             redirectTo : '/'
