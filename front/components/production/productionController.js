@@ -20,6 +20,7 @@ function($routeParams, production) {
             for (index = 0; index < self.songs.length; ++index) {
                 var min = self.songs[index]['song_length']/60 >> 0;
                 var sec = self.songs[index]['song_length'] - 60*min;
+                if(sec < 10) sec = "0" + sec;
                 self.songs[index]['song_length'] = min +':'+ sec;
             }
         }
