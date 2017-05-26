@@ -34,8 +34,8 @@ class AdminController {
                     $token = generateToken($admin->admin_id);
                     $cookie = ["token" => $token];
 
-                    // isRoot ? (username = klum)
-                    if($this->params['admin_username'] == 'klum') {
+                    // isRoot ? (admin_id = 1, username = klum)
+                    if($admin->admin_id == 1) {
                         $cookie["isRoot"] = true;
                     }
                     else {
@@ -96,12 +96,8 @@ class AdminController {
         $usernameUsed = $this->Admin->getAdminsByUsername($this->params['admin_username']);
 
         if(empty($usernameUsed)) {
+            // insertAdmin() set the proper HTTP_response_code
             $insertOk = $this->Admin->insertAdmin($this->params['admin_username'],$pswHashed);
-
-            if(!$insertOk) {
-                // error during insertion (bad request)
-                http_response_code(400);
-            }
         }
         else {
             // username already used (conflict)
