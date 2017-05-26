@@ -7,7 +7,7 @@ function(currentTab, $cookies, $location, $scope) {
 
     self.showToAdmin = false;
 
-    // Am I and admin logged in ?
+    // Am I an admin logged in ?
     if($cookies.get("token")) {
         self.showToAdmin = true;
     }

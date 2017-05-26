@@ -4,6 +4,7 @@ function(news, production, band) {
     var self = this;
     self.count = {};
 
+    // ==== LOAD data ==== //
     callbackNbBands = function(success,response) {
         if(success) self.count['nb_bands'] = response.data;
         else console.log('Error getting nb of bands : ' + response);;

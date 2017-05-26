@@ -101,7 +101,7 @@ function($cookies, $location, $timeout, login, admin, $scope, currentTab, style,
 
     self.submitNewAdminForm = function(isValid) {
         if(isValid) {
-            admin.createAdmin(self.new_admin_username,self.new_admin_password,callbackNewAdmin);
+            admin.insertAdmin(self.new_admin_username,self.new_admin_password,callbackNewAdmin);
         }
     }
 

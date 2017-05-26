@@ -4,12 +4,15 @@ function($routeParams, production) {
     var self = this;
     self.productionId = $routeParams.productionId;
 
+    // ==== LOAD data ==== //
+    // get production
     callbackProductionInfos = function(success,response) {
         if(success) self.info = response.data;
         else console.log('Error getting production : ' + response.data);
     }
     production.getProductionInfos(self.productionId,callbackProductionInfos);
 
+    // get songs of the production
     callbackProductionSongs = function(success,response) {
         if(success) {
             self.songs = response.data;

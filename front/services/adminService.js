@@ -1,14 +1,14 @@
 angular.module('Decibels')
 .service('admin', ['$http', function($http){
     var service = {
-        createAdmin: function(username, password, callback) {
+        insertAdmin: function(username, password, callback) {
 
             $http({
                 method: 'POST',
                 url: '/back/Routeur.php',
                 params: {
                         'controller': 'Admin',
-                        'method': 'createAdmin',
+                        'method': 'insertAdmin',
                         'admin_username': username,
                         'admin_password': password
                 }
@@ -19,6 +19,7 @@ angular.module('Decibels')
                 callback(false,response);
             });
         }
+
     };
     return service;
 }]);

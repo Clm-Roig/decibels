@@ -4,6 +4,7 @@ function($routeParams, band, style, prodType, production, $timeout, $location) {
     var self = this;
     self.bandId = $routeParams.bandId;
 
+    // ==== LOAD data ==== //
     // Get Band Infos
     callbackBandInfos = function(success,response) {
         if(success) self.info = response.data;
@@ -47,7 +48,7 @@ function($routeParams, band, style, prodType, production, $timeout, $location) {
     };
     prodType.getAllProdTypes(callbackAllProdTypes);
 
-    // ==== SUBMIT FORM ==== //
+    // ==== SUBMIT PRODUCTION FORM ==== //
     self.submitProductionMessage = "";
     self.production_date = new Date();
     callbackAddProduction = function(success,response) {
@@ -89,5 +90,5 @@ function($routeParams, band, style, prodType, production, $timeout, $location) {
     self.deleteBand = function() {
         band.deleteBand(self.bandId, callbackDeleteBand);
     };
-    
+
 }]);
